@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import './App.css';
-
 function App() {
 
   // Get Weather Details
@@ -47,8 +46,8 @@ function App() {
 
   return (
     <div style={myStyle}>
+      <div className="overlay"></div>
       <div className="container">
-        Hi
       </div>
     </div>
   );
