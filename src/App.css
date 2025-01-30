@@ -1,10 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Mona Sans", serif;
+}
+
+.container {
+    position: relative;
+    top: 50px;
+    width: calc(100% - 200px);
+    margin: auto;
+}
+
 .overlay {
     position: absolute;
     width: 100%;
     height: 100%;
     animation: startPage 0.7s ease-in-out 0.5s 1 forwards;
     background-color: transparent;
-    /* z-index:1; */
 }
 
 @keyframes startPage {
@@ -16,8 +32,62 @@
     }
 } 
 
-.container {
+.header {
+    display: flex;
     position: absolute;
-    top: 0;
-    left: 0;
+    right: 0px;
+}
+
+.header .btn {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    border-radius: 30px;
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: 300;
+    box-shadow: -1px -1px 0px rgba(255, 255, 255, 0.7);
+    transition: 0.3s
+}
+
+.header .btn:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.header .search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+    width: 50px;
+}
+
+.header .search-bar {
+    width: 0;
+    outline: none;
+    border: none;
+    transition: 0.5s;
+    background-color: transparent;
+    font-size: 18px;
+    color: white;
+    caret-color: white;
+}
+
+.header .searching {
+    width: 400px;
+    padding-right: 30px;
+    padding-left: 30px;
+    /* justify-content: space-between; */
+}
+
+.header .searching .search-bar {
+    width: 300px;
+    margin-right: 15px;
+    /* background-color: white; */
+}
+
+.header .dow {
+    padding: 10px 20px;
+    outline: none;
+    border: none;
 }

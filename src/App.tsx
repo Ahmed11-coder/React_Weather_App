@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import './App.css';
+import Header from "./components/header.tsx";
 function App() {
 
   // Get Weather Details
@@ -28,11 +29,12 @@ function App() {
   // Fetch Data When Page Load
   useEffect(() => {
     // Fetch Weather Details From ( weatherapi )
-    const WeatherData = getData("http://api.weatherapi.com/v1/forecast.json?key=6a6672e6e55047b5a3690358252701&q=cairo&days=3&aqi=yes&alerts=yes");
-    WeatherData.then((result) => {
-      // Get Wallpaper That Has Weather Discription From Pexels API
-      getWall(`https://api.pexels.com/v1/search?query=${result["current"]["condition"]["text"]}&per_page=30&orientation=landscape`);
-    });
+    getWall(`https://api.pexels.com/v1/search?query=Cloud&per_page=30&orientation=landscape`);
+    // const WeatherData = getData("http://api.weatherapi.com/v1/forecast.json?key=6a6672e6e55047b5a3690358252701&q=cairo&days=3&aqi=yes&alerts=yes");
+    // WeatherData.then((result) => {
+    //   // Get Wallpaper That Has Weather Discription From Pexels API
+    //   getWall(`https://api.pexels.com/v1/search?query=${result["current"]["condition"]["text"]} sky&per_page=30&orientation=landscape`);
+    // });
   }, [])
 
   // Style Of Background Image
@@ -40,6 +42,7 @@ function App() {
     backgroundImage: `url(${photo})`,
     // Make Image Full Screen
     backgroundSize: 'cover',
+    backgroundPosition: "bottom",
     backgroundRepeat: "no-repeat",
     height: "100vh",
   }
@@ -48,6 +51,7 @@ function App() {
     <div style={myStyle}>
       <div className="overlay"></div>
       <div className="container">
+        <Header />
       </div>
     </div>
   );
