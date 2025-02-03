@@ -2,10 +2,12 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import './App.css';
 import Header from "./components/header.tsx";
+import WeatherWise from './components/wearthwise.tsx';
 function App() {
 
   // Get Weather Details
   const [photo, setPhoto] = useState("");
+  const [mode, setMode] = useState(false);
   async function getData(URL :string) {
     let myObject = await fetch(URL);
     let myData = await myObject.json();
@@ -52,6 +54,7 @@ function App() {
       <div className="overlay"></div>
       <div className="container">
         <Header />
+        <WeatherWise mode={mode}/>
       </div>
     </div>
   );
