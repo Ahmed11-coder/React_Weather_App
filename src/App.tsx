@@ -7,7 +7,7 @@ function App() {
 
   // Get Weather Details
   const [photo, setPhoto] = useState("");
-  const [mode, setMode] = useState(false);
+  const [mode, setMode] = useState(true);
   async function getData(URL :string) {
     let myObject = await fetch(URL);
     let myData = await myObject.json();
@@ -53,7 +53,7 @@ function App() {
     <div style={myStyle}>
       <div className="overlay"></div>
       <div className="container">
-        <Header />
+        <Header setMode={setMode} mode={mode}/>
         <WeatherWise mode={mode}/>
       </div>
     </div>

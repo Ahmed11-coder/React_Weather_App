@@ -64,7 +64,7 @@
     box-shadow: none;
 }
 
-.header .search {
+.header .search, .header .mode {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,7 +94,7 @@
     margin-right: 15px;
 }
 
-.header .dow {
+.header .dow, .header .mode {
     padding: 10px 20px;
     outline: none;
     border: none;

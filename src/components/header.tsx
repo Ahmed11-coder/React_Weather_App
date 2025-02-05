@@ -1,7 +1,13 @@
 import React, { EventHandler } from "react";
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
+interface Props {
+    setMode: (val: boolean) => void;
+    mode: boolean;
+}
 
-export default function Header() {
+export default function Header(props: Props) {
 
     function clickHandle(e: React.MouseEvent<HTMLDivElement>):void {
         if (e.target.tagName != "INPUT") {
@@ -18,6 +24,10 @@ export default function Header() {
                 <SearchOutlinedIcon />
             </div>
             <button className="dow btn">Download App</button>
+            <button className="btn mode" onClick={() => props.setMode(!props.mode)}>
+                {props.mode && <DarkModeIcon />}
+                {!props.mode && <LightModeIcon />}
+            </button>
         </div>
     );
 } 
