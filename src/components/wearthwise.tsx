@@ -1,17 +1,16 @@
-import React, { act } from "react";
+import React from "react";
 import { useState, useRef } from "react";
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import NearMeIcon from '@mui/icons-material/NearMe';
 import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecordOutlined';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
-import {Swiper, SwiperSlide } from 'swiper/react';
+import {Swiper, SwiperSlide} from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
-
-// import required modules
-import { EffectCoverflow, Pagination } from 'swiper/modules';
 
 export interface Props {
     mode: boolean;
@@ -19,11 +18,10 @@ export interface Props {
 
 export default function WeatherWise(props: Props) {
     const [activeIndex, setActiveIndex] = useState<number | null>(0);
-    let slideRef = useRef(null);
+    const swiperRef = useRef(null);
     function handleClick(index: number) {
-        setActiveIndex((prev) => (prev === index ? null : index));
-        // console.log(slideRef.current!.offsetLeft);
-        // slideRef.current!.style.cssText = `trasnform: translateX(120px)`;
+        setActiveIndex(index);
+        swiperRef.current!.swiper.slideTo(index, 1200);
     }
     const DarkEarthImgs = [require("../assents/dark/Earth1.svg").default ,require("../assents/dark/Earth2.svg").default, require("../assents/dark/Earth3.svg").default, require("../assents/dark/Earth6.svg").default];
     const LightEarthImgs = [require("../assents/light/Earth1.svg").default ,require("../assents/light/Earth2.svg").default, require("../assents/light/Earth3.svg").default, require("../assents/light/Earth6.svg").default];
@@ -33,7 +31,13 @@ export default function WeatherWise(props: Props) {
             <div className="status">
                 <h5 className="side-h">Status</h5>
                 <div className="screen">
+                    <div className="info">
+                        <div className="percentage"><ArrowUpwardIcon />23.8%</div>
+                        <InfoOutlinedIcon />
+                    </div>
+                    <div className="dan-curve">
 
+                    </div>
                 </div>
                 <a href="" className="more">See More Details {<KeyboardArrowRightIcon />}</a>
             </div>
@@ -57,6 +61,7 @@ export default function WeatherWise(props: Props) {
                 slidesPerView={2}
                 centeredSlides={true}
                 grabCursor={true}
+                ref={swiperRef}
                 onSlideChange={(ind)=> setActiveIndex(ind.activeIndex)}
                 className="slideArea"
                 >
