@@ -1,0 +1,106 @@
+.dang-rate{
+  position: relative;
+  border-radius: 12px;
+}
+.path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 2.5s ease-in-out forwards;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.dang-text {
+  position: absolute;
+  top: 35px;
+  left: 148px;
+  font-size: 12px;
+  background: white;
+  padding: 8px;
+  border-radius: 8px;
+  opacity: 0;
+  animation: appear .45s 1.05s cubic-bezier(0.5, 0, 0.5 ,1) forwards;
+}
+
+.dang-text::before {
+  content: "";
+  position: absolute;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent white;
+  left: 78px;
+  top: 10px;
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+    left: 130px;
+  }
+}
+
+.chart--container {
+  position: absolute;
+  bottom: 10%;
+  right: 0%;
+}
+
+.chart--container .chart--box {
+  position: relative;
+}
+
+.chart--box .labels {
+  position: absolute;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% + 40px);
+  left: -10px;
+  bottom: -80px;
+}
+
+.chart--box .labels .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+
+.chart--box .labels .info .day {
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.chart--box .labels .info .temp {
+  font-size: 32px;
+}
+
+.chart--box .labels .info:nth-child(1) {
+  opacity: 0.3;
+  transform: scale(1);
+}
+.chart--box .labels .info:nth-child(2),
+.chart--box .labels .info:nth-child(6) {
+  opacity: 0.6;
+  transform: scale(1.1);
+}
+.chart--box .labels .info:nth-child(3),
+.chart--box .labels .info:nth-child(5) {
+  opacity: 0.8;
+  transform: scale(1.2);
+}
+
+.chart--box .labels .info.active {
+  transform: scale(1.4);
+}
+
+.chart--box .labels .info:hover {
+  opacity: 1;
+}

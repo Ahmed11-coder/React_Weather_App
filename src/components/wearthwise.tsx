@@ -5,6 +5,7 @@ import NearMeIcon from '@mui/icons-material/NearMe';
 import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecordOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import DangerousRate from "./DangerousRate.tsx";
 
 import {Swiper, SwiperSlide} from 'swiper/react';
 // Import Swiper styles
@@ -32,11 +33,11 @@ export default function WeatherWise(props: Props) {
                 <h5 className="side-h">Status</h5>
                 <div className="screen">
                     <div className="info">
-                        <div className="percentage"><ArrowUpwardIcon />23.8%</div>
-                        <InfoOutlinedIcon />
+                        <div className="percentage" title="Porgress"><ArrowUpwardIcon />23.8%</div>
+                        <div title="How?"><InfoOutlinedIcon/></div>
                     </div>
                     <div className="dan-curve">
-
+                        <DangerousRate />
                     </div>
                 </div>
                 <a href="" className="more">See More Details {<KeyboardArrowRightIcon />}</a>
@@ -57,7 +58,7 @@ export default function WeatherWise(props: Props) {
                 </div>
             </div>
             <Swiper 
-                spaceBetween={60}
+                spaceBetween={80}
                 slidesPerView={2}
                 centeredSlides={true}
                 grabCursor={true}
@@ -68,7 +69,7 @@ export default function WeatherWise(props: Props) {
                 {props.mode && DarkEarthImgs.map((value, index)=> (
                     <SwiperSlide>
                         {({isActive}) => (
-                            <img src={value} className={isActive ? "active" : "imgSlide"} loading="lazy" key={index} alt="Earth" />
+                            <img src={value}  className={isActive ? "active" : "imgSlide"} loading="lazy" key={index} alt="Earth" />
                         )}
                     </SwiperSlide>
                 ))}
@@ -81,7 +82,7 @@ export default function WeatherWise(props: Props) {
                 ))}
             </Swiper>
             <div className="contries">
-                <p>Brooklyn,New York,USA</p>
+                <p>Brooklyn, New York, USA</p>
             </div>
         </div>
     );

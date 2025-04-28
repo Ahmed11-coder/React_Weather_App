@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Header from "./components/header.tsx";
 import WeatherWise from './components/wearthwise.tsx';
+import WeatherChart from './components/WeatherChart.tsx';
+import WeatherContent from './components/WeatherContent.tsx';
 import { getYesterday } from './utils/index.ts';
 function App() {
 
@@ -34,7 +36,7 @@ function App() {
   // Fetch Data When Page Load
   useEffect(() => {
     // Fetch Weather Details From ( weatherapi )
-    getWall(`https://api.pexels.com/v1/search?query=Clouds&per_page=30&orientation=landscape`);
+    // getWall(`https://api.pexels.com/v1/search?query=Clouds&per_page=30&orientation=landscape`);
     /*
     const WeatherData = getData("http://api.weatherapi.com/v1/forecast.json?key=6a6672e6e55047b5a3690358252701&q=cairo&days=3&aqi=yes&alerts=yes");
     const prevDay = getData("http://api.weatherapi.com/v1/history.json?key=6a6672e6e55047b5a3690358252701&q=cairo&dt=2025-02-05");
@@ -47,7 +49,7 @@ function App() {
 
   // Style Of Background Image
   const myStyle = {
-    backgroundImage: `url(${photo})`,
+    backgroundImage: `url(https://images.pexels.com/photos/19123641/pexels-photo-19123641/free-photo-of-close-up-on-yellow-daisies-growing-in-garden.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)`,
     // Make Image Full Screen
     backgroundSize: 'cover',
     backgroundPosition: "bottom",
@@ -61,6 +63,8 @@ function App() {
       <div className="container">
         <Header setMode={setMode} mode={mode}/>
         <WeatherWise mode={mode}/>
+        <WeatherChart />
+        <WeatherContent />
       </div>
     </div>
   );
