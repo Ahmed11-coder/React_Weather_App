@@ -1,9 +1,7 @@
 import React from 'react'
-import { LineChart , Line , YAxis } from 'recharts'
-import { tempData } from '../utils/tempData.ts';
+import { tempData } from '../../utils/LocalData.ts';
 
-
-const CustomizedDot = (props: any ) => {
+export const CustomizedDot = (props: any ) => {
     const {cx, cy, stroke, payload, value} = props;
     const ActivePoint = tempData.find((day) => day.status == 'active')?.temp;
     if (value === ActivePoint) {
@@ -58,34 +56,4 @@ const CustomizedDot = (props: any ) => {
     }else {
         return "";
     }
-}
-
-export default function WeatherChart() {
-    return (
-        <div className='chart--container'>
-            <div className="chart--box">
-                <LineChart className='chart' width={1300} height={300} data={tempData}>
-                    <defs>
-                        <linearGradient id="colorUv">
-                            <stop offset='0%' stopColor='white' stopOpacity={0.1}/>
-                            <stop offset='20%' stopColor='white'/>
-                            <stop offset='95%' stopColor='white'/>
-                            <stop offset='100%' stopColor='white' stopOpacity={0.1}/>
-                        </linearGradient>
-                    </defs>
-                    {/* <CartesianGrid strokeDasharray="3 3"/> */}
-                    <YAxis hide={true} type='number' domain={[Math.min(...tempData.map(day => day.temp)) - 5 , Math.max(...tempData.map(day => day.temp)) + 5]}/>
-                    <Line type="monotone" dataKey="temp" dot={<CustomizedDot />} activeDot={false} stroke='url(#colorUv)'/>
-                </LineChart>
-                <div className="labels">
-                    {tempData.map((day, index) => (
-                        <div key={index} className={`info` + (day.status ? ' active' : "")}>
-                            <span className='day'>{day.day}</span>
-                            <span className='temp'>{day.temp}&deg;</span>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </div>
-    )
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import './App.css';
-import Header from "./components/header.tsx";
-import WeatherWise from './components/wearthwise.tsx';
-import WeatherChart from './components/WeatherChart.tsx';
-import WeatherContent from './components/WeatherContent.tsx';
-import { getYesterday } from './utils/index.ts';
+import Header from "./components/Header/Header.tsx";
+import WeatherWise from './components/WeatherWise/WeartherWise.tsx';
+import WeatherChart from './components/WeatherChart/WeatherChart.tsx';
+import WeatherContent from './components/Content/WeatherContent.tsx';
+import { getYesterday } from './utils/HelperFuncs.ts';
 function App() {
 
   // Get Weather Details

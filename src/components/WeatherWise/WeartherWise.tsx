@@ -1,5 +1,9 @@
 import React from "react";
 import { useState, useRef } from "react";
+
+import './WeatherWise.css';
+
+// Import Icons
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import NearMeIcon from '@mui/icons-material/NearMe';
 import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecordOutlined';
@@ -7,25 +11,25 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import DangerousRate from "./DangerousRate.tsx";
 
-import {Swiper, SwiperSlide} from 'swiper/react';
+// Import Utilities 
+import { DarkEarthImgs, LightEarthImgs } from "../../utils/LocalData.ts";
+import { ModeOptionProp } from "../../types/types.ts";
+import { setActiveBullets } from './Handlers.ts';
+
+// Swiper Library
+import {Swiper, SwiperSlide} from 'swiper/react'; // Import Swiper Components
+import { Swiper as SwiperType } from 'swiper'; // Import Swiper Type
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
-export interface Props {
-    mode: boolean;
-}
-
-export default function WeatherWise(props: Props) {
-    const [activeIndex, setActiveIndex] = useState<number | null>(0);
-    const swiperRef = useRef(null);
-    function handleClick(index: number) {
-        setActiveIndex(index);
-        swiperRef.current!.swiper.slideTo(index, 1200);
-    }
-    const DarkEarthImgs = [require("../assents/dark/Earth1.svg").default ,require("../assents/dark/Earth2.svg").default, require("../assents/dark/Earth3.svg").default, require("../assents/dark/Earth6.svg").default];
-    const LightEarthImgs = [require("../assents/light/Earth1.svg").default ,require("../assents/light/Earth2.svg").default, require("../assents/light/Earth3.svg").default, require("../assents/light/Earth6.svg").default];
+export default function WeatherWise(props: ModeOptionProp) {
+    const [activeIndex, setActiveIndex] = useState<number | null>(0); // Active Img
+    const swiperRef = useRef<SwiperType | null>(null);
+    const currModeImgs = (props.mode) ? DarkEarthImgs : LightEarthImgs;
+    
     return (
         <div className="sidebar">
             <h2>WeatherWise</h2>
@@ -48,7 +52,7 @@ export default function WeatherWise(props: Props) {
                     <ul className="areas-state">
                         {
                             [0, 1, 2, 3].map((_, index)=> (
-                                <li key={index} className={activeIndex === index ? "active" : ""} onClick={() => handleClick(index)}>
+                                <li key={index} className={activeIndex === index ? "active" : ""} onClick={() => setActiveBullets({index, setActiveIndex, swiperRef})}>
                                     {activeIndex === index && <NearMeIcon />}
                                     {activeIndex !== index && <FiberManualRecordOutlinedIcon /> }
                                 </li>
@@ -62,21 +66,14 @@ export default function WeatherWise(props: Props) {
                 slidesPerView={2}
                 centeredSlides={true}
                 grabCursor={true}
-                ref={swiperRef}
+                onSwiper={(swiper) => (swiperRef.current = swiper)}
                 onSlideChange={(ind)=> setActiveIndex(ind.activeIndex)}
                 className="slideArea"
                 >
-                {props.mode && DarkEarthImgs.map((value, index)=> (
+                {currModeImgs.map((value, index)=> (
                     <SwiperSlide>
                         {({isActive}) => (
                             <img src={value}  className={isActive ? "active" : "imgSlide"} loading="lazy" key={index} alt="Earth" />
-                        )}
-                    </SwiperSlide>
-                ))}
-                {!props.mode && LightEarthImgs.map((value, index)=> (
-                    <SwiperSlide>
-                        {({isActive}) => (
-                            <img src={value} className={isActive ? "active" : "imgSlide"} loading="lazy" key={index} alt="Earth" />
                         )}
                     </SwiperSlide>
                 ))}

@@ -1,5 +1,6 @@
 import React from 'react'
-import "./dang.css";
+import './DangerousRateStyle.css';
+
 export default function DangerousRate({ percent = 0.85 }) {
     const radius = 80;
     const circumference = Math.PI * radius;
@@ -59,7 +60,6 @@ export default function DangerousRate({ percent = 0.85 }) {
                         repeatCount="indefinite"
                     />
                 </circle>
-                {/* <circle className="circle" r='7' cx="250" cy="50" fill="black" stroke="white" stroke-width="8" /> */}
             </svg>
             <div className="dang-text">Dangerous</div>
         </div>

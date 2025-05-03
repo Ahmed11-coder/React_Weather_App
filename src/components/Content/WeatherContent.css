@@ -148,7 +148,6 @@
 .searched--section-content .box:hover {
     flex-grow: 2;
     backdrop-filter: blur(6px);
-    transform: scale(1.1);
 }
 
 .searched--section-content .box .temp-info {

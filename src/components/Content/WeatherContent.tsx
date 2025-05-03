@@ -1,8 +1,11 @@
 import React from 'react'
+
+// Import Icons
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { tempData } from '../utils/tempData.ts';
-import './content.css';
+import { WeatherIcons } from '../../utils/LocalData.ts';
+import { tempData } from '../../utils/LocalData.ts';
+import './WeatherContent.css';
 
 const currDay = tempData.find((day) => day.status);
 
@@ -39,7 +42,7 @@ export default function WeatherContent() {
             <div className='searched--section-content'>
               <div className="box">
                 <div className='temp-info'>
-                  <img src={require('../assents/sunny.svg').default} alt="sunny" />
+                  <img src={WeatherIcons[1]} alt="sunny" />
                   <span>16&deg;</span>
                 </div>
                 <div className='location-info'>
@@ -49,7 +52,7 @@ export default function WeatherContent() {
               </div>
               <div className="box">
                 <div className='temp-info'>
-                  <img src={require('../assents/rainning.svg').default} alt="running" />
+                  <img src={WeatherIcons[0]} alt="running" />
                   <span>-2&deg;</span>
                 </div>
                 <div className='location-info'>

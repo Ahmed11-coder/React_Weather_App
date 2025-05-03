@@ -1,0 +1,44 @@
+.dang-rate{
+  position: relative;
+  border-radius: 12px;
+}
+.path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 2.5s ease-in-out forwards;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.dang-text {
+  position: absolute;
+  top: 35px;
+  left: 148px;
+  font-size: 12px;
+  background: white;
+  padding: 8px;
+  border-radius: 8px;
+  opacity: 0;
+  animation: appear .45s 1.05s cubic-bezier(0.5, 0, 0.5 ,1) forwards;
+}
+
+.dang-text::before {
+  content: "";
+  position: absolute;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent white;
+  left: 78px;
+  top: 10px;
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+    left: 130px;
+  }
+}
