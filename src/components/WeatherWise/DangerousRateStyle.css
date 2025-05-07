@@ -1,6 +1,6 @@
 .dang-rate{
   position: relative;
-  border-radius: 12px;
+  border-radius: 0.85rem;
 }
 .path {
   stroke-dasharray: 1000;
@@ -18,10 +18,10 @@
   position: absolute;
   top: 35px;
   left: 148px;
-  font-size: 12px;
+  font-size: 0.86rem;
   background: white;
-  padding: 8px;
-  border-radius: 8px;
+  padding: 0.55rem;
+  border-radius: 0.5rem;
   opacity: 0;
   animation: appear .45s 1.05s cubic-bezier(0.5, 0, 0.5 ,1) forwards;
 }
@@ -29,7 +29,7 @@
 .dang-text::before {
   content: "";
   position: absolute;
-  border-width: 6px;
+  border-width: 0.5rem;
   border-style: solid;
   border-color: transparent transparent transparent white;
   left: 78px;

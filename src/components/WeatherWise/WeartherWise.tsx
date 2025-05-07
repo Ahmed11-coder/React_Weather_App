@@ -31,25 +31,25 @@ export default function WeatherWise(props: ModeOptionProp) {
     const currModeImgs = (props.mode) ? DarkEarthImgs : LightEarthImgs;
     
     return (
-        <div className="sidebar">
+        <div className="sidebar background-blur-8 arounded-40 border-w2">
             <h2>WeatherWise</h2>
             <div className="status">
                 <h5 className="side-h">Status</h5>
-                <div className="screen">
-                    <div className="info">
-                        <div className="percentage" title="Porgress"><ArrowUpwardIcon />23.8%</div>
+                <div className="screen background-blur-8">
+                    <div className="info flex-bet-center">
+                        <div className="percentage arounded-40 flex-center" title="Porgress"><ArrowUpwardIcon />23.8%</div>
                         <div title="How?"><InfoOutlinedIcon/></div>
                     </div>
                     <div className="dan-curve">
                         <DangerousRate />
                     </div>
                 </div>
-                <a href="" className="more">See More Details {<KeyboardArrowRightIcon />}</a>
+                <a href="" className="more flex-center m-auto-t15">See More Details {<KeyboardArrowRightIcon />}</a>
             </div>
             <div className="area">
-                <div className="area-h">
+                <div className="area-h flex-bet-center">
                     <h5 className="side-h">Select Area</h5>
-                    <ul className="areas-state">
+                    <ul className="areas-state flex-bet-center">
                         {
                             [0, 1, 2, 3].map((_, index)=> (
                                 <li key={index} className={activeIndex === index ? "active" : ""} onClick={() => setActiveBullets({index, setActiveIndex, swiperRef})}>
@@ -79,7 +79,7 @@ export default function WeatherWise(props: ModeOptionProp) {
                 ))}
             </Swiper>
             <div className="contries">
-                <p>Brooklyn, New York, USA</p>
+                <p className="background-blur-8 arounded-40 m-auto-t15 border-w2">Brooklyn, New York, USA</p>
             </div>
         </div>
     );

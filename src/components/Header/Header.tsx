@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Import icons
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
@@ -6,19 +6,27 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 
 import { SetModeOptionProp } from '../../types/types';
-import { SearchBtn } from "./Handlers.ts";
+import Search from "./Search.tsx";
 
 import './Header.css'
 
 export default function Header(props: SetModeOptionProp) {
+    const [isOpen, setIsOpen] = useState<boolean>(false);
     return (
         <div className="header">
-            <div className="search btn" onClick={(e) => SearchBtn(e)}>
-                <input type="text" className="search-bar" autoFocus/>
-                <SearchOutlinedIcon />
+            <div className="search-container flex-col flex-center">
+                <div className={`search btn arounded-40 background-blur-3 flex-center ${isOpen && 'searching'}`}>
+                    {/* <input type="text" className="search-bar" autoFocus /> */}
+                    <Search isOpen={isOpen}/>
+                    <div className="box flex-center" onClick={() => setIsOpen(!isOpen)}>
+                        <SearchOutlinedIcon />
+                    </div>
+                </div>
+                <div className="search-result arounded-40 background-blur-8 flex-col">
+                </div>
             </div>
-            <button className="dow btn">Download App</button>
-            <button className="btn mode" onClick={() => props.setMode(!props.mode)}>
+            <button className="dow btn arounded-40 background-blur-3">Download App</button>
+            <button className="btn mode arounded-40 background-blur-3 flex-center" onClick={() => props.setMode(!props.mode)}>
                 {(props.mode) ? <DarkModeIcon /> : <LightModeIcon />}
             </button>
         </div>

@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --main-background: rgba(255, 255, 255, 0.15);
+    --main-border-color: rgba(255, 255, 255, 0.486);
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "Mona Sans", serif;
+    outline: none;
+    border: none;
+}
+
+
+html {
+    font-size: 14px;
+}
+
+.container {
+    position: relative;
+    height: 100%;
+    padding: 3.5rem 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 8px;
+    }
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    html {
+        font-size: 10px;
+    }
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    html {
+        font-size: 12px;
+    }
+    .container {
+        width: 1170px;
+    }
+}
+@media (min-width: 1400px) {
+    html {
+        font-size: 14px;
+    }
+    .container {
+        width: 1370px;
+    }
+}
+@media (min-width: 1600px) {
+    .container {
+        width: 1570px;
+    }
+}
+@media (min-width: 1800px) {
+    .container {
+        width: 1770px;
+    }
+}
+
+.background-blur-8 {
+    backdrop-filter: blur(0.55rem);
+    -webkit-backdrop-filter: blur(0.55rem);
+    -moz-backdrop-filter: blur(0.55rem);
+}
+
+.background-blur-3 {
+    backdrop-filter: blur(0.25rem);
+    -webkit-backdrop-filter: blur(0.25rem);
+    -moz-backdrop-filter: blur(0.25rem);
+}
+
+.arounded-40 {
+    border-radius: 2.625rem; /* 3rem */
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-bet-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.m-auto-t15 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px; /* 1rem */
+}
+
+.border-w2 {
+    border: 0.125rem solid var(--main-background);
+}

@@ -3,39 +3,37 @@
     position: absolute;
     bottom: 10%;
     right: 0%;
+    width: 75%;
+    height: 300px;
 }
 
 .chart--container .chart--box {
     position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .chart--box .labels {
     position: absolute;
     color: white;
-    display: flex;
-    justify-content: space-between;
     width: calc(100% + 40px);
     left: -10px;
     bottom: -80px;
 }
 
 .chart--box .labels .info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
     transition: 0.5s;
     cursor: pointer;
 }
 
 
 .chart--box .labels .info .day {
-    font-size: 18px;
+    font-size: 1.25rem;
     font-weight: 200;
 }
 
 .chart--box .labels .info .temp {
-    font-size: 32px;
+    font-size: 2.25rem;
 }
 
 .chart--box .labels .info:nth-child(1) {

@@ -10,9 +10,12 @@ export interface SetModeOptionProp {
     mode: boolean;
 }
 
-
 export interface BulletsProp {
     index: number,
     setActiveIndex: (index: number) => void,
     swiperRef: RefObject<Swiper | null>,
+}
+
+export interface SearchProp {
+    isOpen: boolean
 }

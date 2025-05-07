@@ -1,14 +1,13 @@
 #content {
     position: absolute;
-    top: 5%;
+    top: 10%;
     left: 25%;
     color: white;
 }
 
 #content p {
-    display: flex;
-    align-items: center;
-    column-gap: 12px;
+    justify-content: flex-start;
+    column-gap: 0.85rem;
 }
 
 #content p span {
@@ -18,43 +17,31 @@
 .content--info {
     display: flex;
     width: 100%;
-    margin-top: 40px;
+    margin-top: 2.625rem;
 }
 
 .content--info .left-side {
     width: 70%;
 }
 .temp-info {
-    display: flex;
     font-weight: 200;
-    align-items: center;
-    column-gap: 20px;
+    column-gap: 1.625rem;
+    justify-content: flex-start;
 }
 
 .temp-info .curr-temp {
-    font-size: 72px;
+    font-size: 5rem;
 }
 
 .temp-info .curr-temp-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
     height: 60px;
 }
 
 .temp-info .curr-temp-info div {
-    display: flex;
-    justify-content: space-between;
     width: 100px;
     background-color: rgba(255, 255, 255, 0.12);
-    padding: 1px 15px;
-    border-radius: 50px;
+    padding: 0.1rem 1rem;
     color: #aaa;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
-    -moz-backdrop-filter: blur(2px);
     font-weight: 400;
 }
 .temp-info .curr-temp-info div span {
@@ -63,47 +50,34 @@
 
 .temp-desc h1 {
     font-weight: 500;
-    font-size: 100px;
-    line-height: 100px;
-    margin-top: 60px;
+    font-size: 7.25rem;
+    line-height: 7rem;
+    margin-top: 4rem;
     mix-blend-mode: soft-light;
 }
 
 .right-side {
-    display: flex;
     width: 30%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
 }
 .right-side p {
-    word-spacing: 2px;
+    word-spacing: 0.1rem;
 }
 
 .searched--section {
-    display: flex;
-    flex-direction: column;
     width: 100%;
 }
 .searched--section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 1rem;
 }
 .searched--section-header h6 {
     color: #bbb;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 1rem;
 }
 
 .searched--section-header button {
-    outline: none;
     background-color: transparent;
-    border: none;
     color: white;
-    display: flex;
-    align-items: center;
     position: relative;
     cursor: pointer;
 }
@@ -124,35 +98,23 @@
 
 .searched--section-content {
     position: relative;
-    display: flex;
-    justify-content: space-between;
-    column-gap: 20px;
+    column-gap: 1.625rem;
 }
 .searched--section-content .box {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
     height: 140px;
     background-color: rgba(255, 255, 255, 0.02);
-    padding: 20px;
-    border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(15px);
+    padding: 1.5rem;
     cursor: pointer;
     flex-grow: 1;
+    width: 50%;
     transition: 0.5s;
 }
 
 .searched--section-content .box:hover {
     flex-grow: 2;
-    backdrop-filter: blur(6px);
-}
-
-.searched--section-content .box .temp-info {
-    display: flex;
-    align-items: center;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    -moz-backdrop-filter: blur(3px);
 }
 
 .searched--section-content .box .temp-info img {
@@ -160,13 +122,13 @@
 }
 
 .searched--section-content .box .temp-info span {
-    font-size: 32px;
+    font-size: 2.5rem;
 }
 
 .searched--section-content .box .location-info p {
-    font-size: 14px;
+    font-size: 1rem;
 }
 .searched--section-content .box .location-info span {
     color: #aaa;
-    font-size: 12px;
+    font-size: 0.85rem;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import './App.css';
+import './assents/styles/global.css';
 import Header from "./components/Header/Header.tsx";
 import WeatherWise from './components/WeatherWise/WeartherWise.tsx';
 import WeatherChart from './components/WeatherChart/WeatherChart.tsx';

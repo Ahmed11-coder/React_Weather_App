@@ -8,9 +8,9 @@ export default function WeatherChart() {
         <div className='chart--container'>
             <div className="chart--box">
                 <Chart />
-                <div className="labels">
+                <div className="labels flex-bet-center">
                     {tempData.map((day, index) => (
-                        <div key={index} className={`info` + (day.status ? ' active' : "")}>
+                        <div key={index} className={`info flex-bet-center flex-col` + (day.status ? ' active' : "")}>
                             <span className='day'>{day.day}</span>
                             <span className='temp'>{day.temp}&deg;</span>
                         </div>
