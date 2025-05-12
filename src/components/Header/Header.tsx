@@ -5,9 +5,13 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 
+// Import Utilities 
 import { SetModeOptionProp } from '../../types/types';
+
+// Import Components
 import Search from "./Search.tsx";
 
+// Import Component Styles
 import './Header.css'
 
 export default function Header(props: SetModeOptionProp) {
@@ -16,7 +20,6 @@ export default function Header(props: SetModeOptionProp) {
         <div className="header">
             <div className="search-container flex-col flex-center">
                 <div className={`search btn arounded-40 background-blur-3 flex-center ${isOpen && 'searching'}`}>
-                    {/* <input type="text" className="search-bar" autoFocus /> */}
                     <Search isOpen={isOpen}/>
                     <div className="box flex-center" onClick={() => setIsOpen(!isOpen)}>
                         <SearchOutlinedIcon />

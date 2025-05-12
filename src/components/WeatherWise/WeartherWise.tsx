@@ -13,8 +13,12 @@ import DangerousRate from "./DangerousRate.tsx";
 
 // Import Utilities 
 import { DarkEarthImgs, LightEarthImgs } from "../../utils/LocalData.ts";
-import { ModeOptionProp } from "../../types/types.ts";
+import { ModeOptionProp , LocationState } from "../../types/types.ts";
 import { setActiveBullets } from './Handlers.ts';
+
+// Import Redux Store Utilities
+import { useAppSelector } from "../../store/hooks.ts";
+import { selectLocation } from "../../store/slices/locationSlice.ts";
 
 // Swiper Library
 import {Swiper, SwiperSlide} from 'swiper/react'; // Import Swiper Components
@@ -28,6 +32,7 @@ import 'swiper/css/pagination';
 export default function WeatherWise(props: ModeOptionProp) {
     const [activeIndex, setActiveIndex] = useState<number | null>(0); // Active Img
     const swiperRef = useRef<SwiperType | null>(null);
+    const currentLocation: LocationState = useAppSelector(selectLocation);
     const currModeImgs = (props.mode) ? DarkEarthImgs : LightEarthImgs;
     
     return (
@@ -79,7 +84,7 @@ export default function WeatherWise(props: ModeOptionProp) {
                 ))}
             </Swiper>
             <div className="contries">
-                <p className="background-blur-8 arounded-40 m-auto-t15 border-w2">Brooklyn, New York, USA</p>
+                <p className="background-blur-8 arounded-40 m-auto-t15 border-w2">{`${currentLocation.city}, ${currentLocation.region}, ${currentLocation.country}`}</p>
             </div>
         </div>
     );

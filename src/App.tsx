@@ -7,6 +7,7 @@ import WeatherWise from './components/WeatherWise/WeartherWise.tsx';
 import WeatherChart from './components/WeatherChart/WeatherChart.tsx';
 import WeatherContent from './components/Content/WeatherContent.tsx';
 import { getYesterday } from './utils/HelperFuncs.ts';
+
 function App() {
 
   // Get Weather Details
