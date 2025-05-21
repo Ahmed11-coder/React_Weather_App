@@ -62,6 +62,15 @@
     font-weight: 200;
 }
 
+.screen .dan-parameter {
+    position: absolute;
+    bottom: 1rem;
+    right: 1.5rem;
+    color: rgba(255, 255, 255, 0.15);
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+}
+
 .status .more {
     color: white;
     font-size: 1.15rem; /* 1.15rem */

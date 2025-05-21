@@ -1,5 +1,3 @@
-import React from 'react'
-
 // Import Icons
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
@@ -7,14 +5,20 @@ import { WeatherIcons } from '../../utils/LocalData.ts';
 import { tempData } from '../../utils/LocalData.ts';
 import './WeatherContent.css';
 
+import { useAppSelector } from '../../store/hooks.ts';
+import { LocationState } from '../../types/types.ts';
+import { selectLocation } from '../../store/slices/locationSlice.ts';
+
 const currDay = tempData.find((day) => day.status);
 
 export default function WeatherContent() {
+  const currentLocation: LocationState = useAppSelector(selectLocation);
+
   return (
     <div id='content'>
       <p className='flex-center'>
         <LocationOnIcon />
-        Brooklyn, New York, USA <span>( {currDay!.day}, January 4 )</span>
+        {`${currentLocation.city}, ${currentLocation.region}, ${currentLocation.country}`} <span>( {currDay!.day}, January 4 )</span>
       </p>
       <div className="content--info">
         <div className='left-side'>

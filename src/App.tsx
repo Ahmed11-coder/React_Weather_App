@@ -13,6 +13,7 @@ function App() {
   // Get Weather Details
   const [photo, setPhoto] = useState("");
   const [mode, setMode] = useState(true);
+
   async function getData(URL :string) {
     let myObject = await fetch(URL);
     let myData = await myObject.json();
@@ -48,7 +49,7 @@ function App() {
     });
     */
   }, [])
-
+  
   // Style Of Background Image
   const myStyle = {
     backgroundImage: `url(https://images.pexels.com/photos/19123641/pexels-photo-19123641/free-photo-of-close-up-on-yellow-daisies-growing-in-garden.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)`,

@@ -1,3 +1,6 @@
+import { LocationState } from "../types/types";
+import { getLocationInfo } from "./HelperFuncs.ts";
+
 export const tempData = [
     { day: "Sunday", temp: 28 },
     { day: "Monday", temp: 26 },
@@ -24,3 +27,7 @@ export const WeatherIcons = [
     require('../assents/images/rain.svg').default,
     require('../assents/images/sunny.svg').default
 ]
+
+export const countries = require('../data/countries.json')['countries'];
+
+export const ContinentIndex = [["North America", "South America"], ["Europe", "Middle East", "Africa"], ["Asia"], ["Oceania"]]

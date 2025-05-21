@@ -8,11 +8,11 @@ import { GEO_API_URL, geoApiOptions } from '../../services/api.ts';
 
 // Import Redux Store Utilities
 import { useAppDispatch } from '../../store/hooks.ts';
-import { setLocation } from '../../store/slices/locationSlice.ts';
+import { setLocation, userLocation } from '../../store/slices/locationSlice.ts';
 
 // Import Utilities 
 import { SearchProp, LocationState } from '../../types/types.ts';
-import { getContinent } from '../../utils/HelperFuncs.ts';
+import { getCityInfo, getContinentIndex } from '../../utils/HelperFuncs.ts';
 
 export default function Search({isOpen} : SearchProp) {
     const [search, setSearch] = useState<string|null>(null);
@@ -79,9 +79,9 @@ export default function Search({isOpen} : SearchProp) {
     const handleChange = async (searchData) => {
         setSearch(searchData);
         const { city, country, value, region } = searchData;
-        const continent = await getContinent(country); 
-        const data: LocationState = { city: city, country: country, locate: value, region: region, continent: continent};
-        console.log(data);
+        const continent = getCityInfo(country)[0]; 
+        const data: LocationState = { city: city, country: country, locate: value, region: region, continent: continent["continentName"], activeIndex: getContinentIndex(continent["continentName"])};
+        if (userLocation.activeIndex === data.activeIndex) userLocation.isSearch = true;
         dispatch(setLocation(data));
     } 
 

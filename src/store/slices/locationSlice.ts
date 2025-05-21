@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { LocationState } from "../../types/types";
-import { getLocationInfo } from "../../utils/HelperFuncs.ts";
+import { isSearchedLocationState, LocationState } from "../../types/types";
+import {getLocationInfo } from "../../utils/HelperFuncs.ts";
 import { RootState } from "../store";
 
 const initialState: LocationState = await getLocationInfo();
+export const userLocation: isSearchedLocationState = {...initialState ,isSearch: false};
 
 export const locationSlice = createSlice({
     name: 'location',
@@ -17,6 +18,7 @@ export const locationSlice = createSlice({
             state.locate = action.payload.locate;
             state.region = action.payload.region;
             state.continent = action.payload.continent;
+            state.activeIndex = action.payload.activeIndex;
         }
     }
 });

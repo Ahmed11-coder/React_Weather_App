@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState, useRef } from "react";
 
 import './WeatherWise.css';
@@ -14,10 +14,10 @@ import DangerousRate from "./DangerousRate.tsx";
 // Import Utilities 
 import { DarkEarthImgs, LightEarthImgs } from "../../utils/LocalData.ts";
 import { ModeOptionProp , LocationState } from "../../types/types.ts";
-import { setActiveBullets } from './Handlers.ts';
+import { setActiveBullets, setRandomCountryInfo } from './Handlers.ts';
 
 // Import Redux Store Utilities
-import { useAppSelector } from "../../store/hooks.ts";
+import { useAppDispatch, useAppSelector } from "../../store/hooks.ts";
 import { selectLocation } from "../../store/slices/locationSlice.ts";
 
 // Swiper Library
@@ -30,11 +30,15 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
 export default function WeatherWise(props: ModeOptionProp) {
-    const [activeIndex, setActiveIndex] = useState<number | null>(0); // Active Img
-    const swiperRef = useRef<SwiperType | null>(null);
     const currentLocation: LocationState = useAppSelector(selectLocation);
+    const swiperRef = useRef<SwiperType | null>(null);
+    const dispatch = useAppDispatch();
     const currModeImgs = (props.mode) ? DarkEarthImgs : LightEarthImgs;
-    
+
+    useEffect(() => {
+        if (swiperRef.current) swiperRef.current.slideTo(currentLocation.activeIndex, 1200);
+    }, [currentLocation.activeIndex])
+
     return (
         <div className="sidebar background-blur-8 arounded-40 border-w2">
             <h2>WeatherWise</h2>
@@ -48,6 +52,7 @@ export default function WeatherWise(props: ModeOptionProp) {
                     <div className="dan-curve">
                         <DangerousRate />
                     </div>
+                    <span className="dan-parameter">Temperature</span>
                 </div>
                 <a href="" className="more flex-center m-auto-t15">See More Details {<KeyboardArrowRightIcon />}</a>
             </div>
@@ -57,22 +62,23 @@ export default function WeatherWise(props: ModeOptionProp) {
                     <ul className="areas-state flex-bet-center">
                         {
                             [0, 1, 2, 3].map((_, index)=> (
-                                <li key={index} className={activeIndex === index ? "active" : ""} onClick={() => setActiveBullets({index, setActiveIndex, swiperRef})}>
-                                    {activeIndex === index && <NearMeIcon />}
-                                    {activeIndex !== index && <FiberManualRecordOutlinedIcon /> }
+                                <li key={index} className={currentLocation.activeIndex === index ? "active" : ""} onClick={() => setActiveBullets({index,dispatch, swiperRef})}>
+                                    {currentLocation.activeIndex === index && <NearMeIcon />}
+                                    {currentLocation.activeIndex !== index && <FiberManualRecordOutlinedIcon /> }
                                 </li>
                             ))
                         }
                     </ul>
                 </div>
             </div>
-            <Swiper 
+            <Swiper
                 spaceBetween={80}
                 slidesPerView={2}
                 centeredSlides={true}
                 grabCursor={true}
+                initialSlide={currentLocation.activeIndex}
                 onSwiper={(swiper) => (swiperRef.current = swiper)}
-                onSlideChange={(ind)=> setActiveIndex(ind.activeIndex)}
+                onSlideChange={(ind)=> setRandomCountryInfo({index: ind.activeIndex, dispatch})}
                 className="slideArea"
                 >
                 {currModeImgs.map((value, index)=> (

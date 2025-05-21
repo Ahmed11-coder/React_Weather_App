@@ -1,6 +1,6 @@
 import { IPINFO_API_URL } from "../services/api.ts";
 import { LocationState } from "../types/types";
-import { FIRST_API_URL } from "../services/api.ts";
+import { ContinentIndex, countries } from "./LocalData.ts";
 
 export const getYesterday = () => {
     const curDate = new Date();
@@ -9,11 +9,8 @@ export const getYesterday = () => {
     return (Yesterday.join("-"));
 }
 
-
-export const getContinent = async (country: string) => {
-    const response = await fetch(`${FIRST_API_URL}?q=${country}`);
-    const continent = await response.json();
-    return continent['data'][country]['region'];
+export const getCityInfo = (countryCode: string) => {
+    return countries.filter((country) => country["countryCode"] === countryCode);
 }
 
 // Get User Location Info Using ipinfo API
@@ -26,7 +23,20 @@ export const getLocationInfo = async (): Promise<LocationState> => {
         country: ip.country,
         city: ip.city,
         region: ip.region,
-        continent: ip.timezone.split('/')[0]
+        continent: ip.timezone.split('/')[0],
+        activeIndex: getContinentIndex(ip.timezone.split('/')[0])
     }
     return locationData;
+}
+export const getRandomIndex = (ArraySize: number): number => {
+    return Math.floor(Math.random() * ArraySize);
+}
+export const getRandomCountry = (continent: string) => {
+    const possibleCountries = countries.filter((country) => country["continentName"] === continent && country["population"] >= 21000000);
+    const result = possibleCountries[getRandomIndex(possibleCountries.length)];
+    return result;
+}
+export const getContinentIndex = (continent: string) : number => {
+    const data = ContinentIndex.filter((con) => con.includes(continent))[0];
+    return ContinentIndex.indexOf(data);
 }

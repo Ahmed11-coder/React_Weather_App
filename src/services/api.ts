@@ -14,5 +14,6 @@ export const geoApiOptions = {
 // API To Get Current User IP
 export const IPINFO_API_URL = "https://ipinfo.io/json";
 
-// API To Get Continent From Country Code
-export const FIRST_API_URL = "https://api.first.org/data/v1/countries";
+// Weather API Key
+const WEATHER_API_KEY = "6a6672e6e55047b5a3690358252701";
+export const WEATHER_API = `http://api.weatherapi.com/v1/forecast.json?key=${WEATHER_API_KEY}&days=1&aqi=yes&alerts=yes`;
