@@ -14,6 +14,7 @@ export const geoApiOptions = {
 // API To Get Current User IP
 export const IPINFO_API_URL = "https://ipinfo.io/json";
 
-// Weather API Key
+// Weather API ( Get Weather Data Based On Location )
 const WEATHER_API_KEY = "6a6672e6e55047b5a3690358252701";
-export const WEATHER_API = `http://api.weatherapi.com/v1/forecast.json?key=${WEATHER_API_KEY}&days=1&aqi=yes&alerts=yes`;
+export const WEATHER_API_FORECAST = `http://api.weatherapi.com/v1/forecast.json?key=${WEATHER_API_KEY}&days=2&aqi=yes&alerts=yes`;
+export const WEATHER_API_HISTORY = `http://api.weatherapi.com/v1/history.json?key=${WEATHER_API_KEY}`;

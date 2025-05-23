@@ -35,3 +35,26 @@ export interface isSearchedLocationState extends LocationState {
 export interface IP {
     ip: string;
 }
+
+export interface WeatherInfo {
+    current_temp: number; // ( Current Temperature )
+    condition: {
+        text: string;
+        code: number;
+        icon: string;
+    };
+    humidity: number;
+    feelslike_temp: number; // ( Feels Like Temperature )
+    wind_chill: number; // ( Wind Chill )
+    wind_kph: number; // ( Wind speed in kilometer per hour)
+    gust_kph: number; // ( Wind gust in kilometer per hour )
+    uv: number; // ( High UV levels pose sunburn or skin damage risks )
+    air_quality: {
+        us_epa_index: number;
+        gb_defra_index: number;
+    };
+    precip_mm: number; // ( Precipitation amount in millimeters )
+    vis_km: number; // ( Visibility in kilometer )
+    nextDays: number[];
+    previousDays: number[];
+}

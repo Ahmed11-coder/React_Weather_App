@@ -6,13 +6,21 @@ import Header from "./components/Header/Header.tsx";
 import WeatherWise from './components/WeatherWise/WeartherWise.tsx';
 import WeatherChart from './components/WeatherChart/WeatherChart.tsx';
 import WeatherContent from './components/Content/WeatherContent.tsx';
-import { getYesterday } from './utils/HelperFuncs.ts';
+import { getWeatherInfo } from './utils/HelperFuncs.ts';
+
+// Redux Store Utilities
+import { useAppSelector } from './store/hooks.ts';
+import { selectLocation } from './store/slices/locationSlice.ts';
+
 
 function App() {
 
   // Get Weather Details
   const [photo, setPhoto] = useState("");
   const [mode, setMode] = useState(true);
+
+  // Redux Store
+  const Locationselector = useAppSelector(selectLocation)
 
   async function getData(URL :string) {
     let myObject = await fetch(URL);
@@ -37,7 +45,7 @@ function App() {
 // For Night Cloud Write (Dark Clouds)
 
   // Fetch Data When Page Load
-  useEffect(() => {
+  //useEffect(() => {
     // Fetch Weather Details From ( weatherapi )
     // getWall(`https://api.pexels.com/v1/search?query=Clouds&per_page=30&orientation=landscape`);
     /*
@@ -48,8 +56,19 @@ function App() {
       getWall(`https://api.pexels.com/v1/search?query=${result["current"]["condition"]["text"]} sky&per_page=30&orientation=landscape`);
     });
     */
-  }, [])
-  
+  //}, [])
+
+// console.log(store.getState()["location"]);
+  useEffect(() => {
+    getWeatherInfo(Locationselector).then((res) => console.log(res));
+
+    // setInterval(async ():Promise<void> => {
+    //   const weatherInfo = await fetch(`${WEATHER_API}&q=${Locationselector.city}`);
+    //   const response = await weatherInfo.json();
+    // }, 600000)
+  }, [Locationselector.city])
+
+
   // Style Of Background Image
   const myStyle = {
     backgroundImage: `url(https://images.pexels.com/photos/19123641/pexels-photo-19123641/free-photo-of-close-up-on-yellow-daisies-growing-in-garden.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)`,
