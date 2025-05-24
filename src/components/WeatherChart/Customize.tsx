@@ -1,10 +1,14 @@
-import React from 'react'
-import { tempData } from '../../utils/LocalData.ts';
+import { WeatherInfo } from '../../types/types.ts';
+
+// Import Redux Store Utilities
+import { useAppSelector } from '../../store/hooks.ts';
+import { selectWeather } from '../../store/slices/weatherSlice.ts';
 
 export const CustomizedDot = (props: any ) => {
+    const currentWeather: WeatherInfo = useAppSelector(selectWeather);
     const {cx, cy, stroke, payload, value} = props;
-    const ActivePoint = tempData.find((day) => day.status == 'active')?.temp;
-    if (value === ActivePoint) {
+    const ActivePoint = currentWeather.Current7Days.find((day) => day.status == 'active')?.temp;
+    if (value === ActivePoint && payload.status) {
         return (
             <svg x={cx - 50} y={cy - 50} width="300" height="300" >
                 <defs>

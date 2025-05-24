@@ -62,10 +62,11 @@ function App() {
   useEffect(() => {
     getWeatherInfo(Locationselector).then((res) => console.log(res));
 
+    // Update Weather Data Every 15 Min
     // setInterval(async ():Promise<void> => {
     //   const weatherInfo = await fetch(`${WEATHER_API}&q=${Locationselector.city}`);
     //   const response = await weatherInfo.json();
-    // }, 600000)
+    // }, 900000) 
   }, [Locationselector.city])
 
 

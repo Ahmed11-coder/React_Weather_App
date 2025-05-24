@@ -1,4 +1,4 @@
-import React , { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // Import AsyncPaginate Library
 import { AsyncPaginate } from 'react-select-async-paginate';
@@ -12,7 +12,8 @@ import { setLocation, userLocation } from '../../store/slices/locationSlice.ts';
 
 // Import Utilities 
 import { SearchProp, LocationState } from '../../types/types.ts';
-import { getCityInfo, getContinentIndex } from '../../utils/HelperFuncs.ts';
+import { getCityInfo, getContinentIndex, getWeatherInfo } from '../../utils/HelperFuncs.ts';
+import { setWeatherInfo } from '../../store/slices/weatherSlice.ts';
 
 export default function Search({isOpen} : SearchProp) {
     const [search, setSearch] = useState<string|null>(null);
@@ -83,6 +84,7 @@ export default function Search({isOpen} : SearchProp) {
         const data: LocationState = { city: city, country: country, locate: value, region: region, continent: continent["continentName"], activeIndex: getContinentIndex(continent["continentName"])};
         if (userLocation.activeIndex === data.activeIndex) userLocation.isSearch = true;
         dispatch(setLocation(data));
+        dispatch(setWeatherInfo(await getWeatherInfo(data)));
     } 
 
     return (

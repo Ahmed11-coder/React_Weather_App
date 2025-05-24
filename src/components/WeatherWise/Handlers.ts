@@ -1,14 +1,20 @@
+// Import APIs
 import { GEO_API_URL, geoApiOptions } from "../../services/api.ts";
-import { setLocation, userLocation } from "../../store/slices/locationSlice.ts";
-import { ChangeBulletsProp, SwiperEarthChange, LocationState } from "../../types/types";
-import { getRandomCountry, getRandomIndex } from "../../utils/HelperFuncs.ts";
-import { ContinentIndex } from "../../utils/LocalData.ts";
-// import { RANDOM_CITY_API } from "../../services/api";
-// Handle Click Event When Swip From Image To Image ( Make It Active & Unactive The Last One )
 
+// Import Utilities & Helper Functions
+import { ContinentIndex } from "../../utils/LocalData.ts";
+import { getRandomCountry, getRandomIndex, getWeatherInfo } from "../../utils/HelperFuncs.ts";
+import { ChangeBulletsProp, SwiperEarthChange, LocationState } from "../../types/types";
+
+// Import Redux Store Utilities
+import { setLocation, userLocation } from "../../store/slices/locationSlice.ts";
+import { setWeatherInfo } from "../../store/slices/weatherSlice.ts";
+
+// Handle Click Event When Swip From Image To Image ( Make It Active & Unactive The Last One )
 export const setRandomCountryInfo = async ({ index, dispatch }: SwiperEarthChange) : Promise<void> => {
     if (!userLocation.isSearch && userLocation.activeIndex === index) {
         dispatch(setLocation(userLocation));
+        dispatch(setWeatherInfo(await getWeatherInfo()));
         return ;
     } else if (userLocation.isSearch && userLocation.activeIndex === index) {
         userLocation.isSearch = false;
@@ -27,11 +33,11 @@ export const setRandomCountryInfo = async ({ index, dispatch }: SwiperEarthChang
         const RandomCity: LocationState = { city: capital, country: countryCode, locate: locate, region: cityRegion, continent: continentName, activeIndex: index};
         console.log(RandomCity, '-');
         dispatch(setLocation(RandomCity));
+        dispatch(setWeatherInfo(await getWeatherInfo(RandomCity)));
     } catch (e) {
         console.log(e);
     }
 }
-
 
 export const setActiveBullets = async ({index, dispatch ,swiperRef}: ChangeBulletsProp): Promise<void> => {
     try{

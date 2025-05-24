@@ -1,37 +1,41 @@
+// Import Utilities
+import { LocationState, WeatherInfo } from '../../types/types.ts';
+
+// Import Redux Store Utilities
+import { useAppSelector } from '../../store/hooks.ts';
+import { selectLocation } from '../../store/slices/locationSlice.ts';
+import { selectWeather } from '../../store/slices/weatherSlice.ts';
+
 // Import Icons
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { WeatherIcons } from '../../utils/LocalData.ts';
-import { tempData } from '../../utils/LocalData.ts';
+
+// Import Stlyes
 import './WeatherContent.css';
-
-import { useAppSelector } from '../../store/hooks.ts';
-import { LocationState } from '../../types/types.ts';
-import { selectLocation } from '../../store/slices/locationSlice.ts';
-
-const currDay = tempData.find((day) => day.status);
 
 export default function WeatherContent() {
   const currentLocation: LocationState = useAppSelector(selectLocation);
+  const currentWeather: WeatherInfo = useAppSelector(selectWeather);
 
   return (
     <div id='content'>
       <p className='flex-center'>
         <LocationOnIcon />
-        {`${currentLocation.city}, ${currentLocation.region}, ${currentLocation.country}`} <span>( {currDay!.day}, January 4 )</span>
+        {`${currentLocation.city}, ${currentLocation.region}, ${currentLocation.country}`} <span>{currentWeather.date}</span>
       </p>
       <div className="content--info">
         <div className='left-side'>
           <div className="temp-info flex-center">
-            <div className='curr-temp'>{currDay!.temp}&deg;</div>
+            <div className='curr-temp'>{currentWeather.current_temp}&deg;</div>
             <div className="curr-temp-info flex-bet-center flex-col">
-              <div className="hight-temp flex-bet-center border-w2 background-blur-3 arounded-40">H <span>{currDay!.temp+3}&deg;</span></div>
-              <div className="lower-temp flex-bet-center border-w2 background-blur-3 arounded-40">L <span>{currDay!.temp-4}&deg;</span></div>
+              <div className="hight-temp flex-bet-center border-w2 background-blur-3 arounded-40">H <span>{currentWeather.max_temp}&deg;</span></div>
+              <div className="lower-temp flex-bet-center border-w2 background-blur-3 arounded-40">L <span>{currentWeather.min_temp}&deg;</span></div>
             </div>
           </div>
 
           <div className="temp-desc">
-            <h1>Stormy<br/>with partly cloudy</h1>
+            <h1>{currentWeather.condition.text}</h1>
           </div>
         </div>
         <div className='right-side flex-bet-center flex-col'>

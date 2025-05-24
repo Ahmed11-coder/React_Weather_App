@@ -36,8 +36,16 @@ export interface IP {
     ip: string;
 }
 
+export interface WeatherChartTable {
+    temp: number;
+    day: string;
+    status?: string;
+}
 export interface WeatherInfo {
     current_temp: number; // ( Current Temperature )
+    date: string;
+    max_temp: number;
+    min_temp: number;
     condition: {
         text: string;
         code: number;
@@ -55,6 +63,5 @@ export interface WeatherInfo {
     };
     precip_mm: number; // ( Precipitation amount in millimeters )
     vis_km: number; // ( Visibility in kilometer )
-    nextDays: number[];
-    previousDays: number[];
+    Current7Days: WeatherChartTable[];
 }

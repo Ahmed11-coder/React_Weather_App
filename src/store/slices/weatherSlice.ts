@@ -14,17 +14,19 @@ export const weatherSlice = createSlice({
         setWeatherInfo: (state, action: PayloadAction<WeatherInfo>) => {
             state.air_quality = action.payload.air_quality;
             state.condition = action.payload.condition;
+            state.date = action.payload.date;
             state.current_temp = action.payload.current_temp;
             state.feelslike_temp = action.payload.feelslike_temp;
             state.gust_kph = action.payload.gust_kph;
             state.humidity = action.payload.humidity;
-            state.nextDays = action.payload.nextDays;
+            state.Current7Days = action.payload.Current7Days;
             state.precip_mm = action.payload.precip_mm;
-            state.previousDays = action.payload.previousDays;
             state.uv = action.payload.uv;
             state.vis_km = action.payload.vis_km;
             state.wind_chill = action.payload.wind_chill;
             state.wind_kph = action.payload.wind_kph;
+            state.max_temp = action.payload.max_temp;
+            state.min_temp = action.payload.min_temp;
         }
     }
 })

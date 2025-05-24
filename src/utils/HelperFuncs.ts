@@ -1,11 +1,12 @@
+// Import APIs
 import { IPINFO_API_URL, WEATHER_API_FORECAST, WEATHER_API_HISTORY } from "../services/api.ts";
-import { useAppSelector } from "../store/hooks.ts";
-import { selectLocation, userLocation } from "../store/slices/locationSlice.ts";
-import { LocationState, WeatherInfo } from "../types/types";
+
+// Import Utlities
+import { userLocation } from "../store/slices/locationSlice.ts";
+import { LocationState, WeatherChartTable, WeatherInfo } from "../types/types";
 import { ContinentIndex, countries } from "./LocalData.ts";
 
-export const getPreviousDays = (dayIndex: number):string => {
-    const curDate = new Date();
+export const getPreviousDays = (dayIndex: number, curDate: Date):string => {
     curDate.setDate(curDate.getDate() - dayIndex);
     const previousDay = curDate.toISOString().split('T')[0].split("/").map((el)=> el.length === 1 ? "0"+el : el);
     return (previousDay.join("-"));
@@ -49,28 +50,47 @@ export const getContinentIndex = (continent: string) : number => {
     return ContinentIndex.indexOf(data);
 }
 
+// Convert Date To Day, Month Date Fromate
+const convertDateToDMD = (date: string): string => {
+    const WEEKDAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    const dateObj = new Date(date);
+    console.log(dateObj);
+    return `${WEEKDAYS[dateObj.getDay()]}, ${MONTHS[dateObj.getMonth()]} ${dateObj.getDate()}`;
+}
+
 // Get Weather Data
 export const getWeatherInfo = async (location?:LocationState) : Promise<WeatherInfo> => {
     const locationSelector: LocationState = location ? location : userLocation; // Get Current Location From Redux Store
     
-    // Get Weather Forecest
+    // Get Weather Forecast
     const weatherRes = await fetch(`${WEATHER_API_FORECAST}&q=${locationSelector.locate}`);
     const weatherResponse = await weatherRes.json();
-
-    const historyWeatherLast3Days:number[] = [];
+    const historyWeatherLast3Days:WeatherChartTable[] = [];
     
     for(let i = 1; i <= 3; i++) {
+        const previousDate = getPreviousDays(i, new Date(weatherResponse["location"]["localtime"]));
         // Get Weather Histroy
-        const histroyRes = await fetch(`${WEATHER_API_HISTORY}&q=${locationSelector.locate}&dt=${getPreviousDays(i)}`);
+        const histroyRes = await fetch(`${WEATHER_API_HISTORY}&q=${locationSelector.locate}&dt=${previousDate}`);
         const historyResponse = await histroyRes.json();
-        historyWeatherLast3Days.push(historyResponse["forecast"]['forecastday'][0]["hour"][0]["temp_c"]);
+
+        const previousDay = convertDateToDMD(previousDate).split(',')[0];
+        historyWeatherLast3Days.unshift({day: previousDay, temp: historyResponse["forecast"]['forecastday'][0]["hour"][0]["temp_c"]});
     }
 
     const {temp_c, condition, humidity, feelslike_c, windchill_c, wind_kph, gust_kph, uv, air_quality, precip_mm, vis_km} = weatherResponse["current"];
     const nextDays = weatherResponse["forecast"]["forecastday"];
+    const currentDateFormatDay_Month_Date = convertDateToDMD(weatherResponse["location"]["localtime"]);
+    const current7Days = [
+        ...historyWeatherLast3Days,
+        {temp: temp_c ,day: currentDateFormatDay_Month_Date.split(',')[0], status: 'active'},
+        {temp: nextDays[1]["hour"][0]["temp_c"], day: convertDateToDMD(nextDays[1]["date"]).split(',')[0]},
+        {temp: nextDays[2]["hour"][0]["temp_c"], day: convertDateToDMD(nextDays[2]["date"]).split(',')[0]}
+    ];
 
     const weatherInfoResult: WeatherInfo = {
         current_temp: temp_c,
+        date: currentDateFormatDay_Month_Date,
         condition: condition,
         humidity: humidity,
         feelslike_temp: feelslike_c,
@@ -84,8 +104,9 @@ export const getWeatherInfo = async (location?:LocationState) : Promise<WeatherI
         },
         precip_mm: precip_mm,
         vis_km: vis_km,
-        nextDays: [nextDays[0]["hour"][0]["temp_c"], nextDays[1]["hour"][0]["temp_c"]],
-        previousDays: historyWeatherLast3Days
+        Current7Days: current7Days,
+        max_temp: nextDays[0]["day"]["maxtemp_c"],
+        min_temp: nextDays[0]["day"]["mintemp_c"],
     }
     
     return weatherInfoResult;
