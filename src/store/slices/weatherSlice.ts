@@ -23,6 +23,7 @@ export const weatherSlice = createSlice({
             state.precip_mm = action.payload.precip_mm;
             state.uv = action.payload.uv;
             state.vis_km = action.payload.vis_km;
+            state.status = action.payload.status;
             state.wind_chill = action.payload.wind_chill;
             state.wind_kph = action.payload.wind_kph;
             state.max_temp = action.payload.max_temp;
