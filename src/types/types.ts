@@ -35,14 +35,52 @@ export interface isSearchedLocationState extends LocationState {
 export interface IP {
     ip: string;
 }
+export interface WeatherParameters {
+    feelslike_temp: number; // ( Feels Like Temperature )
+    humidity: number;
+    wind_kph: number; // ( Wind speed in kilometer per hour)
+    gust_kph: number; // ( Wind gust in kilometer per hour )
+    uv: number; // ( High UV levels pose sunburn or skin damage risks )
+    air_quality: number;
+    precip_mm: number; // ( Precipitation amount in millimeters )
+    vis_km: number; // ( Visibility in kilometer )
+}
 
+export interface WeatherParameter {
+    parameter: string;
+    value: number;
+    minValue: number;
+    maxValue: number;
+    percentage: number;
+}
+
+export interface Status {
+    good: {
+        min: number;
+        max: number;
+    };
+    moderate: {
+        min: number;
+        max: number;
+    }
+}
 export interface WeatherChartTable {
     temp: number;
     day: string;
     status?: string;
 }
-export interface WeatherInfo {
+
+export interface WeatherStatus {
+    parameter: string;
+    value: number;
+    minValue: number;
+    maxValue: number;
+    parcentage: number;
+    text: 'Good' | 'Moderate' | 'Dangerous';
+}
+export interface WeatherInfo extends WeatherParameters {
     current_temp: number; // ( Current Temperature )
+    wind_chill: number; // ( Wind Chill )
     date: string;
     max_temp: number;
     min_temp: number;
@@ -51,17 +89,6 @@ export interface WeatherInfo {
         code: number;
         icon: string;
     };
-    humidity: number;
-    feelslike_temp: number; // ( Feels Like Temperature )
-    wind_chill: number; // ( Wind Chill )
-    wind_kph: number; // ( Wind speed in kilometer per hour)
-    gust_kph: number; // ( Wind gust in kilometer per hour )
-    uv: number; // ( High UV levels pose sunburn or skin damage risks )
-    air_quality: {
-        us_epa_index: number;
-        gb_defra_index: number;
-    };
-    precip_mm: number; // ( Precipitation amount in millimeters )
-    vis_km: number; // ( Visibility in kilometer )
     Current7Days: WeatherChartTable[];
+    status: WeatherStatus;
 }

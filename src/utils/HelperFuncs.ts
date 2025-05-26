@@ -3,8 +3,8 @@ import { IPINFO_API_URL, WEATHER_API_FORECAST, WEATHER_API_HISTORY } from "../se
 
 // Import Utlities
 import { userLocation } from "../store/slices/locationSlice.ts";
-import { LocationState, WeatherChartTable, WeatherInfo } from "../types/types";
-import { ContinentIndex, countries } from "./LocalData.ts";
+import { LocationState, Status, WeatherChartTable, WeatherInfo, WeatherParameter, WeatherParameters, WeatherStatus } from "../types/types";
+import { ContinentIndex, countries, WEATHER_STATUS_CASES } from "./LocalData.ts";
 
 export const getPreviousDays = (dayIndex: number, curDate: Date):string => {
     curDate.setDate(curDate.getDate() - dayIndex);
@@ -55,26 +55,70 @@ const convertDateToDMD = (date: string): string => {
     const WEEKDAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
     const dateObj = new Date(date);
-    console.log(dateObj);
     return `${WEEKDAYS[dateObj.getDay()]}, ${MONTHS[dateObj.getMonth()]} ${dateObj.getDate()}`;
+}
+
+const getChangePercentage = (current: number, before: number): number => {
+    console.log(current, before);
+    return +(((current - before) / before) * 100).toFixed(1);
+}
+
+// Determine Status and Dangrous Level
+export const getDangerousStatus = (parameters: WeatherParameters, dayBefore: any): WeatherStatus => {
+    const goodStat:any = [] , modStat:any = [] ,danStat:any  = [];
+    const {feelslike_temp , wind_kph, gust_kph, air_quality, humidity, vis_km, precip_mm, uv} = parameters;
+
+    const WeahterParams: WeatherParameter[] = [
+        {parameter: "Temperature", value: feelslike_temp,minValue: -90,maxValue: 65, percentage: getChangePercentage(feelslike_temp, dayBefore["feelslike_c"])},
+        {parameter: "Wind Speed", value: wind_kph, minValue: 0,maxValue: 60,percentage: getChangePercentage(wind_kph, dayBefore["wind_kph"])},
+        {parameter: "Wind Gust", value: gust_kph,minValue: 0,maxValue: 80, percentage: getChangePercentage(gust_kph, dayBefore["gust_kph"])},
+        {parameter: "Air Quality", value: air_quality,minValue: 1,maxValue: 10, percentage: 0},
+        {parameter: "Humidity", value: humidity,minValue: 0,maxValue: 100, percentage: getChangePercentage(humidity, dayBefore["humidity"])},
+        {parameter: "Visibility", value: vis_km,minValue: 0,maxValue: 12, percentage: getChangePercentage(vis_km, dayBefore["vis_km"])},
+        {parameter: "Precipitation", value: precip_mm, minValue: 0,maxValue: 15, percentage: getChangePercentage(precip_mm, dayBefore["precip_mm"])},
+        {parameter: "UV", value: uv , minValue: 0,maxValue: 10, percentage: getChangePercentage(uv, dayBefore["uv"])}
+        
+    ]
+
+    // Helper function to categorize parameters
+    const categorizeParameter = (param: WeatherParameter): void => {
+        const key:string = param.parameter.toLowerCase().replace(' ', '_');
+        const statusCases: Status = WEATHER_STATUS_CASES[key];
+
+        param.value >= statusCases.good.min && param.value <= statusCases.good.max
+            ? goodStat.push(param)
+            : (param.value >= statusCases.moderate.min && param.value <= statusCases.moderate.max)
+            ? modStat.push(param)
+            : danStat.push(param);
+    }
+    
+    WeahterParams.forEach(categorizeParameter);
+        
+    const result = (danStat.length) ? {...danStat[0], text: "Dangerous"} : (modStat.length ? {...modStat[0], text: "Modeate"} : {...goodStat[0], text: "Good"});
+    return result;
 }
 
 // Get Weather Data
 export const getWeatherInfo = async (location?:LocationState) : Promise<WeatherInfo> => {
-    const locationSelector: LocationState = location ? location : userLocation; // Get Current Location From Redux Store
+    // Get Current Location From Redux Store
+    const locationSelector: LocationState = location ? location : userLocation; 
     
     // Get Weather Forecast
     const weatherRes = await fetch(`${WEATHER_API_FORECAST}&q=${locationSelector.locate}`);
     const weatherResponse = await weatherRes.json();
-    const historyWeatherLast3Days:WeatherChartTable[] = [];
     
+    const historyWeatherLast3Days:WeatherChartTable[] = [];
+    const hourIndex = +weatherResponse["location"]["localtime"].split(' ')[1].slice(0, 2); // Get Time Index
+    let dayBefore;
+    
+    // Get Weather Histroy Last Three Days
     for(let i = 1; i <= 3; i++) {
-        const previousDate = getPreviousDays(i, new Date(weatherResponse["location"]["localtime"]));
-        // Get Weather Histroy
+        const previousDate = getPreviousDays(i, new Date(weatherResponse["location"]["localtime"])); // Get Dates The Previous Days
         const histroyRes = await fetch(`${WEATHER_API_HISTORY}&q=${locationSelector.locate}&dt=${previousDate}`);
         const historyResponse = await histroyRes.json();
 
-        const previousDay = convertDateToDMD(previousDate).split(',')[0];
+        if (i == 1) dayBefore = historyResponse["forecast"]['forecastday'][0]["hour"][hourIndex];
+        const previousDay = convertDateToDMD(previousDate).split(',')[0]; // Get Day Name
         historyWeatherLast3Days.unshift({day: previousDay, temp: historyResponse["forecast"]['forecastday'][0]["hour"][0]["temp_c"]});
     }
 
@@ -84,30 +128,33 @@ export const getWeatherInfo = async (location?:LocationState) : Promise<WeatherI
     const current7Days = [
         ...historyWeatherLast3Days,
         {temp: temp_c ,day: currentDateFormatDay_Month_Date.split(',')[0], status: 'active'},
-        {temp: nextDays[1]["hour"][0]["temp_c"], day: convertDateToDMD(nextDays[1]["date"]).split(',')[0]},
-        {temp: nextDays[2]["hour"][0]["temp_c"], day: convertDateToDMD(nextDays[2]["date"]).split(',')[0]}
+        {temp: nextDays[1]["hour"][hourIndex]["temp_c"], day: convertDateToDMD(nextDays[1]["date"]).split(',')[0]},
+        {temp: nextDays[2]["hour"][hourIndex]["temp_c"], day: convertDateToDMD(nextDays[2]["date"]).split(',')[0]}
     ];
 
-    const weatherInfoResult: WeatherInfo = {
-        current_temp: temp_c,
-        date: currentDateFormatDay_Month_Date,
-        condition: condition,
-        humidity: humidity,
+    const parameters: WeatherParameters = {
         feelslike_temp: feelslike_c,
-        wind_chill: windchill_c,
+        humidity: humidity,
         wind_kph: wind_kph,
         gust_kph: gust_kph,
         uv: uv,
-        air_quality: {
-            us_epa_index: air_quality["us-epa-index"],
-            gb_defra_index: air_quality["gb-defra-index"]
-        },
+        air_quality: air_quality["us-epa-index"],
         precip_mm: precip_mm,
         vis_km: vis_km,
+    }
+    
+    const status: WeatherStatus = getDangerousStatus(parameters, dayBefore);
+    
+    const weatherInfoResult: WeatherInfo = {
+        ...parameters,
+        current_temp: temp_c,
+        wind_chill: windchill_c,
+        date: currentDateFormatDay_Month_Date,
+        condition: condition,
         Current7Days: current7Days,
         max_temp: nextDays[0]["day"]["maxtemp_c"],
         min_temp: nextDays[0]["day"]["mintemp_c"],
+        status: status,
     }
-    
     return weatherInfoResult;
 }
