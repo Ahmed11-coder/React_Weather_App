@@ -75,7 +75,7 @@ export interface WeatherStatus {
     value: number;
     minValue: number;
     maxValue: number;
-    parcentage: number;
+    percentage: number;
     text: 'Good' | 'Moderate' | 'Dangerous';
 }
 export interface WeatherInfo extends WeatherParameters {

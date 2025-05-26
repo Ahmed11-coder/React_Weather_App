@@ -59,7 +59,6 @@ const convertDateToDMD = (date: string): string => {
 }
 
 const getChangePercentage = (current: number, before: number): number => {
-    console.log(current, before);
     return +(((current - before) / before) * 100).toFixed(1);
 }
 

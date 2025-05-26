@@ -1,7 +1,11 @@
 import React from 'react'
 import './DangerousRateStyle.css';
+import { useAppSelector } from '../../store/hooks.ts';
+import { selectWeather } from '../../store/slices/weatherSlice.ts';
+import { WeatherInfo } from '../../types/types.ts';
 
 export default function DangerousRate({ percent = 0.85 }) {
+    const currWeather: WeatherInfo = useAppSelector(selectWeather);
     const radius = 80;
     const circumference = Math.PI * radius;
     const offset = circumference * (1- percent);
@@ -61,7 +65,7 @@ export default function DangerousRate({ percent = 0.85 }) {
                     />
                 </circle>
             </svg>
-            <div className="dang-text">Dangerous</div>
+            <div className="dang-text">{currWeather.status.text}</div>
         </div>
     )
 }
