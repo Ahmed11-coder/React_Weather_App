@@ -68,14 +68,14 @@ export const getDangerousStatus = (parameters: WeatherParameters, dayBefore: any
     const {feelslike_temp , wind_kph, gust_kph, air_quality, humidity, vis_km, precip_mm, uv} = parameters;
 
     const WeahterParams: WeatherParameter[] = [
-        {parameter: "Temperature", value: feelslike_temp,minValue: -90,maxValue: 65, percentage: getChangePercentage(feelslike_temp, dayBefore["feelslike_c"])},
+        {parameter: "Temperature", value: feelslike_temp,minValue: -50,maxValue: 65, percentage: getChangePercentage(feelslike_temp, dayBefore["feelslike_c"])},
         {parameter: "Wind Speed", value: wind_kph, minValue: 0,maxValue: 60,percentage: getChangePercentage(wind_kph, dayBefore["wind_kph"])},
         {parameter: "Wind Gust", value: gust_kph,minValue: 0,maxValue: 80, percentage: getChangePercentage(gust_kph, dayBefore["gust_kph"])},
         {parameter: "Air Quality", value: air_quality,minValue: 1,maxValue: 10, percentage: 0},
         {parameter: "Humidity", value: humidity,minValue: 0,maxValue: 100, percentage: getChangePercentage(humidity, dayBefore["humidity"])},
         {parameter: "Visibility", value: vis_km,minValue: 0,maxValue: 12, percentage: getChangePercentage(vis_km, dayBefore["vis_km"])},
         {parameter: "Precipitation", value: precip_mm, minValue: 0,maxValue: 15, percentage: getChangePercentage(precip_mm, dayBefore["precip_mm"])},
-        {parameter: "UV", value: uv , minValue: 0,maxValue: 10, percentage: getChangePercentage(uv, dayBefore["uv"])}
+        {parameter: "UV", value: uv , minValue: 0,maxValue: 20, percentage: getChangePercentage(uv, dayBefore["uv"])}
         
     ]
 

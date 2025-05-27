@@ -92,3 +92,8 @@ export interface WeatherInfo extends WeatherParameters {
     Current7Days: WeatherChartTable[];
     status: WeatherStatus;
 }
+
+export interface Point {
+    x: number;
+    y: number;
+}

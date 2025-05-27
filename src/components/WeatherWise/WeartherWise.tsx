@@ -10,7 +10,7 @@ import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecord
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import DangerousRate from "./DangerousRate.tsx";
+import DangerousRate from "./components/Dangerous Rate/DangerousRate.tsx";
 
 // Import Utilities 
 import { DarkEarthImgs, LightEarthImgs } from "../../utils/LocalData.ts";
