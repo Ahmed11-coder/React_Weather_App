@@ -1,14 +1,14 @@
 // Import APIs
-import { GEO_API_URL, geoApiOptions } from "../../services/api.ts";
+import { GEO_API_URL, geoApiOptions } from "../../../services/api.ts";
 
 // Import Utilities & Helper Functions
-import { ContinentIndex } from "../../utils/LocalData.ts";
-import { getRandomCountry, getRandomIndex, getWeatherInfo } from "../../utils/HelperFuncs.ts";
-import { ChangeBulletsProp, SwiperEarthChange, LocationState } from "../../types/types";
+import { ContinentIndex } from "../../../utils/LocalData.ts";
+import { getRandomCountry, getRandomIndex, getWeatherInfo } from "../../../utils/HelperFuncs.ts";
+import { ChangeBulletsProp, SwiperEarthChange, LocationState } from "../../../types/types";
 
 // Import Redux Store Utilities
-import { setLocation, userLocation } from "../../store/slices/locationSlice.ts";
-import { setWeatherInfo } from "../../store/slices/weatherSlice.ts";
+import { setLocation, userLocation } from "../../../store/slices/locationSlice.ts";
+import { setWeatherInfo } from "../../../store/slices/weatherSlice.ts";
 
 // Handle Click Event When Swip From Image To Image ( Make It Active & Unactive The Last One )
 export const setRandomCountryInfo = async ({ index, dispatch }: SwiperEarthChange) : Promise<void> => {
@@ -42,7 +42,7 @@ export const setRandomCountryInfo = async ({ index, dispatch }: SwiperEarthChang
 export const setActiveBullets = async ({index, dispatch ,swiperRef}: ChangeBulletsProp): Promise<void> => {
     try{
         await setRandomCountryInfo({index, dispatch});
-        if (swiperRef.current) swiperRef.current.slideTo(index, 1200);
+        if (swiperRef) swiperRef.slideTo(index, 1200);
     } catch (e) {
         console.log(e);
     }

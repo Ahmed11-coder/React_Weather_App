@@ -1,4 +1,4 @@
-import { RefObject } from "react";
+import { Dispatch, RefObject, SetStateAction } from "react";
 import { Swiper } from "swiper/types";
 import type {} from 'react-select/base';
 import { AppDispatch } from "../store/store";
@@ -15,7 +15,7 @@ export interface SwiperEarthChange {
     dispatch: AppDispatch,
 }
 export interface ChangeBulletsProp extends SwiperEarthChange {
-    swiperRef: RefObject<Swiper | null>,
+    swiperRef: Swiper|null,
 }
 export interface SearchProp {
     isOpen: boolean
@@ -96,4 +96,9 @@ export interface WeatherInfo extends WeatherParameters {
 export interface Point {
     x: number;
     y: number;
+}
+
+export interface CustomSwiperProps {
+    setSwiper: Dispatch<SetStateAction<Swiper | null>>;
+    mode: boolean; 
 }
