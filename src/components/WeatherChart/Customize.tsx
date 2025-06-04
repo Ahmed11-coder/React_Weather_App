@@ -1,8 +1,8 @@
-import { WeatherInfo } from '../../types/types.ts';
+import { WeatherInfo } from '../../types/types';
 
 // Import Redux Store Utilities
-import { useAppSelector } from '../../store/hooks.ts';
-import { selectWeather } from '../../store/slices/weatherSlice.ts';
+import { useAppSelector } from '@store/hooks';
+import { selectWeather } from '@store/slices/weatherSlice';
 
 export const CustomizedDot = (props: any ) => {
     const currentWeather: WeatherInfo = useAppSelector(selectWeather);
@@ -58,6 +58,6 @@ export const CustomizedDot = (props: any ) => {
         </svg>
         );
     }else {
-        return "";
+        return <></>;
     }
 }

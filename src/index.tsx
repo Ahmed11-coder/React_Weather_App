@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client'; // Import from 'react-dom/client'
 import './index.css';
-import App from './App.tsx';
+import App from './App';
 import { Provider } from 'react-redux';
-import reportWebVitals from './reportWebVitals.ts';
-import { store } from './store/store.ts';
+import reportWebVitals from './reportWebVitals';
+import { store } from './store/store';
 
 const rootElement = document.getElementById('root') as HTMLElement; // Type assertion
 const root = ReactDOM.createRoot(rootElement); // Create a root

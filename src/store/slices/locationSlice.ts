@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { isSearchedLocationState, LocationState } from "../../types/types";
-import {getLocationInfo } from "../../utils/HelperFuncs.ts";
+import {getLocationInfo } from "../../utils/HelperFuncs";
 import { RootState } from "../store";
 
 const initialState: LocationState = await getLocationInfo();

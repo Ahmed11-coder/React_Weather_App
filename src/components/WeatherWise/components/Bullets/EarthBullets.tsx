@@ -5,12 +5,12 @@ import NearMeIcon from '@mui/icons-material/NearMe';
 import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecordOutlined';
 
 // Import Utilities 
-import { setActiveBullets } from '../Handlers.ts';
+import { setActiveBullets } from '../Handlers';
 
 // Import Redux Store Utilities
-import { useAppDispatch, useAppSelector } from '../../../../store/hooks.ts';
-import { LocationState } from '../../../../types/types.ts';
-import { selectLocation } from '../../../../store/slices/locationSlice.ts';
+import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
+import { LocationState } from '../../../../types/types';
+import { selectLocation } from '../../../../store/slices/locationSlice';
 
 // Swiper Library
 import { Swiper as SwiperType } from 'swiper'; // Import Swiper Type

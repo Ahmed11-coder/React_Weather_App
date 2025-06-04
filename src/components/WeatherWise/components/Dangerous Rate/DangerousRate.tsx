@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState, useLayoutEffect } from 'react'
 import './DangerousRateStyle.css';
-import { useAppSelector } from '../../../../store/hooks.ts';
-import { selectWeather } from '../../../../store/slices/weatherSlice.ts';
-import { Point, WeatherInfo } from '../../../../types/types.ts';
-import { getDangPoint } from './Handler.ts';
+import { useAppSelector } from '@store/hooks';
+import { selectWeather } from '@store/slices/weatherSlice';
+import { Point, WeatherInfo } from '../../../../types/types';
+import { getDangPoint } from './Handler';
 
 export default function DangerousRate({ percent = 0.85 }) {
     const dangPointRef = useRef(null);

@@ -9,7 +9,7 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import { SetModeOptionProp } from '../../types/types';
 
 // Import Components
-import Search from "./Search.tsx";
+import Search from "./components/Search/Search";
 
 // Import Component Styles
 import './Header.css'

@@ -1,10 +1,10 @@
 // Import APIs
-import { IPINFO_API_URL, WEATHER_API_FORECAST, WEATHER_API_HISTORY } from "../services/api.ts";
+import { IPINFO_API_URL, WEATHER_API_FORECAST, WEATHER_API_HISTORY } from "../services/api";
 
 // Import Utlities
-import { userLocation } from "../store/slices/locationSlice.ts";
+import { userLocation } from "../store/slices/locationSlice";
 import { LocationState, Status, WeatherChartTable, WeatherInfo, WeatherParameter, WeatherParameters, WeatherStatus } from "../types/types";
-import { ContinentIndex, countries, WEATHER_STATUS_CASES } from "./LocalData.ts";
+import { ContinentIndex, countries, WEATHER_STATUS_CASES } from "./LocalData";
 
 export const getPreviousDays = (dayIndex: number, curDate: Date):string => {
     curDate.setDate(curDate.getDate() - dayIndex);
@@ -14,7 +14,7 @@ export const getPreviousDays = (dayIndex: number, curDate: Date):string => {
 
 // Get Info About Specific City ( like continent and etc... )
 export const getCityInfo = (countryCode: string) => {
-    return countries.filter((country) => country["countryCode"] === countryCode);
+    return countries.filter((country: any) => country["countryCode"] === countryCode);
 }
 
 // Get User Location Info Using ipinfo API
@@ -40,7 +40,7 @@ export const getRandomIndex = (ArraySize: number): number => {
 
 // Get Random Country In Specific Continent
 export const getRandomCountry = (continent: string) => {
-    const possibleCountries = countries.filter((country) => country["continentName"] === continent && country["population"] >= 21000000);
+    const possibleCountries = countries.filter((country:any) => country["continentName"] === continent && country["population"] >= 21000000);
     return possibleCountries[getRandomIndex(possibleCountries.length)];
 }
 

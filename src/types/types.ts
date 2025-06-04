@@ -102,3 +102,10 @@ export interface CustomSwiperProps {
     setSwiper: Dispatch<SetStateAction<Swiper | null>>;
     mode: boolean; 
 }
+
+export interface SearchedItemPros {
+    temp: number;
+    icon: string;
+    location: string;
+    text: string;
+}

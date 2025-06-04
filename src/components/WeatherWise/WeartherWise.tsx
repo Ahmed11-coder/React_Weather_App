@@ -7,22 +7,22 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import DangerousRate from "./components/Dangerous Rate/DangerousRate.tsx";
+import DangerousRate from "./components/Dangerous Rate/DangerousRate";
 
 // Import Utilities 
-import { ModeOptionProp , LocationState, WeatherInfo } from "../../types/types.ts";
+import { ModeOptionProp , LocationState, WeatherInfo } from "../../types/types";
 
 // Import Redux Store Utilities
-import { useAppSelector } from "../../store/hooks.ts";
-import { selectLocation } from "../../store/slices/locationSlice.ts";
-import { selectWeather } from "../../store/slices/weatherSlice.ts";
+import { useAppSelector } from "@store/hooks";
+import { selectLocation } from "@store/slices/locationSlice";
+import { selectWeather } from "@store/slices/weatherSlice";
 
 // Swiper Library
 import { Swiper as SwiperType } from 'swiper'; // Import Swiper Type
 
 // Components
-import EarthSwiper from "./components/Earth Swiper/EarthSwiper.tsx";
-import EarthBullets from "./components/Bullets/EarthBullets.tsx";
+import EarthSwiper from "./components/Earth Swiper/EarthSwiper";
+import EarthBullets from "./components/Bullets/EarthBullets";
 
 export default function WeatherWise(props: ModeOptionProp) {
     const currLocation: LocationState = useAppSelector(selectLocation);

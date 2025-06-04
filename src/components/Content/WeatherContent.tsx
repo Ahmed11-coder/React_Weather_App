@@ -1,22 +1,39 @@
 // Import Utilities
-import { LocationState, WeatherInfo } from '../../types/types.ts';
+import { LocationState, SearchedItemPros, WeatherInfo } from '../../types/types';
 
 // Import Redux Store Utilities
-import { useAppSelector } from '../../store/hooks.ts';
-import { selectLocation } from '../../store/slices/locationSlice.ts';
-import { selectWeather } from '../../store/slices/weatherSlice.ts';
+import { useAppSelector } from '@store/hooks';
+import { selectLocation } from '@store/slices/locationSlice';
+import { selectWeather } from '@store/slices/weatherSlice';
 
 // Import Icons
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import { WeatherIcons } from '../../utils/LocalData.ts';
+import { WeatherIcons } from '../../utils/LocalData';
 
 // Import Stlyes
 import './WeatherContent.css';
+import { useEffect, useState } from 'react';
+import SearchedItem from './components/SearchedItem/SearchedItem';
 
 export default function WeatherContent() {
   const currentLocation: LocationState = useAppSelector(selectLocation);
   const currentWeather: WeatherInfo = useAppSelector(selectWeather);
+  const [searchItems, setSearchItems] = useState<SearchedItemPros[]>([])
+
+  useEffect(() => {
+    const Item : SearchedItemPros = {
+      temp: currentWeather.feelslike_temp,
+      icon: WeatherIcons[1],
+      location: `${currentLocation.city}, ${currentLocation.country}`,
+      text: currentWeather.condition.text
+    }
+    
+    if (searchItems.length < 2) setSearchItems([Item, ...searchItems]);
+    else setSearchItems([Item, searchItems[0]]);
+
+    console.log(searchItems);
+  }, [currentLocation.city])
 
   return (
     <div id='content'>
@@ -47,27 +64,10 @@ export default function WeatherContent() {
               <h6>Recently Searched</h6>
               <button type='button' className='flex-center'>See All <KeyboardArrowRightIcon /></button>
             </div>
-            <div className='searched--section-content flex-bet-center'>
-              <div className="box flex-bet-center background-blur-8 flex-col arounded-40 border-w2">
-                <div className='temp-info flex-center'>
-                  <img src={WeatherIcons[1]} alt="sunny" />
-                  <span>16&deg;</span>
-                </div>
-                <div className='location-info'>
-                  <p>Liverpool, UK</p>
-                  <span>Partly Cloudy</span>
-                </div>
-              </div>
-              <div className="box flex-bet-center background-blur-8 flex-col arounded-40 border-w2">
-                <div className='temp-info flex-center'>
-                  <img src={WeatherIcons[0]} alt="running" />
-                  <span>-2&deg;</span>
-                </div>
-                <div className='location-info'>
-                  <p>Palermo, Italy</p>
-                  <span>Rain Thunder</span>
-                </div>
-              </div>
+            <div className='searched--section-content flex-center'>
+              {searchItems?.map((item, key) => (
+                <SearchedItem  key={key} temp={item.temp} icon={item.icon} location={item.location} text={item.text}/>
+              ))}
             </div>
           </div>
         </div>

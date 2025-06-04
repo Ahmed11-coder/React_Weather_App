@@ -2,15 +2,15 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import './App.css';
 import './assents/styles/global.css';
-import Header from "./components/Header/Header.tsx";
-import WeatherWise from './components/WeatherWise/WeartherWise.tsx';
-import WeatherChart from './components/WeatherChart/WeatherChart.tsx';
-import WeatherContent from './components/Content/WeatherContent.tsx';
-import { getWeatherInfo } from './utils/HelperFuncs.ts';
+import Header from "./components/Header/Header";
+import WeatherWise from './components/WeatherWise/WeartherWise';
+import WeatherChart from './components/WeatherChart/WeatherChart';
+import WeatherContent from './components/Content/WeatherContent';
+import { getWeatherInfo } from './utils/HelperFuncs';
 
 // Redux Store Utilities
-import { useAppSelector } from './store/hooks.ts';
-import { selectLocation } from './store/slices/locationSlice.ts';
+import { useAppSelector } from './store/hooks';
+import { selectLocation } from './store/slices/locationSlice';
 
 
 function App() {

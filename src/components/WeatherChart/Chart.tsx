@@ -1,10 +1,10 @@
 import { ResponsiveContainer , LineChart , Line , YAxis } from 'recharts'
-import { CustomizedDot } from './Customize.tsx';
-import { WeatherInfo } from '../../types/types.ts';
+import { CustomizedDot } from './Customize';
+import { WeatherInfo } from '../../types/types';
 
 // Import Redux Store Utilities
-import { useAppSelector } from '../../store/hooks.ts';
-import { selectWeather } from '../../store/slices/weatherSlice.ts';
+import { useAppSelector } from '@store/hooks';
+import { selectWeather } from '@store/slices/weatherSlice';
 
 export default function Chart() {
     const currentWeather: WeatherInfo = useAppSelector(selectWeather);

@@ -1,9 +1,9 @@
-import Chart  from './Chart.tsx';
-import { WeatherInfo } from '../../types/types.ts';
+import Chart  from './Chart';
+import { WeatherInfo } from '../../types/types';
 
 // Import Redux Store Utilities
-import { useAppSelector } from '../../store/hooks.ts';
-import { selectWeather } from '../../store/slices/weatherSlice.ts';
+import { useAppSelector } from '@store/hooks';
+import { selectWeather } from '@store/slices/weatherSlice';
 
 // Import Stlyes
 import './WeatherChart.css';

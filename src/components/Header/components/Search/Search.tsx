@@ -1,19 +1,19 @@
-import { useEffect, useState } from 'react'
+import { SetStateAction, useEffect, useState } from 'react'
 
 // Import AsyncPaginate Library
 import { AsyncPaginate } from 'react-select-async-paginate';
 
 // Import APIs
-import { GEO_API_URL, geoApiOptions } from '../../services/api.ts';
+import { GEO_API_URL, geoApiOptions } from '../../../../services/api';
 
 // Import Redux Store Utilities
-import { useAppDispatch } from '../../store/hooks.ts';
-import { setLocation, userLocation } from '../../store/slices/locationSlice.ts';
+import { useAppDispatch } from '@store/hooks';
+import { setLocation, userLocation } from '@store/slices/locationSlice';
 
 // Import Utilities 
-import { SearchProp, LocationState } from '../../types/types.ts';
-import { getCityInfo, getContinentIndex, getWeatherInfo } from '../../utils/HelperFuncs.ts';
-import { setWeatherInfo } from '../../store/slices/weatherSlice.ts';
+import { SearchProp, LocationState } from '../../../../types/types';
+import { getCityInfo, getContinentIndex, getWeatherInfo } from '../../../../utils/HelperFuncs';
+import { setWeatherInfo } from '@store/slices/weatherSlice';
 
 export default function Search({isOpen} : SearchProp) {
     const [search, setSearch] = useState<string|null>(null);
@@ -70,14 +70,14 @@ export default function Search({isOpen} : SearchProp) {
         .then((response) => response.json())
         .then((response) => {
             return {
-                options: response.data.map((city) => {
+                options: response.data.map((city : any) => {
                     return {label: `${city.name}, ${city.countryCode}`, value: `${city.latitude},${city.longitude}`, country: city.countryCode, city: city.name, region: city.region}
                 })
             }
         })
     }
 
-    const handleChange = async (searchData) => {
+    const handleChange = async (searchData: SetStateAction<any>) => {
         setSearch(searchData);
         const { city, country, value, region } = searchData;
         const continent = getCityInfo(country)[0]; 
