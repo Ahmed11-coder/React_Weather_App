@@ -1,4 +1,4 @@
-import {Status } from "../types/types";
+import { Status } from "types/types";
 
 export const tempData = [
     { day: "Sunday", temp: 28 },
@@ -10,24 +10,24 @@ export const tempData = [
 ]
 
 export const DarkEarthImgs = [
-    require('../assents/images/dark/Earth1.svg').default,
-    require('../assents/images/dark/Earth2.svg').default,
-    require('../assents/images/dark/Earth3.svg').default,
-    require('../assents/images/dark/Earth6.svg').default
+    require('@assents/images/dark/Earth1.svg').default,
+    require('@assents/images/dark/Earth2.svg').default,
+    require('@assents/images/dark/Earth3.svg').default,
+    require('@assents/images/dark/Earth6.svg').default
 ];
 export const LightEarthImgs = [
-    require('../assents/images/light/Earth1.svg').default,
-    require('../assents/images/light/Earth2.svg').default,
-    require('../assents/images/light/Earth3.svg').default,
-    require('../assents/images/light/Earth6.svg').default
+    require('@assents/images/light/Earth1.svg').default,
+    require('@assents/images/light/Earth2.svg').default,
+    require('@assents/images/light/Earth3.svg').default,
+    require('@assents/images/light/Earth6.svg').default
 ];
 
 export const WeatherIcons = [
-    require('../assents/images/rain.svg').default,
-    require('../assents/images/sunny.svg').default
+    require('@assents/images/rain.svg').default,
+    require('@assents/images/sunny.svg').default
 ]
 
-export const countries = require('../data/countries.json')['countries'];
+export const countries = require('@data/countries.json')['countries'];
 
 export const ContinentIndex = [["North America", "South America"], ["Europe", "Middle East", "Africa"], ["Asia"], ["Oceania"]]
 

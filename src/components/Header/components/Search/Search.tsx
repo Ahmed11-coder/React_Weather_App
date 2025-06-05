@@ -4,15 +4,15 @@ import { SetStateAction, useEffect, useState } from 'react'
 import { AsyncPaginate } from 'react-select-async-paginate';
 
 // Import APIs
-import { GEO_API_URL, geoApiOptions } from '../../../../services/api';
+import { GEO_API_URL, geoApiOptions } from '@services/api';
 
 // Import Redux Store Utilities
 import { useAppDispatch } from '@store/hooks';
 import { setLocation, userLocation } from '@store/slices/locationSlice';
 
 // Import Utilities 
-import { SearchProp, LocationState } from '../../../../types/types';
-import { getCityInfo, getContinentIndex, getWeatherInfo } from '../../../../utils/HelperFuncs';
+import { SearchProp, LocationState } from 'types/types';
+import { getCityInfo, getContinentIndex, getWeatherInfo } from '@utils/HelperFuncs';
 import { setWeatherInfo } from '@store/slices/weatherSlice';
 
 export default function Search({isOpen} : SearchProp) {

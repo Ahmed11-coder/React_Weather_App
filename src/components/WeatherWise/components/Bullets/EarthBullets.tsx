@@ -8,9 +8,9 @@ import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecord
 import { setActiveBullets } from '../Handlers';
 
 // Import Redux Store Utilities
-import { useAppDispatch, useAppSelector } from '../../../../store/hooks';
-import { LocationState } from '../../../../types/types';
-import { selectLocation } from '../../../../store/slices/locationSlice';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
+import { LocationState } from 'types/types';
+import { selectLocation } from '@store/slices/locationSlice';
 
 // Swiper Library
 import { Swiper as SwiperType } from 'swiper'; // Import Swiper Type

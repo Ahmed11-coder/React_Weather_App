@@ -1,14 +1,14 @@
 // Import APIs
-import { GEO_API_URL, geoApiOptions } from "../../../services/api";
+import { GEO_API_URL, geoApiOptions } from "@services/api";
 
 // Import Utilities & Helper Functions
-import { ContinentIndex } from "../../../utils/LocalData";
-import { getRandomCountry, getRandomIndex, getWeatherInfo } from "../../../utils/HelperFuncs";
-import { ChangeBulletsProp, SwiperEarthChange, LocationState } from "../../../types/types";
+import { ContinentIndex } from "@utils/LocalData";
+import { getRandomCountry, getRandomIndex, getWeatherInfo } from "@utils/HelperFuncs";
+import { ChangeBulletsProp, SwiperEarthChange, LocationState } from "types/types";
 
 // Import Redux Store Utilities
-import { setLocation, userLocation } from "../../../store/slices/locationSlice";
-import { setWeatherInfo } from "../../../store/slices/weatherSlice";
+import { setLocation, userLocation } from "@store/slices/locationSlice";
+import { setWeatherInfo } from "@store/slices/weatherSlice";
 
 // Handle Click Event When Swip From Image To Image ( Make It Active & Unactive The Last One )
 export const setRandomCountryInfo = async ({ index, dispatch }: SwiperEarthChange) : Promise<void> => {

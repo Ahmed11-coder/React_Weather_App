@@ -2,8 +2,8 @@
 import {Swiper, SwiperSlide} from 'swiper/react'; // Import Swiper Components
 import { Swiper as SwiperType } from 'swiper'; // Import Swiper Type
 // Import Utilities
-import { LocationState, CustomSwiperProps } from '../../../../types/types';
-import { DarkEarthImgs, LightEarthImgs } from '../../../../utils/LocalData';
+import { LocationState, CustomSwiperProps } from 'types/types';
+import { DarkEarthImgs, LightEarthImgs } from '@utils/LocalData';
 import { setRandomCountryInfo } from '../Handlers';
 
 // Import Redux Store Utilities

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useLayoutEffect } from 'react'
 import './DangerousRateStyle.css';
 import { useAppSelector } from '@store/hooks';
 import { selectWeather } from '@store/slices/weatherSlice';
-import { Point, WeatherInfo } from '../../../../types/types';
+import { Point, WeatherInfo } from 'types/types';
 import { getDangPoint } from './Handler';
 
 export default function DangerousRate({ percent = 0.85 }) {
@@ -109,5 +109,3 @@ export default function DangerousRate({ percent = 0.85 }) {
         </div>
     )
 }
-// {left: (POINTS[0].x + dangPoint.x - widthDangBox - 25), top: (POINTS[0].y + dangPoint.y - heightDangBox + 10)}
-// {left: (POINTS[0].x + dangPoint.x - (widthDangBox/2)), top: (POINTS[0].y + dangPoint.y - heightDangBox - 20)}

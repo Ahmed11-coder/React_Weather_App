@@ -6,7 +6,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 
 // Import Utilities 
-import { SetModeOptionProp } from '../../types/types';
+import { SetModeOptionProp } from 'types/types';
 
 // Import Components
 import Search from "./components/Search/Search";

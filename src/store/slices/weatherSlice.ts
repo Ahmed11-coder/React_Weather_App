@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { WeatherInfo } from "../../types/types";
-import { getWeatherInfo } from "../../utils/HelperFuncs";
+import { WeatherInfo } from "types/types";
+import { getWeatherInfo } from "@utils/HelperFuncs";
 import { RootState } from "@store/store";
 
 const initialState: WeatherInfo = await getWeatherInfo();

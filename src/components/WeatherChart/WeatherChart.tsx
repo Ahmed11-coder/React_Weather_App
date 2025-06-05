@@ -1,5 +1,5 @@
 import Chart  from './Chart';
-import { WeatherInfo } from '../../types/types';
+import { WeatherInfo } from 'types/types';
 
 // Import Redux Store Utilities
 import { useAppSelector } from '@store/hooks';

@@ -10,7 +10,7 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import DangerousRate from "./components/Dangerous Rate/DangerousRate";
 
 // Import Utilities 
-import { ModeOptionProp , LocationState, WeatherInfo } from "../../types/types";
+import { ModeOptionProp , LocationState, WeatherInfo } from "types/types";
 
 // Import Redux Store Utilities
 import { useAppSelector } from "@store/hooks";

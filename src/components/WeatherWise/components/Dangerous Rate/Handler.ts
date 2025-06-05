@@ -1,4 +1,4 @@
-import { Point } from "../../../../types/types";
+import { Point } from "types/types";
 
 export const getDangPoint = (t: number, points: Point[]): Point[] => {
     const [P0, P1, P2] = points;

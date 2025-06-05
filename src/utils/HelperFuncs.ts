@@ -1,9 +1,9 @@
 // Import APIs
-import { IPINFO_API_URL, WEATHER_API_FORECAST, WEATHER_API_HISTORY } from "../services/api";
+import { IPINFO_API_URL, WEATHER_API_FORECAST, WEATHER_API_HISTORY } from "@services/api";
 
 // Import Utlities
-import { userLocation } from "../store/slices/locationSlice";
-import { LocationState, Status, WeatherChartTable, WeatherInfo, WeatherParameter, WeatherParameters, WeatherStatus } from "../types/types";
+import { userLocation } from "@store/slices/locationSlice";
+import { LocationState, Status, WeatherChartTable, WeatherInfo, WeatherParameter, WeatherParameters, WeatherStatus } from "types/types";
 import { ContinentIndex, countries, WEATHER_STATUS_CASES } from "./LocalData";
 
 export const getPreviousDays = (dayIndex: number, curDate: Date):string => {

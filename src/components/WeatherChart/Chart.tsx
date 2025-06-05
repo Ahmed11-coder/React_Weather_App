@@ -1,6 +1,6 @@
 import { ResponsiveContainer , LineChart , Line , YAxis } from 'recharts'
 import { CustomizedDot } from './Customize';
-import { WeatherInfo } from '../../types/types';
+import { WeatherInfo } from 'types/types';
 
 // Import Redux Store Utilities
 import { useAppSelector } from '@store/hooks';

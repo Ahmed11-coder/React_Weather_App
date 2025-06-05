@@ -1,7 +1,7 @@
-import { Dispatch, RefObject, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { Swiper } from "swiper/types";
 import type {} from 'react-select/base';
-import { AppDispatch } from "../store/store";
+import { AppDispatch } from "@store/store";
 
 export interface ModeOptionProp {
     mode: boolean;

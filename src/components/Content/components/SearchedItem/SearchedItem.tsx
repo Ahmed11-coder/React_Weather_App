@@ -1,5 +1,5 @@
 import React from 'react'
-import { SearchedItemPros } from '../../../../types/types'
+import { SearchedItemPros } from 'types/types'
 
 export default function SearchedItem({temp, location, text, icon}: SearchedItemPros) {
     return (
