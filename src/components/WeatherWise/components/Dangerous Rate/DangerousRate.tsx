@@ -1,46 +1,52 @@
-import React, { useEffect, useRef, useState, useLayoutEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './DangerousRateStyle.css';
 import { useAppSelector } from '@store/hooks';
 import { selectWeather } from '@store/slices/weatherSlice';
 import { Point, WeatherInfo } from 'types/types';
 import { getDangPoint } from './Handler';
+import useElementSize from 'hooks/useElementSize';
 
 export default function DangerousRate({ percent = 0.85 }) {
     const dangPointRef = useRef(null);
     const dangBox = useRef(null);
+    const rateBox = useRef(null);
     const [widthDangBox, setWidthDangBox] = useState<number>(0);
     const [heightDangBox, setHeightDangBox] = useState<number>(0);
 
+    const [rateBoxWidth, rateBoxHeight]= useElementSize(rateBox);
+    
     const currWeather: WeatherInfo = useAppSelector(selectWeather);
     const radius = 80;
     const circumference = Math.PI * radius;
-    const offset = circumference * (1- percent);
-
-    const POINTS: Point[] = [{x: 10, y: 120}, {x: 230, y: 110}, {x: 270, y: 10}];
+    const offset = circumference * (1 - percent);
+    
+    const POINTS: Point[] = [
+        {x: 10, y: rateBoxHeight - (rateBoxHeight/10)},
+        {x: rateBoxWidth-50, y: rateBoxHeight- (rateBoxHeight*2/10)},
+        {x: rateBoxWidth-10, y: 10}
+    ];
     const {maxValue , minValue, value} = currWeather.status;
     const t = (value / (maxValue - minValue));
     let [dangPoint, controller]: Point[] = getDangPoint(t, POINTS);
-
+    
     const dangBoxPos = {
         arrowRight: {left: (POINTS[0].x + dangPoint.x - widthDangBox - 25), top: (POINTS[0].y + dangPoint.y - heightDangBox + 10)},
         arrowBottom: {left: (POINTS[0].x + dangPoint.x - (widthDangBox/2)), top: (POINTS[0].y + dangPoint.y - heightDangBox - 20)}
     };
-    
-    useLayoutEffect(() => {
-        setWidthDangBox(dangBox.current!["offsetWidth"]);
-        setHeightDangBox(dangBox.current!["offsetHeight"]);
-    }, [currWeather.status.text])
 
     useEffect(() => {
         [dangPoint, controller] = getDangPoint(t, POINTS);
         [...dangPointRef.current!["children"]].forEach((ele: (SVGAnimateElement | SVGAnimationElement)) => {
             ele.beginElement();
         });
+
+        setWidthDangBox(dangBox.current!["offsetWidth"]);
+        setHeightDangBox(dangBox.current!["offsetHeight"]);
     }, [t]);
 
     return (
-        <div className='dang-rate'>
-            <svg style={{width: "inherit", height: "inherit"}}>
+        <div className='dang-rate' ref={rateBox}>
+            <svg style={{width: "100%", height: "100%"}}>
                 <defs>
                     <linearGradient id="dang-lvl">
                         <stop offset="0%" stopColor="#00bfff" />

@@ -62,7 +62,7 @@ export default function WeatherWise(props: ModeOptionProp) {
             </div>
             <EarthSwiper setSwiper={setSwiperRef} mode={props.mode}/>
             <div className="contries">
-                <p className="background-blur-8 arounded-40 m-auto-t15 border-w2">{`${currLocation.city}, ${currLocation.region}, ${currLocation.country}`}</p>
+                <p className="background-blur-8 arounded-40 m-auto-t15">{`${currLocation.city}, ${currLocation.region}, ${currLocation.country}`}</p>
             </div>
         </div>
     );

@@ -1,8 +1,4 @@
 #content {
-    position: absolute;
-    width: 75%;
-    top: 10%;
-    left: 25%;
     color: white;
 }
 
@@ -16,9 +12,9 @@
 }
 
 .content--info {
-    display: flex;
     width: 100%;
     margin-top: 2.625rem;
+    align-items: self-start;
 }
 
 .content--info .left-side {
@@ -39,9 +35,9 @@
 }
 
 .temp-info .curr-temp-info div {
-    width: 100px;
+    width: 8rem;
     background-color: rgba(255, 255, 255, 0.12);
-    padding: 0.1rem 1rem;
+    padding: 0.35rem 1rem;
     color: #aaa;
     font-weight: 400;
 }
@@ -58,7 +54,8 @@
 }
 
 .right-side {
-    width: 30%;
+    width: 30vw;
+    max-width: 350px;
 }
 .right-side p {
     word-spacing: 0.1rem;
@@ -102,7 +99,7 @@
     column-gap: 1.625rem;
 }
 .searched--section-content .box {
-    height: 140px;
+    max-height: 140px;
     background-color: rgba(255, 255, 255, 0.02);
     padding: 1.5rem;
     cursor: pointer;

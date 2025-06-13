@@ -1,4 +1,4 @@
-import { ResponsiveContainer , LineChart , Line , YAxis } from 'recharts'
+import { ResponsiveContainer , LineChart , Line , YAxis, CartesianGrid } from 'recharts'
 import { CustomizedDot } from './Customize';
 import { WeatherInfo } from 'types/types';
 
@@ -11,7 +11,7 @@ export default function Chart() {
 
     return (
         <ResponsiveContainer width='100%' height='100%'>
-            <LineChart className='chart' data={currentWeather.Current7Days}>
+            <LineChart  className='chart' data={currentWeather.Current7Days}>
                 <defs>
                     <linearGradient id="colorUv">
                         <stop offset='0%' stopColor='white' stopOpacity={0.1}/>
@@ -21,7 +21,7 @@ export default function Chart() {
                     </linearGradient>
                 </defs>
                 <YAxis hide={true} type='number' domain={[Math.min(...currentWeather.Current7Days.map(day => day.temp)) - 5 , Math.max(...currentWeather.Current7Days.map(day => day.temp)) + 5]}/>
-                <Line type="monotone" dataKey="temp" dot={<CustomizedDot />} activeDot={false} stroke='url(#colorUv)'/>
+                <Line type="monotone" dataKey="temp" dot={<CustomizedDot />} activeDot={false} stroke='url(#colorUv)' strokeWidth={1.5} animationBegin={100}/>
             </LineChart>
         </ResponsiveContainer>
     )

@@ -27,51 +27,37 @@ html {
     height: 100%;
     padding: 3.5rem 1rem;
     margin-left: auto;
+    width: calc(100% - 85px);
     margin-right: auto;
+}
+
+@media (min-width: 640px) {
+    html {
+        font-size: 6px;
+    }
 }
 
 @media (min-width: 768px) {
     html {
         font-size: 8px;
     }
-    .container {
-        width: 750px;
+}
+
+@media (min-width: 1024px) {
+    html {
+        font-size: 8px;
     }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1280px) {
     html {
         font-size: 10px;
     }
-    .container {
-        width: 970px;
-    }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1536px) {
     html {
         font-size: 12px;
-    }
-    .container {
-        width: 1170px;
-    }
-}
-@media (min-width: 1400px) {
-    html {
-        font-size: 14px;
-    }
-    .container {
-        width: 1370px;
-    }
-}
-@media (min-width: 1600px) {
-    .container {
-        width: 1570px;
-    }
-}
-@media (min-width: 1800px) {
-    .container {
-        width: 1770px;
     }
 }
 

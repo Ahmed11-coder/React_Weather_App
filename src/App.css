@@ -11,6 +11,22 @@
     -moz-backdrop-filter: blur(3px);
 }
 
+.sec-container {
+    display: flex;
+    column-gap: 5%;
+    margin-top: 22px;
+    align-items: self-start;
+    width: calc(100% + 10px);
+    height: 95%;
+}
+
+.content-container {
+    margin-top: 40px;
+    width: 100%;
+    height: calc(100% - 40px);
+    justify-content: space-between;
+}
+
 @keyframes startPage {
     to {
     }

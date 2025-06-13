@@ -1,5 +1,6 @@
 .dang-rate{
   position: relative;
+  height: calc(100% + 10px);
   border-radius: 0.85rem;
 }
 .path {
@@ -33,7 +34,7 @@
   border-width: 0.5rem;
   border-style: solid;
   border-color: transparent transparent transparent white;
-  right: -21px;
+  right: -35%;
   top: 50%;
   transform: translate(0, -50%);
 }
@@ -43,6 +44,6 @@
   border-style: solid;
   border-color: white transparent transparent transparent;
   left: 50%;
-  bottom: -21px;
+  bottom: -120%;
   transform: translate(-50%, 0%);
 }

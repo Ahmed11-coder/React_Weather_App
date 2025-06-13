@@ -1,35 +1,33 @@
 
 .chart--container {
-    position: absolute;
-    bottom: 10%;
-    right: 0%;
-    width: 75%;
-    height: 300px;
+    height: 40%;
+    margin-bottom: 40px;
 }
 
 .chart--container .chart--box {
     position: relative;
-    width: 100%;
+    width: calc(100% - 40px);
     height: 100%;
 }
 
 .chart--box .labels {
     position: absolute;
     color: white;
-    width: calc(100% + 40px);
-    left: -10px;
-    bottom: -80px;
+    width: calc(100% + 65px);
+    left: -25px;
+    bottom: -40px;
 }
 
 .chart--box .labels .info {
+    height: 100%;
+    width: 80px;
     transition: 0.5s;
     cursor: pointer;
 }
 
 
 .chart--box .labels .info .day {
-    font-size: 1.25rem;
-    font-weight: 200;
+    font-size: 1.8rem;
 }
 
 .chart--box .labels .info .temp {
@@ -38,21 +36,18 @@
 
 .chart--box .labels .info:nth-child(1) {
     opacity: 0.3;
-    transform: scale(1);
 }
 .chart--box .labels .info:nth-child(2),
 .chart--box .labels .info:nth-child(6) {
     opacity: 0.6;
-    transform: scale(1.1);
 }
 .chart--box .labels .info:nth-child(3),
 .chart--box .labels .info:nth-child(5) {
     opacity: 0.8;
-    transform: scale(1.2);
 }
 
 .chart--box .labels .info.active {
-    transform: scale(1.4);
+    transform: scale(1.1);
 }
 
 .chart--box .labels .info:hover {

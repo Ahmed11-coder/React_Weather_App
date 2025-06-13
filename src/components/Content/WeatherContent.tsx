@@ -1,5 +1,5 @@
 // Import Utilities
-import { LocationState, SearchedItemPros, WeatherInfo } from '../../types/types';
+import { LocationState, SearchedItemPros, WeatherInfo } from 'types/types';
 
 // Import Redux Store Utilities
 import { useAppSelector } from '@store/hooks';
@@ -41,7 +41,7 @@ export default function WeatherContent() {
         <LocationOnIcon />
         {`${currentLocation.city}, ${currentLocation.region}, ${currentLocation.country}`} <span>{currentWeather.date}</span>
       </p>
-      <div className="content--info">
+      <div className="content--info flex-bet-center">
         <div className='left-side'>
           <div className="temp-info flex-center">
             <div className='curr-temp'>{currentWeather.current_temp}&deg;</div>

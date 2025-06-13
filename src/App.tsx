@@ -1,16 +1,16 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import './App.css';
-import './assents/styles/global.css';
-import Header from "./components/Header/Header";
-import WeatherWise from './components/WeatherWise/WeartherWise';
-import WeatherChart from './components/WeatherChart/WeatherChart';
-import WeatherContent from './components/Content/WeatherContent';
-import { getWeatherInfo } from './utils/HelperFuncs';
+import '@assents/styles/global.css';
+import Header from "@components/Header/Header";
+import WeatherWise from '@components/WeatherWise/WeartherWise';
+import WeatherChart from '@components/Content/components/WeatherChart/WeatherChart';
+import WeatherContent from '@components/Content/WeatherContent';
+import { getWeatherInfo } from '@utils/HelperFuncs';
 
 // Redux Store Utilities
-import { useAppSelector } from './store/hooks';
-import { selectLocation } from './store/slices/locationSlice';
+import { useAppSelector } from '@store/hooks';
+import { selectLocation } from '@store/slices/locationSlice';
 
 
 function App() {
@@ -85,9 +85,13 @@ function App() {
       <div className="overlay"></div>
       <div className="container">
         <Header setMode={setMode} mode={mode}/>
-        <WeatherWise mode={mode}/>
-        <WeatherChart />
-        <WeatherContent />
+        <div className='sec-container'>
+          <WeatherWise mode={mode}/>
+          <div className='content-container flex-col'>
+            <WeatherContent />
+            <WeatherChart />
+          </div>
+        </div>
       </div>
     </div>
   );
