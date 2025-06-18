@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useState, useEffect } from 'react';
 import './App.css';
 import '@assents/styles/global.css';
@@ -11,6 +11,8 @@ import { getWeatherInfo } from '@utils/HelperFuncs';
 // Redux Store Utilities
 import { useAppSelector } from '@store/hooks';
 import { selectLocation } from '@store/slices/locationSlice';
+import HourlyForest from '@components/Content/components/HourlyForecast/HourlyForecast';
+import useElementSize from 'hooks/useElementSize';
 
 
 function App() {
@@ -18,6 +20,9 @@ function App() {
   // Get Weather Details
   const [photo, setPhoto] = useState("");
   const [mode, setMode] = useState(true);
+
+  const windowRef = useRef<HTMLElement>(document.documentElement);
+  const [wWidth, wHeight] = useElementSize(windowRef);
 
   // Redux Store
   const Locationselector = useAppSelector(selectLocation)
@@ -69,29 +74,28 @@ function App() {
     // }, 900000) 
   }, [Locationselector.city])
 
-
-  // Style Of Background Image
-  const myStyle = {
-    backgroundImage: `url(https://images.pexels.com/photos/19123641/pexels-photo-19123641/free-photo-of-close-up-on-yellow-daisies-growing-in-garden.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)`,
-    // Make Image Full Screen
-    backgroundSize: 'cover',
-    backgroundPosition: "bottom",
-    backgroundRepeat: "no-repeat",
-    height: "100vh",
-  }
-
   return (
-    <div style={myStyle}>
+    <div>
       <div className="overlay"></div>
       <div className="container">
         <Header setMode={setMode} mode={mode}/>
-        <div className='sec-container'>
+        {wWidth >= 1024 ? <div className='sec-container desktop-ds'>
           <WeatherWise mode={mode}/>
           <div className='content-container flex-col'>
             <WeatherContent />
             <WeatherChart />
           </div>
         </div>
+          :
+        <div className="sec-container mobile-ds">
+          <WeatherContent />
+          <div className='content-container flex-col'>
+            <HourlyForest />
+            <WeatherChart />
+            <WeatherWise mode={mode}/>
+          </div>
+        </div>
+        }
       </div>
     </div>
   );

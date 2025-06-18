@@ -1,5 +1,5 @@
 import React from 'react'
-import './HourlyForest.css';
+import './HourlyForecast.css';
 import { WeatherInfo } from 'types/types';
 import { useAppSelector } from '@store/hooks';
 import { selectWeather } from '@store/slices/weatherSlice';

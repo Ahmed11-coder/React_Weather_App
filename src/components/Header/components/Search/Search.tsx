@@ -37,7 +37,11 @@ export default function Search({isOpen} : SearchProp) {
             casetColor: "white",
             cursor: 'text',
         }),
-        
+        placeholder: (styles: any) => ({
+            ...styles,
+            color: "rgba(255, 255, 255, 0.5)",
+        })
+        ,
         singleValue: (styles: any) => ({
             ...styles,
             color: "white",

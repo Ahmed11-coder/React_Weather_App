@@ -19,21 +19,33 @@
 
 
 html {
-    font-size: 14px;
+    font-size: 10px;
+}
+
+body {
+    background-image: url("https://images.pexels.com/photos/6317499/pexels-photo-6317499.jpeg");
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100dvh;
 }
 
 .container {
     position: relative;
-    height: 100%;
-    padding: 3.5rem 1rem;
+    height: 100dvh;
+    padding: 2.75vmax 15px;
     margin-left: auto;
-    width: calc(100% - 85px);
     margin-right: auto;
+    width: 100dvw;
 }
 
 @media (min-width: 640px) {
     html {
         font-size: 6px;
+    }
+    .container {
+        width: calc(100dvw - 85px);
     }
 }
 
@@ -46,6 +58,9 @@ html {
 @media (min-width: 1024px) {
     html {
         font-size: 8px;
+    }
+    .mobile-ds {
+        display: none;
     }
 }
 
@@ -102,4 +117,33 @@ html {
 
 .border-w2 {
     border: 0.125rem solid var(--main-background);
+}
+
+.icon {
+    width: 2rem;
+}
+
+.especial-header {
+    font-size: 1.4rem;
+    position: relative;
+    width: fit-content;
+    font-weight: 400;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.especial-header::before {
+    content: "";
+    width: calc(100% + 4px);
+    height: 1px;
+    position: absolute;
+    bottom: -2px;
+    left: -1px;
+    background-color: white;
+}
+
+@media (max-width: 1024px) {
+    .desktop-ds {
+        display: none;
+    }
 }
