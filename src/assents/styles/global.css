@@ -51,14 +51,11 @@ body {
 
 @media (min-width: 768px) {
     html {
-        font-size: 8px;
+        font-size: 12px;
     }
 }
 
 @media (min-width: 1024px) {
-    html {
-        font-size: 8px;
-    }
     .mobile-ds {
         display: none;
     }

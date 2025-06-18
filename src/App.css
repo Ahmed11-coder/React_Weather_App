@@ -11,7 +11,7 @@
     -moz-backdrop-filter: blur(3px);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1024px) {
     .overlay {
         top: 32dvh;
         height: 28dvh;
@@ -30,7 +30,7 @@
     position: relative;
     top: -30px;
 }
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
     .sec-container.desktop-ds {
         display: none;
     }
@@ -60,7 +60,8 @@
 .sec-container.mobile-ds .content-container {
     background-color: rgba(0, 0, 0, 0.25);
     position: absolute;
-    left: -15px;
+    left: 50%;
+    transform: translateX(calc(-50% - 5px));
     top: 70%;
     min-height: 300px;
     padding: 40px 30px;
