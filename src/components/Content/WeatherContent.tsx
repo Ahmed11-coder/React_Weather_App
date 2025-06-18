@@ -7,8 +7,7 @@ import { selectLocation } from '@store/slices/locationSlice';
 import { selectWeather } from '@store/slices/weatherSlice';
 
 // Import Icons
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { MapPin , ArrowRight } from 'lucide-react';
 import { WeatherIcons } from '@utils/LocalData';
 
 // Import Stlyes
@@ -38,8 +37,10 @@ export default function WeatherContent() {
   return (
     <div id='content'>
       <p className='flex-center'>
-        <LocationOnIcon />
-        {`${currentLocation.city}, ${currentLocation.region}, ${currentLocation.country}`} <span>{currentWeather.date}</span>
+        <MapPin strokeWidth={1} className='icon'/>
+        <div className='info flex-bet-center'>
+          {`${currentLocation.city}, ${currentLocation.region}, ${currentLocation.country}`} <span>{currentWeather.date}</span>
+        </div>
       </p>
       <div className="content--info flex-bet-center">
         <div className='left-side'>
@@ -62,7 +63,7 @@ export default function WeatherContent() {
           <div className="searched--section flex-col">
             <div className='searched--section-header flex-bet-center'>
               <h6>Recently Searched</h6>
-              <button type='button' className='flex-center'>See All <KeyboardArrowRightIcon /></button>
+              <button type='button' className='flex-center'>See All <ArrowRight strokeWidth={1} className='icon'/></button>
             </div>
             <div className='searched--section-content flex-center'>
               {searchItems?.map((item, key) => (
