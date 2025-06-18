@@ -10,14 +10,31 @@
     height: 100%;
 }
 
+@media (max-width: 1024px) {
+    .chart--container {
+        height: 200px;
+    }
+    .chart--container .chart--box {
+        width: calc(100% + 40px);
+        left: -40px;
+    }
+}
+.recharts-cartesian-grid {
+    background-color: red;
+}
 .chart--box .labels {
     position: absolute;
     color: white;
     width: calc(100% + 65px);
+    height: 100%;
     left: -25px;
     bottom: -40px;
 }
-
+@media (max-width: 1024px) {
+    .chart--box .labels {
+        display: none;
+    }
+}
 .chart--box .labels .info {
     height: 100%;
     width: 80px;

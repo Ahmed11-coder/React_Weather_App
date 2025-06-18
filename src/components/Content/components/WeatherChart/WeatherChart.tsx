@@ -13,6 +13,7 @@ export default function WeatherChart() {
 
     return (
         <div className='chart--container'>
+            <h1 className='especial-header mobile-ds'>Day forecast:</h1>
             <div className="chart--box">
                 <Chart />
                 <div className="labels flex-bet-center">

@@ -6,11 +6,11 @@ import { selectWeather } from '@store/slices/weatherSlice';
 
 export const CustomizedDot = (props: any ) => {
     const currentWeather: WeatherInfo = useAppSelector(selectWeather);
-    const {cx, cy, stroke, payload, value} = props;
+    const {cx, cy, stroke, payload, value, height} = props;
     const ActivePoint = currentWeather.Current7Days.find((day) => day.status == 'active')?.temp;
     if (value === ActivePoint && payload.status) {
         return (
-            <svg x={cx - 50} y={cy - 50} width="300" height="300" >
+            <svg x={cx - 50} y={cy - 50} width="100%" height="100%" viewBox="0 0 100% 1024">
                 <defs>
                     <radialGradient id='lighting'>
                         <stop offset="0%" stop-color="white"/>
@@ -45,13 +45,14 @@ export const CustomizedDot = (props: any ) => {
                     repeatCount="indefinite"
                 />
             </circle>
-            <line x1='50' y1="45" x2="50" y2="45" stroke='white' stroke-dasharray="3 3" strokeOpacity={0.45}>
+            <line x1='50' y1="45" x2="50" y2="45" stroke='white' stroke-dasharray="3 3" strokeOpacity={0.45} >
                 <animate
                     attributeType='XML'
                     attributeName='y2'
                     begin='0.5s'
                     dur='1s'
-                    values='45;100%'
+                    from="45"
+                    to={height - cy + 55}
                     fill='freeze'
                 />
             </line>
