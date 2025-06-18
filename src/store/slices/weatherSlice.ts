@@ -28,6 +28,7 @@ export const weatherSlice = createSlice({
             state.wind_kph = action.payload.wind_kph;
             state.max_temp = action.payload.max_temp;
             state.min_temp = action.payload.min_temp;
+            state.HourlyForest = action.payload.HourlyForest;
         }
     }
 })

@@ -78,6 +78,12 @@ export interface WeatherStatus {
     percentage: number;
     text: 'Good' | 'Moderate' | 'Dangerous';
 }
+
+export interface HourlyTemp {
+    temp: number;
+    hour: number;
+    iconCode: string; 
+}
 export interface WeatherInfo extends WeatherParameters {
     current_temp: number; // ( Current Temperature )
     wind_chill: number; // ( Wind Chill )
@@ -90,6 +96,7 @@ export interface WeatherInfo extends WeatherParameters {
         icon: string;
     };
     Current7Days: WeatherChartTable[];
+    HourlyForest: HourlyTemp[];
     status: WeatherStatus;
 }
 

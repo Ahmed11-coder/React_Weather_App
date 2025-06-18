@@ -1,0 +1,44 @@
+.hourly-forest {
+    color: white;
+    font-weight: 300;
+    padding-bottom: 35px;
+}
+
+.hourly-forest .especial-header {
+    font-size: 1.4rem;
+    position: relative;
+    width: fit-content;
+    font-weight: 400;
+}
+
+.hourly-forest .especial-header::before {
+    content: "";
+    width: calc(100% + 4px);
+    height: 1px;
+    position: absolute;
+    bottom: -2px;
+    left: -1px;
+    background-color: white;
+}
+
+.hourly-forest .hourly-temp {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    margin-top: 20px;
+    position: relative;
+    left: -15px;
+    width: calc(100% + 30px);
+    font-size: 1.2rem;
+}
+
+.hourly-forest .hourly-temp .hour span {
+    font-size: 0.7em;
+}
+
+.hourly-forest .hourly-temp img {
+    width: 36px;
+}
+
+.hourly-forest .hourly-temp .deg {
+    font-size: 1.3rem;
+}

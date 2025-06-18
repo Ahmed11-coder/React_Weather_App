@@ -3,7 +3,7 @@ import { IPINFO_API_URL, WEATHER_API_FORECAST, WEATHER_API_HISTORY } from "@serv
 
 // Import Utlities
 import { userLocation } from "@store/slices/locationSlice";
-import { LocationState, Status, WeatherChartTable, WeatherInfo, WeatherParameter, WeatherParameters, WeatherStatus } from "types/types";
+import { HourlyTemp, LocationState, Status, WeatherChartTable, WeatherInfo, WeatherParameter, WeatherParameters, WeatherStatus } from "types/types";
 import { ContinentIndex, countries, WEATHER_STATUS_CASES } from "./LocalData";
 
 export const getPreviousDays = (dayIndex: number, curDate: Date):string => {
@@ -123,6 +123,19 @@ export const getWeatherInfo = async (location?:LocationState) : Promise<WeatherI
 
     const {temp_c, condition, humidity, feelslike_c, windchill_c, wind_kph, gust_kph, uv, air_quality, precip_mm, vis_km} = weatherResponse["current"];
     const nextDays = weatherResponse["forecast"]["forecastday"];
+
+
+    const HourlyForest: HourlyTemp[] = [];
+    const hoursInfo = nextDays[0]['hour'];
+    const curHour = new Date().getHours();
+    for(let i = 0; i < 6; i++) {
+        HourlyForest.push({
+            temp: hoursInfo[(curHour + i) % 24]['feelslike_c'],
+            hour: (curHour + i) % 24,
+            iconCode: hoursInfo[(curHour + i) % 24]['condition']['code'],
+        })
+    }
+
     const currentDateFormatDay_Month_Date = convertDateToDMD(weatherResponse["location"]["localtime"]);
     const current7Days = [
         ...historyWeatherLast3Days,
@@ -154,6 +167,7 @@ export const getWeatherInfo = async (location?:LocationState) : Promise<WeatherI
         max_temp: nextDays[0]["day"]["maxtemp_c"],
         min_temp: nextDays[0]["day"]["mintemp_c"],
         status: status,
+        HourlyForest: HourlyForest,
     }
     return weatherInfoResult;
 }
