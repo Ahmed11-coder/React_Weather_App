@@ -1,0 +1,33 @@
+.status-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 85px);
+    color: white;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 767px) {
+    .status-info {
+        margin: 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    .status-info {
+        left: 110%;
+        padding: 10px;
+    }
+}
+
+.status-info .item-info {
+    border-radius: 20px;
+    align-items: flex-start;
+    padding: 10px;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.4);
+}
+
+.status-info .item-info .item-title {
+    color: rgba(255, 255, 255, 0.5)
+}
