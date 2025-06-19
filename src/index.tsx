@@ -1,13 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client'; // Import from 'react-dom/client'
-import './index.css';
+import ReactDOM from 'react-dom/client';
 import App from './App';
 import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
 import { store } from './store/store';
 
-const rootElement = document.getElementById('root') as HTMLElement; // Type assertion
-const root = ReactDOM.createRoot(rootElement); // Create a root
+const rootElement = document.getElementById('root') as HTMLElement;
+const root = ReactDOM.createRoot(rootElement);
 
 root.render(
   <React.StrictMode>
