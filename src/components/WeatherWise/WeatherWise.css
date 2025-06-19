@@ -23,6 +23,19 @@
         linear-gradient(#000 0 0) content-box;
 }
 
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 100%;
+        background-color: transparent;
+        backdrop-filter: none;
+        padding: 0;
+        padding-top: 30px;
+    }
+    .sidebar::before {
+        display: none;
+    }
+}
+
 .sidebar h2 {
     color: white;
     font-family: "Encode Sans Condensed", serif;
@@ -51,6 +64,19 @@
 .sidebar > div {
     padding: 0 20px;
 }
+
+@media (min-width: 767px) and (max-width: 1024px) {
+    .sidebar {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .sidebar > div {
+        padding: 0;
+    }
+}
+
 .sidebar .side-h {
     color: rgba(255, 255, 255, 0.5);
     font-size: 1.15rem;
@@ -68,6 +94,28 @@
     background-color: rgba(0, 0, 0, 0.4);
     padding: 12px;
     border-radius: 25px;
+}
+
+@media(min-width: 767px) {
+    .status .status-container {
+        position: relative;
+        height: 200px;
+        flex-direction: row;
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 1024px) {
+    .switch-status {
+        transform: translateX(-110%);
+    }
+    
+    .status .status-container > div {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transition: 0.6s;
+    }
 }
 
 .status .screen .info {
@@ -93,11 +141,23 @@
     font-size: 1.5rem;
 }
 
+@media (min-width: 767px) and (max-width: 1024px) {
+    .status .status-container {
+        column-gap: 4%;
+    }
+
+    .status .screen {
+        height: 100%;
+    }
+}
+
 .status .more {
     color: white;
     font-size: 1.15rem;
     font-weight: 200;
     text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
     border: 1px solid transparent;
     width: fit-content;
     transition: 0.3s;
@@ -108,22 +168,26 @@
 }
 
 .sidebar .area {
-    margin-top: 10%;
+    margin-top: 6%;
+}
+
+.area .especial-header {
+    margin-bottom: 0;
 }
 
 .area .area-h .areas-state {
     list-style: none;
     color: white;
-    width: 25%;
+    column-gap: 0.5rem;
 }
 
-.area .area-h .areas-state li svg {
-    font-size: 1.25rem ;
+.areas-state .icon {
     cursor: pointer;
+    width: 1.25rem;
 }
 
-.area .area-h .areas-state .active svg {
-    font-size: 1.625rem;
+.areas-state .active .icon {
+    width: 1.625rem;
 }
 
 .area .slide {
@@ -138,6 +202,15 @@
     max-height: 240px;
     height: 32%;
     position: relative;
+}
+
+@media (max-width: 1024px) {
+    .slideArea {
+        height: 220px;
+        width: calc(100% + 60px);
+        left: -30px;
+        margin-top: 20px;
+    }
 }
 
 .slideArea .swiper-slide {
@@ -162,6 +235,7 @@ img.active {
 
 .contries {
     margin: auto;
+    position: relative;
 }
 
 .contries p {
@@ -177,4 +251,18 @@ img.active {
     border-left-color: rgba(255, 255, 255, 0.1);
     border-right-color: rgba(255, 255, 255, 0.05);
     border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 1024px) {
+    .contries p {
+        background-color: transparent;
+        backdrop-filter: none;
+        border: none;
+        font-size: 1.23rem;
+        opacity: 0.5;
+        position: relative;
+        margin-top: 10px;
+        right: -5px;
+        padding: 0;
+    }
 }

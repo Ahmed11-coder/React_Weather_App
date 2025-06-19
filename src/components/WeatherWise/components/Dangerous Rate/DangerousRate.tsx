@@ -23,7 +23,7 @@ export default function DangerousRate({ percent = 0.85 }) {
     const POINTS: Point[] = [
         {x: 10, y: rateBoxHeight - (rateBoxHeight/10)},
         {x: rateBoxWidth-50, y: rateBoxHeight- (rateBoxHeight*2/10)},
-        {x: rateBoxWidth-10, y: 10}
+        {x: rateBoxWidth-20, y: 10}
     ];
     const {maxValue , minValue, value} = currWeather.status;
     const t = (value / (maxValue - minValue));
@@ -39,7 +39,7 @@ export default function DangerousRate({ percent = 0.85 }) {
         [...dangPointRef.current!["children"]].forEach((ele: (SVGAnimateElement | SVGAnimationElement)) => {
             ele.beginElement();
         });
-
+        
         setWidthDangBox(dangBox.current!["offsetWidth"]);
         setHeightDangBox(dangBox.current!["offsetHeight"]);
     }, [t]);
@@ -49,10 +49,10 @@ export default function DangerousRate({ percent = 0.85 }) {
             <svg style={{width: "100%", height: "100%"}}>
                 <defs>
                     <linearGradient id="dang-lvl">
-                        <stop offset="0%" stopColor="#00bfff" />
-                        <stop offset="70%" stopColor="#fff" />
-                        <stop offset="75%" stopColor="#fff" />
-                        <stop offset="100%" stopColor="#ec9c2a" />
+                        <stop offset="0%" stopColor="#00bfff"/>
+                        <stop offset="70%" stopColor="#fff"/>
+                        <stop offset="75%" stopColor="#fff"/>
+                        <stop offset="100%" stopColor="#ec9c2a"/>
                     </linearGradient>
                 </defs>
                 <path
@@ -65,9 +65,9 @@ export default function DangerousRate({ percent = 0.85 }) {
                     fill="none"
                     strokeLinecap="round"
                 />
-                <circle r='1' cx={`${POINTS[0].x}`} cy={`${POINTS[0].y}`} fill="black" stroke="white" stroke-width="8" ref={dangPointRef}>
+                <circle r='1' cx={`${POINTS[0].x}`} cy={`${POINTS[0].y}`} stroke="white" stroke-width="8" ref={dangPointRef}>
                     <animateMotion 
-                        path={`M0 0 Q ${controller.x} ${controller.y} ${dangPoint.x} ${dangPoint.y}`} // 62.67 -0.69 77.6 -7.6 at 20%
+                        path={`M0 0 Q ${controller.x} ${controller.y} ${dangPoint.x} ${dangPoint.y}`}
                         begin="0s"
                         dur="1.25s"
                         calcMode="spline"
@@ -102,9 +102,6 @@ export default function DangerousRate({ percent = 0.85 }) {
                         restart="always"
                     />
                 </circle>
-                <rect>
-
-                </rect>
             </svg>
             <div className="dang-text" ref={dangBox} style={t >= 0.65 ? dangBoxPos.arrowRight : dangBoxPos.arrowBottom}>
                 <div className="box">

@@ -1,8 +1,7 @@
 import React from 'react'
 
 // Import Icons
-import NearMeIcon from '@mui/icons-material/NearMe';
-import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecordOutlined';
+import { Circle, Navigation } from 'lucide-react';
 
 // Import Utilities 
 import { setActiveBullets } from '../Handlers';
@@ -24,8 +23,8 @@ export default function EarthBullets({swiperRef}: {swiperRef: SwiperType | null}
             {
                 [0, 1, 2, 3].map((_, index)=> (
                     <li key={index} className={currLocation.activeIndex === index ? "active" : ""} onClick={() => setActiveBullets({index,dispatch, swiperRef})}>
-                        {currLocation.activeIndex === index && <NearMeIcon />}
-                        {currLocation.activeIndex !== index && <FiberManualRecordOutlinedIcon /> }
+                        {currLocation.activeIndex === index && <Navigation className='icon' strokeWidth={1}/>}
+                        {currLocation.activeIndex !== index && <Circle strokeWidth={1} className='icon'/> }
                     </li>
                 ))
             }
