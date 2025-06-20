@@ -23,16 +23,16 @@ export default function WeatherContent() {
   useEffect(() => {
     const Item : SearchedItemPros = {
       temp: currentWeather.feelslike_temp,
-      icon: WeatherIcons[1],
+      icon: WeatherIcons.find((icon) => icon.codes.includes(currentWeather.condition.iconCode))?.icon,
       location: `${currentLocation.city}, ${currentLocation.country}`,
       text: currentWeather.condition.text
     }
     
-    if (searchItems.length < 2) setSearchItems([Item, ...searchItems]);
+    if (searchItems.length == 0) setSearchItems([Item]);
     else setSearchItems([Item, searchItems[0]]);
 
     console.log(searchItems);
-  }, [currentLocation.city])
+  }, [currentWeather])
 
   return (
     <div id='content'>
