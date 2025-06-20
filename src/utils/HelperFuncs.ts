@@ -162,7 +162,10 @@ export const getWeatherInfo = async (location?:LocationState) : Promise<WeatherI
         current_temp: temp_c,
         wind_chill: windchill_c,
         date: currentDateFormatDay_Month_Date,
-        condition: condition,
+        condition: {
+            text: condition.text,
+            iconCode: condition.code,
+        },
         Current7Days: current7Days,
         max_temp: nextDays[0]["day"]["maxtemp_c"],
         min_temp: nextDays[0]["day"]["mintemp_c"],

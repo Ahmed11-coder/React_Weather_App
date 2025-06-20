@@ -92,8 +92,7 @@ export interface WeatherInfo extends WeatherParameters {
     min_temp: number;
     condition: {
         text: string;
-        code: number;
-        icon: string;
+        iconCode: number;
     };
     Current7Days: WeatherChartTable[];
     HourlyForest: HourlyTemp[];
