@@ -10,7 +10,7 @@ export const CustomizedDot = (props: any ) => {
     const ActivePoint = currentWeather.Current7Days.find((day) => day.status == 'active')?.temp;
     if (value === ActivePoint && payload.status) {
         return (
-            <svg x={cx - 50} y={cy - 50} width="100%" height="100%" viewBox="0 0 100% 1024">
+            <svg x={cx - 50} y={cy - 50} width="100%" height="100%" viewBox="0 0 100% 100%">
                 <defs>
                     <radialGradient id='lighting'>
                         <stop offset="0%" stop-color="white"/>
