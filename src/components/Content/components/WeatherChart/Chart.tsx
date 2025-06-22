@@ -7,7 +7,7 @@ import { WeatherInfo } from 'types/types';
 // Import Redux Store Utilities
 import { useAppSelector } from '@store/hooks';
 import { selectWeather } from '@store/slices/weatherSlice';
-import useElementSize from 'hooks/useElementSize';
+import useElementSize from '@hooks/useElementSize';
 
 export default function Chart() {
     const currentWeather: WeatherInfo = useAppSelector(selectWeather);

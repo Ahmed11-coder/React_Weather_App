@@ -4,7 +4,7 @@ import { useAppSelector } from '@store/hooks';
 import { selectWeather } from '@store/slices/weatherSlice';
 import { Point, WeatherInfo } from 'types/types';
 import { getDangPoint } from './Handler';
-import useElementSize from 'hooks/useElementSize';
+import useElementSize from '@hooks/useElementSize';
 
 export default function DangerousRate({ percent = 0.85 }) {
     const dangPointRef = useRef(null);
@@ -65,7 +65,7 @@ export default function DangerousRate({ percent = 0.85 }) {
                     fill="none"
                     strokeLinecap="round"
                 />
-                <circle r='1' cx={`${POINTS[0].x}`} cy={`${POINTS[0].y}`} stroke="white" stroke-width="8" ref={dangPointRef}>
+                <circle r='1' cx={`${POINTS[0].x}`} cy={`${POINTS[0].y}`} stroke="white" strokeWidth="8" ref={dangPointRef}>
                     <animateMotion 
                         path={`M0 0 Q ${controller.x} ${controller.y} ${dangPoint.x} ${dangPoint.y}`}
                         begin="0s"

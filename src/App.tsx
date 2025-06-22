@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useState, useEffect } from 'react';
 import './App.css';
-import '@assents/styles/global.css';
+import '@assets/styles/global.css';
 import Header from "@components/Header/Header";
 import WeatherWise from '@components/WeatherWise/WeartherWise';
 import WeatherChart from '@components/Content/components/WeatherChart/WeatherChart';
@@ -12,7 +12,7 @@ import { getWeatherInfo } from '@utils/HelperFuncs';
 import { useAppSelector } from '@store/hooks';
 import { selectLocation } from '@store/slices/locationSlice';
 import HourlyForest from '@components/Content/components/HourlyForecast/HourlyForecast';
-import useElementSize from 'hooks/useElementSize';
+import useElementSize from '@hooks/useElementSize';
 
 
 function App() {

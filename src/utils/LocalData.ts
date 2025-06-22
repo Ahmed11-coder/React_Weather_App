@@ -11,28 +11,28 @@ export const tempData = [
 ]
 
 export const DarkEarthImgs = [
-    require('@assents/images/dark/Earth1.svg').default,
-    require('@assents/images/dark/Earth2.svg').default,
-    require('@assents/images/dark/Earth3.svg').default,
-    require('@assents/images/dark/Earth6.svg').default
+    require('@assets/images/dark/Earth1.svg').default,
+    require('@assets/images/dark/Earth2.svg').default,
+    require('@assets/images/dark/Earth3.svg').default,
+    require('@assets/images/dark/Earth6.svg').default
 ];
 export const LightEarthImgs = [
-    require('@assents/images/light/Earth1.svg').default,
-    require('@assents/images/light/Earth2.svg').default,
-    require('@assents/images/light/Earth3.svg').default,
-    require('@assents/images/light/Earth6.svg').default
+    require('@assets/images/light/Earth1.svg').default,
+    require('@assets/images/light/Earth2.svg').default,
+    require('@assets/images/light/Earth3.svg').default,
+    require('@assets/images/light/Earth6.svg').default
 ];
 
 export const WeatherIcons = [
-    { codes: [1000], icon: require('@assents/Icons/Colored-Weather-Icons/Clear.svg').default },
-    { codes: [1003], icon: require('@assents/Icons/Colored-Weather-Icons/Partly-Cloudy.svg').default },
-    { codes: [1006], icon: require('@assents/Icons/Colored-Weather-Icons/Cloudy.svg').default },
-    { codes: [1009], icon: require('@assents/Icons/Colored-Weather-Icons/Very-Cloudy.svg').default },
-    { codes: [1240, 1243, 1246], icon: require('@assents/Icons/Colored-Weather-Icons/Shower-Rain.svg').default },
-    { codes: [1063, 1150, 1153, 1168, 1171, 1180, 1183, 1186, 1189, 1192, 1195, 1198, 1201], icon: require('@assents/Icons/Colored-Weather-Icons/Rain.svg').default },
-    { codes: [1087, 1273, 1276, 1279, 1282], icon: require('@assents/Icons/Colored-Weather-Icons/Thunderstorm.svg').default },
-    { codes: [1066, 1114, 1117, 1210, 1213, 1216, 1219, 1222, 1225, 1255, 1258], icon: require('@assents/Icons/Colored-Weather-Icons/Snow.svg').default },
-    { codes: [1030, 1135, 1147], icon: require('@assents/Icons/Colored-Weather-Icons/Fog.svg').default }
+    { codes: [1000], icon: require('@assets/Icons/Colored-Weather-Icons/Clear.svg').default },
+    { codes: [1003], icon: require('@assets/Icons/Colored-Weather-Icons/Partly-Cloudy.svg').default },
+    { codes: [1006], icon: require('@assets/Icons/Colored-Weather-Icons/Cloudy.svg').default },
+    { codes: [1009], icon: require('@assets/Icons/Colored-Weather-Icons/Very-Cloudy.svg').default },
+    { codes: [1240, 1243, 1246], icon: require('@assets/Icons/Colored-Weather-Icons/Shower-Rain.svg').default },
+    { codes: [1063, 1150, 1153, 1168, 1171, 1180, 1183, 1186, 1189, 1192, 1195, 1198, 1201], icon: require('@assets/Icons/Colored-Weather-Icons/Rain.svg').default },
+    { codes: [1087, 1273, 1276, 1279, 1282], icon: require('@assets/Icons/Colored-Weather-Icons/Thunderstorm.svg').default },
+    { codes: [1066, 1114, 1117, 1210, 1213, 1216, 1219, 1222, 1225, 1255, 1258], icon: require('@assets/Icons/Colored-Weather-Icons/Snow.svg').default },
+    { codes: [1030, 1135, 1147], icon: require('@assets/Icons/Colored-Weather-Icons/Fog.svg').default }
 ]
 
 export const countries = require('@data/countries.json')['countries'];

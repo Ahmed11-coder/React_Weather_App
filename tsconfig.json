@@ -22,8 +22,9 @@
       "@utils/*": ["./utils/*"],
       "@services/*": ["./services/*"],
       "@data/*": ["./data/*"],
-      "@assents/*": ["./assents/*"],
+      "@assets/*": ["./assets/*"],
       "@components/*": ["./components/*"],
+      "@hooks/*": ["./hooks/*"],
     }
   },
   "include": ["src"]
