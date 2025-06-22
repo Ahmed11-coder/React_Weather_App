@@ -31,7 +31,7 @@ export const setRandomCountryInfo = async ({ index, dispatch }: SwiperEarthChang
         locate = `${result.data[0].latitude},${result.data[0].longitude}`;
         cityRegion = result.data[0]["region"];
         const RandomCity: LocationState = { city: capital, country: countryCode, locate: locate, region: cityRegion, continent: continentName, activeIndex: index};
-        console.log(RandomCity, '-');
+
         dispatch(setLocation(RandomCity));
         dispatch(setWeatherInfo(await getWeatherInfo(RandomCity)));
     } catch (e) {

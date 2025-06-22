@@ -31,16 +31,15 @@ export default function WeatherContent() {
     if (searchItems.length == 0) setSearchItems([Item]);
     else setSearchItems([Item, searchItems[0]]);
 
-    console.log(searchItems);
   }, [currentWeather])
 
   return (
     <div id='content'>
       <p className='flex-center'>
         <MapPin strokeWidth={1} className='icon'/>
-        <div className='info flex-bet-center'>
+        <span className='info flex-bet-center'>
           {`${currentLocation.city}, ${currentLocation.region}, ${currentLocation.country}`} <span>{currentWeather.date}</span>
-        </div>
+        </span>
       </p>
       <div className="content--info flex-bet-center">
         <div className='left-side'>
