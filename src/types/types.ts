@@ -115,3 +115,9 @@ export interface SearchedItemPros {
     location: string;
     text: string;
 }
+
+export interface BaseData {
+    property: string;
+    targetProperty: string;
+    array: any[];
+}
