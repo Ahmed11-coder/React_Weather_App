@@ -12,7 +12,7 @@ import { WeatherIcons } from '@utils/LocalData';
 
 // Import Stlyes
 import './WeatherContent.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import SearchedItem from './components/SearchedItem/SearchedItem';
 
 export default function WeatherContent() {
@@ -20,18 +20,29 @@ export default function WeatherContent() {
   const currentWeather: WeatherInfo = useAppSelector(selectWeather);
   const [searchItems, setSearchItems] = useState<SearchedItemPros[]>([])
 
+  const prevWeatherRef = useRef(0);
+  const prevLocationRef = useRef("");
   useEffect(() => {
-    const Item : SearchedItemPros = {
-      temp: currentWeather.feelslike_temp,
-      icon: WeatherIcons.find((icon) => icon.codes.includes(currentWeather.condition.iconCode))?.icon,
-      location: `${currentLocation.city}, ${currentLocation.country}`,
-      text: currentWeather.condition.text
+
+    const weatherChanged = prevWeatherRef.current !== currentWeather?.feelslike_temp;
+    const locationChanged = prevLocationRef.current !== currentLocation?.locate;
+
+    if (weatherChanged && locationChanged) {
+      const Item : SearchedItemPros = {  
+        temp: currentWeather.feelslike_temp,
+        icon: WeatherIcons.find((icon: { codes: number[]; }) => icon.codes.includes(currentWeather.condition.iconCode))?.icon,
+        location: `${currentLocation.city}, ${currentLocation.country}`,
+        text: currentWeather.condition.text
+      }
+  
+      if (searchItems.length == 0) setSearchItems([Item]);
+      else setSearchItems([Item, searchItems[0]]);
+
+      prevWeatherRef.current = currentWeather?.feelslike_temp;
+      prevLocationRef.current = currentLocation?.locate;
     }
     
-    if (searchItems.length == 0) setSearchItems([Item]);
-    else setSearchItems([Item, searchItems[0]]);
-
-  }, [currentWeather])
+  }, [currentWeather?.feelslike_temp, currentLocation?.locate])
 
   return (
     <div id='content'>

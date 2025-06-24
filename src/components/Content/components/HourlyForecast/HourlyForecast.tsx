@@ -16,7 +16,7 @@ export default function HourlyForest() {
                     currentWeather.HourlyForest.map((hourInfo, key) => (
                         <div className='item flex-col flex-center' key={key}>
                             <span className='hour'>{key == 0 ? "Now" : (hourInfo.hour % 12)||12}<span>{key == 0 ? "": (hourInfo.hour >= 0 && hourInfo.hour <= 12 ? "AM" : "PM")}</span></span>
-                            <img src={WeatherIcons.find((icon) => icon.codes.includes(currentWeather.condition.iconCode))?.icon} alt="icon" />
+                            <img src={WeatherIcons.find((icon: { codes: number[]; }) => icon.codes.includes(currentWeather.condition.iconCode))?.icon} alt="icon" />
                             <span className='deg'>{Math.round(hourInfo.temp)}&deg;</span>
                         </div>
                     ))

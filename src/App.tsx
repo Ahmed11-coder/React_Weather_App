@@ -16,15 +16,10 @@ import useElementSize from '@hooks/useElementSize';
 
 
 function App() {
-
-  // Get Weather Details
-  
-  const [mode, setMode] = useState(true);
-
   const windowRef = useRef<HTMLElement>(document.documentElement);
-  const [wWidth, wHeight] = useElementSize(windowRef);
-
-  // Redux Store
+  const wWidth = useElementSize(windowRef)[0];
+  const [mode, setMode] = useState(true);
+  
   const Locationselector = useAppSelector(selectLocation)
 
   useEffect(() => {
@@ -42,22 +37,24 @@ function App() {
       <div className="overlay"></div>
       <div className="container">
         <Header setMode={setMode} mode={mode}/>
-        {wWidth >= 1024 ? <div className='sec-container desktop-ds'>
-          <WeatherWise mode={mode}/>
-          <div className='content-container flex-col'>
-            <WeatherContent />
-            <WeatherChart />
-          </div>
-        </div>
+        {
+          wWidth >= 1024 ? 
+            <div className='sec-container desktop-ds'>
+              <WeatherWise mode={mode}/>
+              <div className='content-container flex-col'>
+                <WeatherContent />
+                <WeatherChart />
+              </div>
+            </div>
           :
-        <div className="sec-container mobile-ds">
-          <WeatherContent />
-          <div className='content-container flex-col'>
-            <HourlyForest />
-            <WeatherChart />
-            <WeatherWise mode={mode}/>
-          </div>
-        </div>
+            <div className="sec-container mobile-ds">
+              <WeatherContent />
+              <div className='content-container flex-col'>
+                <HourlyForest />
+                <WeatherChart />
+                <WeatherWise mode={mode}/>
+              </div>
+            </div>
         }
       </div>
     </div>

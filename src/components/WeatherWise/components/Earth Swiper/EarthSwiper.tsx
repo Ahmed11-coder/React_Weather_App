@@ -14,6 +14,7 @@ import { selectLocation } from '@store/slices/locationSlice';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
+import { Key } from 'react';
 
 
 export default function EarthSwiper({setSwiper, mode}: CustomSwiperProps) {
@@ -33,7 +34,8 @@ export default function EarthSwiper({setSwiper, mode}: CustomSwiperProps) {
             onSlideChange={(ind: any)=> setRandomCountryInfo({index: ind.activeIndex, dispatch})}
             className="slideArea"
             >
-            {currModeImgs.map((value, index)=> (
+
+            {currModeImgs.map((value: string | undefined, index: Key | null | undefined)=> (
                 <SwiperSlide>
                     {({isActive}) => (
                         <img src={value}  className={isActive ? "active" : "imgSlide"} loading="lazy" key={index} alt="Earth" />
