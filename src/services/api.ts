@@ -25,6 +25,6 @@ export const PEXELS_API_URL_MOBILE = (process.env.REACT_APP_PEXELS_API_BASE_URL_
 export const pexelsApiOptions = {
 	method: 'GET',
 	headers: {
-		Authorization: "M2UdQKOPRqhNonk0Gi79SG1voSTnUdO9tnHu09jl0ozm731QpV72ktD4"
+		Authorization: (process.env.REACT_APP_PEXELS_API_KEY as string)
 	}
 }

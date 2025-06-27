@@ -30,6 +30,7 @@
         backdrop-filter: none;
         padding: 0;
         padding-top: 30px;
+        max-width: 100%;
     }
     .sidebar::before {
         display: none;
@@ -99,7 +100,7 @@
 @media(min-width: 767px) {
     .status .status-container {
         position: relative;
-        height: 200px;
+        height: 220px;
         flex-direction: row;
         overflow: hidden;
     }
@@ -139,6 +140,12 @@
     color: rgba(255, 255, 255, 0.15);
     letter-spacing: 1px;
     font-size: 1.5rem;
+}
+
+@media (max-width: 767px) {
+    .status .screen {
+        max-height: 100%;
+    }
 }
 
 @media (min-width: 767px) and (max-width: 1024px) {

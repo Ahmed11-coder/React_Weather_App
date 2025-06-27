@@ -11,13 +11,13 @@
 @media (min-width: 767px) {
     .status-info {
         margin: 0;
+        padding: 10px;
     }
 }
 
 @media (min-width: 1024px) {
     .status-info {
         left: 110%;
-        padding: 10px;
     }
 }
 
