@@ -28,6 +28,8 @@
         width: 100%;
         background-color: transparent;
         backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        -moz-backdrop-filter: none;
         padding: 0;
         padding-top: 30px;
         max-width: 100%;
@@ -263,6 +265,8 @@ img.active {
 @media (max-width: 1024px) {
     .contries p {
         background-color: transparent;
+        -webkit-backdrop-filter: none;
+        -moz-backdrop-filter: none;
         backdrop-filter: none;
         border: none;
         font-size: 1.23rem;
