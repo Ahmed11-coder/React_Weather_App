@@ -18,6 +18,8 @@
         background-color: rgba(46, 46, 46, 0.08);
         mask: linear-gradient(transparent 5dvh, white, transparent 25dvh);
         backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        -moz-backdrop-filter: blur(2px);
     }
 }
 
