@@ -4,7 +4,7 @@ import { IPINFO_API_URL, WEATHER_API_FORECAST, WEATHER_API_HISTORY } from "@serv
 // Import Utlities
 import { userLocation } from "@store/slices/locationSlice";
 import { HourlyTemp, LocationState, Status, WeatherChartTable, WeatherInfo, WeatherParameter, WeatherParameters, WeatherStatus } from "types/types";
-import { ContinentIndex, countries, WEATHER_STATUS_CASES } from "./LocalData";
+import { ContinentIndex, countries, WEATHER_STATUS_CASES, WeatherStateImgs } from "./LocalData";
 
 export const getPreviousDays = (dayIndex: number, curDate: Date):string => {
     curDate.setDate(curDate.getDate() - dayIndex);
@@ -173,4 +173,10 @@ export const getWeatherInfo = async (location?:LocationState) : Promise<WeatherI
         HourlyForest: HourlyForest,
     }
     return weatherInfoResult;
+}
+
+export const getLocalBackground = (weatherStatus: string) => {
+    const imgs = WeatherStateImgs.filter((img: {category: string, img: string}) => img.category === weatherStatus);
+    const randomBackgroundIndex = getRandomIndex(imgs.length);
+    return imgs[randomBackgroundIndex].img;
 }

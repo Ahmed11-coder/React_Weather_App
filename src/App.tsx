@@ -6,13 +6,15 @@ import Header from "@components/Header/Header";
 import WeatherWise from '@components/WeatherWise/WeartherWise';
 import WeatherChart from '@components/Content/components/WeatherChart/WeatherChart';
 import WeatherContent from '@components/Content/WeatherContent';
-import { getWeatherInfo } from '@utils/HelperFuncs';
+import { getLocalBackground, getWeatherInfo } from '@utils/HelperFuncs';
 
 // Redux Store Utilities
 import { useAppSelector } from '@store/hooks';
 import { selectLocation } from '@store/slices/locationSlice';
 import HourlyForest from '@components/Content/components/HourlyForecast/HourlyForecast';
 import useElementSize from '@hooks/useElementSize';
+import { selectWeather } from '@store/slices/weatherSlice';
+import { WeatherCodes } from '@utils/LocalData';
 
 
 function App() {
@@ -21,6 +23,13 @@ function App() {
   const [mode, setMode] = useState(true);
   
   const Locationselector = useAppSelector(selectLocation)
+  const currentWeather = useAppSelector(selectWeather);
+
+  useEffect(() => {
+    const currentWeatherState = WeatherCodes.find((state) => state.codes.includes(currentWeather.condition.iconCode))!.category;
+    const background = getLocalBackground(currentWeatherState);
+    document.body.style.backgroundImage = `url(${background})`;
+  }, [])
 
   useEffect(() => {
     getWeatherInfo(Locationselector).then((res) => console.log(res));
