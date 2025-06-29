@@ -4,32 +4,33 @@ const importAll = (r: any, base?: BaseData) => {
     return r.keys().map((fileName: any) => {
         if (!base) return r(fileName);
         else {
-            const cleanFileName = fileName.slice(2, fileName.length - 4);
+            const cleanFileName = fileName.split('/').pop().split(".")[0].replace(/\d+/ig, '');
             const item = base.array.find((ele) => ele[base.property] === cleanFileName);
 
             return {
-                codes: item[base.targetProperty],
-                icon: r(fileName),
+                [base.returnedProperties[1]]: item[base.targetProperty],
+                [base.returnedProperties[0]]: r(fileName),
             }
         }
     });
 }
 
-const WeatherIconsNames = [
-    { codes: [1000], icon: 'Clear'},
-    { codes: [1003], icon: 'Partly-Cloudy'},
-    { codes: [1006], icon: 'Cloudy'},
-    { codes: [1009], icon: 'Very-Cloudy'},
-    { codes: [1240, 1243, 1246], icon: 'Shower-Rain'},
-    { codes: [1063, 1150, 1153, 1168, 1171, 1180, 1183, 1186, 1189, 1192, 1195, 1198, 1201], icon: 'Rain'},
-    { codes: [1087, 1273, 1276, 1279, 1282], icon: 'Thunderstorm'},
-    { codes: [1066, 1114, 1117, 1210, 1213, 1216, 1219, 1222, 1225, 1255, 1258], icon: 'Snow'},
-    { codes: [1030, 1135, 1147], icon: 'Fog'}
+export const WeatherCodes = [
+    { codes: [1000], category: 'Clear'},
+    { codes: [1003], category: 'Partly-Cloudy'},
+    { codes: [1006], category: 'Cloudy'},
+    { codes: [1009], category: 'Very-Cloudy'},
+    { codes: [1240, 1243, 1246], category: 'Shower-Rain'},
+    { codes: [1063, 1150, 1153, 1168, 1171, 1180, 1183, 1186, 1189, 1192, 1195, 1198, 1201], category: 'Rain'},
+    { codes: [1087, 1273, 1276, 1279, 1282], category: 'Thunderstorm'},
+    { codes: [1066, 1114, 1117, 1210, 1213, 1216, 1219, 1222, 1225, 1255, 1258], category: 'Snow'},
+    { codes: [1030, 1135, 1147], category: 'Fog'}
 ]
 
 export const DarkEarthImgs = importAll(require.context('../assets/images/dark', true, /\.svg$/));
 export const LightEarthImgs = importAll(require.context('../assets/images/light', true, /\.svg$/));
-export const WeatherIcons = importAll(require.context('../assets/Icons/Colored-Weather-Icons', true, /\.svg$/), {property: "icon", targetProperty: "codes" , array: WeatherIconsNames});
+export const WeatherIcons = importAll(require.context('../assets/Icons/Colored-Weather-Icons', true, /\.svg$/), {property: "category", targetProperty: "codes" , array: WeatherCodes, returnedProperties: ['icon', 'codes']});
+export const WeatherStateImgs = importAll(require.context('../assets/Images/Local-Backgrounds/', true, /\.webp$/), {property: "category", targetProperty: "category" , array: WeatherCodes, returnedProperties: ['img', 'category']});
 
 export const countries = require('@data/countries.json')['countries'];
 

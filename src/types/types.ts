@@ -120,4 +120,5 @@ export interface BaseData {
     property: string;
     targetProperty: string;
     array: any[];
+    returnedProperties: string[];
 }
