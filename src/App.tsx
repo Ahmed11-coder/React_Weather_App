@@ -27,13 +27,13 @@ function App() {
 
   useEffect(() => {
     const currentWeatherState = WeatherCodes.find((state) => state.codes.includes(currentWeather.condition.iconCode))!.category;
-    const background = getLocalBackground(currentWeatherState);
-    document.body.style.backgroundImage = `url(${background})`;
+    const newBackground = getLocalBackground(currentWeatherState);
+    document.body.style.backgroundImage = `url(${newBackground})`;
   }, [])
 
   useEffect(() => {
     getWeatherInfo(Locationselector).then((res) => console.log(res));
-
+    
     // Update Weather Data Every 15 Min
     // setInterval(async ():Promise<void> => {
     //   const weatherInfo = await fetch(`${WEATHER_API}&q=${Locationselector.city}`);
