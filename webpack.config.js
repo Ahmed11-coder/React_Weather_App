@@ -29,7 +29,7 @@ module.exports = {
                 use: ['style-loader', 'css-loader']
             },
             {
-                test: /\.(png|svg|jpe?g)$/i,
+                test: /\.(png|svg|jpe?g|webp)$/i,
                 type: "asset/resource",
             }
         ],
