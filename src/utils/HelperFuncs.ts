@@ -1,5 +1,5 @@
 // Import APIs
-import { IPINFO_API_URL, WEATHER_API_FORECAST, WEATHER_API_HISTORY } from "@services/api";
+import { IPINFO_API_URL, REACT_APP_UNSPLASH_API_BASE_URL, WEATHER_API_FORECAST, WEATHER_API_HISTORY } from "@services/api";
 
 // Import Utlities
 import { userLocation } from "@store/slices/locationSlice";
@@ -175,8 +175,20 @@ export const getWeatherInfo = async (location?:LocationState) : Promise<WeatherI
     return weatherInfoResult;
 }
 
+// Get Random Local Images Based On Weather State
 export const getLocalBackground = (weatherStatus: string) => {
     const imgs = WeatherStateImgs.filter((img: {category: string, img: string}) => img.category === weatherStatus);
     const randomBackgroundIndex = getRandomIndex(imgs.length);
     return imgs[randomBackgroundIndex].img;
+}
+
+// Get Random External Image From Unsplash Based On Weather State
+export const getExternalBackground = async (weatherState: string) => {
+    try {
+        const img = await fetch(`${REACT_APP_UNSPLASH_API_BASE_URL}&query=${weatherState} sky`);
+        const response = await img.json();
+        return response['urls']['full'];
+    } catch (e) {
+        return getLocalBackground(weatherState);
+    }
 }

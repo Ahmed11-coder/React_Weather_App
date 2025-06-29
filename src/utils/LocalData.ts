@@ -30,7 +30,7 @@ export const WeatherCodes = [
 export const DarkEarthImgs = importAll(require.context('../assets/images/dark', true, /\.svg$/));
 export const LightEarthImgs = importAll(require.context('../assets/images/light', true, /\.svg$/));
 export const WeatherIcons = importAll(require.context('../assets/Icons/Colored-Weather-Icons', true, /\.svg$/), {property: "category", targetProperty: "codes" , array: WeatherCodes, returnedProperties: ['icon', 'codes']});
-export const WeatherStateImgs = importAll(require.context('../assets/Images/Local-Backgrounds/', true, /\.webp$/), {property: "category", targetProperty: "category" , array: WeatherCodes, returnedProperties: ['img', 'category']});
+export const WeatherStateImgs = importAll(require.context('../assets/images/Local-Backgrounds/', true, /\.webp$/), {property: "category", targetProperty: "category" , array: WeatherCodes, returnedProperties: ['img', 'category']});
 
 export const countries = require('@data/countries.json')['countries'];
 
