@@ -30,12 +30,12 @@
     }
     #content p {
         font-size: 1.4rem;
-        align-items: flex-start;
     }
     #content p span {
         font-size: 0.75em;
     }
     .content--info {
+        margin-top: 0;
         margin-left: 0.2rem;
     }
     .content--info .left-side {
