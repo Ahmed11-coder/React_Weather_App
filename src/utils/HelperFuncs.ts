@@ -183,12 +183,9 @@ export const getLocalBackground = (weatherStatus: string) => {
 }
 
 // Get Random External Image From Unsplash Based On Weather State
-export const getExternalBackground = async (weatherState: string) => {
-    try {
-        const img = await fetch(`${REACT_APP_UNSPLASH_API_BASE_URL}&query=${weatherState} sky`);
-        const response = await img.json();
-        return response['urls']['full'];
-    } catch (e) {
-        return getLocalBackground(weatherState);
-    }
+export const getExternalBackground = (weatherState: string) => {
+    const img = fetch(`${REACT_APP_UNSPLASH_API_BASE_URL}&query=${weatherState} sky`).then((response) => response.json().then(data => {
+        return ((response.status === 200) ? `${data['urls']['raw']}&fit=max&auto=format&fm=webp&q=50` : getLocalBackground(weatherState));
+    }))
+    return img;
 }
