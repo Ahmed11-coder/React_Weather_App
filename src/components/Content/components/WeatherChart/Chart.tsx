@@ -12,7 +12,7 @@ import useElementSize from '@hooks/useElementSize';
 export default function Chart() {
     const currentWeather: WeatherInfo = useAppSelector(selectWeather);
     const ref = useRef<HTMLElement>(document.documentElement);
-    const [windowWidth, windowHeight]= useElementSize(ref);
+    const windowWidth= useElementSize(ref)[0];
 
     return (
         <ResponsiveContainer width='100%' height='100%'>

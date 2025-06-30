@@ -14,7 +14,6 @@ import { WeatherCodes, WeatherIcons } from '@utils/LocalData';
 import './WeatherContent.css';
 import { useEffect, useRef, useState } from 'react';
 import SearchedItem from './components/SearchedItem/SearchedItem';
-import { getExternalBackground } from '@utils/HelperFuncs';
 
 export default function WeatherContent() {
   const currentLocation: LocationState = useAppSelector(selectLocation);
@@ -35,15 +34,6 @@ export default function WeatherContent() {
         location: `${currentLocation.city}, ${currentLocation.country}`,
         text: currentWeather.condition.text
       }
-      const currentWeatherState = WeatherCodes.find((state) => state.codes.includes(currentWeather.condition.iconCode))!.category;
-          try {
-            (async () => {
-              const newBackground = await getExternalBackground(currentWeatherState);
-              document.body.style.backgroundImage = `url(${newBackground})`;
-            })()
-          } catch (error) {
-            console.log(error);
-          }
 
       if (searchItems.length == 0) setSearchItems([Item]);
       else setSearchItems([Item, searchItems[0]]);
