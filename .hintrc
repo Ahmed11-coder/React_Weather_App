@@ -16,6 +16,7 @@
           "inset"
         ]
       }
-    ]
+    ],
+    "apple-touch-icons": "off"
   }
 }

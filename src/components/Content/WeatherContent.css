@@ -141,9 +141,9 @@
 
 .searched--section-content .box:hover {
     flex-grow: 2;
-    backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
     -moz-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
 }
 
 .searched--section-content .box .temp-info img {
