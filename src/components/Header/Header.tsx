@@ -25,7 +25,7 @@ export default function Header(props: SetModeOptionProp) {
                 </div>
             </div>
             {/* <button className="dow btn arounded-40 background-blur-3">Download App</button> */}
-            <button className="btn mode arounded-40 background-blur-3 flex-center" onClick={() => props.setMode(!props.mode)}>
+            <button className="btn mode arounded-40 background-blur-3 flex-center" aria-label="mode" onClick={() => props.setMode(!props.mode)}>
                 {(props.mode) ? <Moon strokeWidth={1} className="icon" /> : <Sun strokeWidth={1} className="icon"/>}
             </button>
         </div>

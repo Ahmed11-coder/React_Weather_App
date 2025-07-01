@@ -72,7 +72,7 @@ export default function WeatherContent() {
           </div>
           <div className="searched--section flex-col">
             <div className='searched--section-header flex-bet-center'>
-              <h6>Recently Searched</h6>
+              <h2>Recently Searched</h2>
               <button type='button' className='flex-center'>See All <ArrowRight strokeWidth={1} className='icon'/></button>
             </div>
             <div className='searched--section-content flex-center'>

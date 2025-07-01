@@ -37,7 +37,7 @@ export default function WeatherWise(props: ModeOptionProp) {
             <h2 className="desktop-ds">WeatherWise</h2>
             <h3 className="especial-header mobile-ds">Status: </h3>
             <div className="status">
-                <h5 className="side-h desktop-ds">Status</h5>
+                <h3 className="side-h desktop-ds">Status</h3>
                 <div className="status-container flex-col flex-bet-center">
                     <Status swipe={statusSwiper}/>
                     <div className={`screen background-blur-8 ${statusSwiper ? "switch-status" : ""}`}>
@@ -60,8 +60,8 @@ export default function WeatherWise(props: ModeOptionProp) {
             </div>
             <div className="area">
                 <div className="area-h flex-bet-center">
-                    <h5 className="side-h desktop-ds">Select Area</h5>
-                    <h5 className="especial-header mobile-ds">Select Area: </h5>
+                    <h3 className="side-h desktop-ds">Select Area</h3>
+                    <h3 className="especial-header mobile-ds">Select Area: </h3>
                     <EarthBullets swiperRef={swiperRef}/>
                 </div>
             </div>

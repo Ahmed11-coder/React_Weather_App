@@ -94,6 +94,7 @@ export default function Search({isOpen} : SearchProp) {
     return (
         <AsyncPaginate
             placeholder="Search for city"
+            aria-label="Search"
             loadOptions={loadOptions}
             debounceTimeout={600}
             components={{
