@@ -145,14 +145,12 @@ html {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.spinning-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
 
 .spinning {
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 14px);
+    transform: translate(-50%, -50%);
     width: 32px;
     height: 32px;
     border-radius: 50%;
