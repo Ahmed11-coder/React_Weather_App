@@ -15,6 +15,7 @@ import HourlyForest from '@components/Content/components/HourlyForecast/HourlyFo
 import useElementSize from '@hooks/useElementSize';
 import { selectWeather } from '@store/slices/weatherSlice';
 import { WeatherCodes } from '@utils/LocalData';
+import { WEATHER_API_FORECAST } from '@services/api';
 
 
 function App() {
@@ -50,13 +51,7 @@ function App() {
   }, [currentWeather?.feelslike_temp, Locationselector?.locate])
 
   useEffect(() => {
-    getWeatherInfo(Locationselector).then((res) => console.log(res));
-    
-    // Update Weather Data Every 15 Min
-    // setInterval(async ():Promise<void> => {
-    //   const weatherInfo = await fetch(`${WEATHER_API}&q=${Locationselector.city}`);
-    //   const response = await weatherInfo.json();
-    // }, 900000) 
+    (async() => await getWeatherInfo(Locationselector))();
   }, [Locationselector.city])
 
   return (

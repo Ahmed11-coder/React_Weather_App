@@ -102,7 +102,8 @@
 @media(min-width: 767px) {
     .status .status-container {
         position: relative;
-        height: 220px;
+        height: 24vh;
+        max-height: 220px;
         flex-direction: row;
         overflow: hidden;
     }

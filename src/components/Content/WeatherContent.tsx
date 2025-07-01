@@ -8,7 +8,7 @@ import { selectWeather } from '@store/slices/weatherSlice';
 
 // Import Icons
 import { MapPin , ArrowRight } from 'lucide-react';
-import { WeatherCodes, WeatherIcons } from '@utils/LocalData';
+import { WeatherIcons } from '@utils/LocalData';
 
 // Import Stlyes
 import './WeatherContent.css';
