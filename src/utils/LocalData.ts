@@ -33,6 +33,7 @@ export const WeatherIcons = importAll(require.context('../assets/Icons/Colored-W
 export const WeatherStateImgs = importAll(require.context('../assets/images/Local-Backgrounds/', true, /\.webp$/), {property: "category", targetProperty: "category" , array: WeatherCodes, returnedProperties: ['img', 'category']});
 
 export const countries = require('@data/countries.json')['countries'];
+export const weatherRec = require('@data/weatherRecs.json');
 
 export const ContinentIndex = [["North America", "South America"], ["Europe", "Middle East", "Africa"], ["Asia"], ["Oceania"]]
 
