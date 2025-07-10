@@ -1,0 +1,530 @@
+{
+  "temperature": {
+    "good": {
+      "min": 10,
+      "max": 25,
+      "status": "optimal",
+      "description": "Comfortable temperature range for all activities with minimal thermal stress",
+      "healthImpact": "No temperature-related health risks",
+      "recommendations": [
+        "Perfect for outdoor activities like hiking, cycling, and sports",
+        "Light, breathable clothing is sufficient - cotton or linen fabrics work well",
+        "No need for heating or cooling adjustments in buildings",
+        "Ideal for extended outdoor exposure and physical activities",
+        "Great conditions for outdoor dining, picnics, and social gatherings",
+        "Safe for all age groups including infants and elderly"
+      ],
+      "activities": {
+        "recommended": ["outdoor sports", "hiking", "cycling", "gardening", "outdoor events"],
+        "duration": "unlimited",
+        "precautions": "none required"
+      }
+    },
+    "moderate": {
+      "hot": {
+        "min": 25,
+        "status": "caution",
+        "description": "Warm temperatures require attention to prevent overheating",
+        "healthImpact": "Minor heat stress possible, monitor for discomfort",
+        "recommendations": [
+          "Stay hydrated - drink 8-10 glasses of water throughout the day",
+          "Wear light-colored, loose-fitting, breathable clothing (cotton, linen)",
+          "Take regular breaks in shaded or air-conditioned areas every 30-60 minutes",
+          "Monitor for signs of overheating (excessive sweating, dizziness, fatigue)",
+          "Reduce intensity of strenuous outdoor activities",
+          "Avoid peak heat hours (10 AM - 4 PM) for intensive activities",
+          "Use sunscreen and wear hats to prevent additional heat from sun exposure"
+        ],
+        "activities": {
+          "recommended": ["light outdoor activities", "swimming", "indoor sports", "early morning/evening activities"],
+          "duration": "1-2 hours with breaks",
+          "precautions": "monitor for heat stress symptoms"
+        }
+      },
+      "cold": {
+        "min": 0,
+        "status": "caution",
+        "description": "Cool temperatures require preparation to maintain warmth",
+        "healthImpact": "Minor cold stress possible, monitor for discomfort",
+        "recommendations": [
+          "Wear layered clothing for easy temperature adjustment throughout the day",
+          "Dress warmly with insulating layers - wool, fleece, or synthetic materials",
+          "Take regular breaks in heated areas every 30-60 minutes",
+          "Monitor for signs of getting too cold (shivering, numbness in extremities)",
+          "Protect extremities with gloves, warm socks, and insulated footwear",
+          "Keep moving to maintain body heat during outdoor activities",
+          "Have warm beverages available to help maintain core temperature"
+        ],
+        "activities": {
+          "recommended": ["winter sports", "short outdoor excursions", "indoor activities", "heated outdoor areas"],
+          "duration": "1-2 hours with warming breaks",
+          "precautions": "monitor for cold stress symptoms"
+        }
+      }
+    },
+    "dangerous": {
+      "hot": {
+        "min": 32,
+        "status": "high_risk",
+        "description": "Extreme heat poses serious health risks including heat stroke",
+        "healthImpact": "High risk of heat-related illness, heat exhaustion, and heat stroke",
+        "recommendations": [
+          "Avoid prolonged outdoor exposure - limit to 15-30 minutes maximum",
+          "Seek air-conditioned environments immediately when feeling uncomfortable",
+          "Wear cooling vests or wet towels if outdoor exposure is necessary",
+          "Monitor for heat exhaustion symptoms (nausea, weakness, rapid heartbeat, confusion)",
+          "Have emergency cooling supplies ready (ice packs, cold towels, electrolyte drinks)",
+          "Never leave anyone (especially children, elderly, or pets) in vehicles",
+          "Stay near emergency services and have medical contacts readily available",
+          "Increase fluid intake significantly - sports drinks may be beneficial"
+        ],
+        "activities": {
+          "recommended": ["indoor air-conditioned activities only", "essential travel only"],
+          "duration": "minimal outdoor exposure",
+          "precautions": "emergency heat illness prevention and treatment supplies required"
+        }
+      },
+      "cold": {
+        "min": 0,
+        "status": "high_risk",
+        "description": "Extreme cold poses serious health risks including hypothermia and frostbite",
+        "healthImpact": "High risk of hypothermia, frostbite, and cold-related injuries",
+        "recommendations": [
+          "Avoid prolonged outdoor exposure - limit to 15-30 minutes maximum",
+          "Seek heated environments immediately when feeling uncomfortable",
+          "Wear multiple insulating layers and waterproof outer shell",
+          "Monitor for hypothermia symptoms (confusion, slurred speech, drowsiness, shivering stops)",
+          "Have emergency warming supplies ready (blankets, hot beverages, heat packs)",
+          "Never leave anyone (especially children, elderly, or pets) in unheated vehicles",
+          "Stay near emergency services and have medical contacts readily available",
+          "Protect all exposed skin - cover face, hands, and feet completely"
+        ],
+        "activities": {
+          "recommended": ["indoor heated activities only", "essential travel only"],
+          "duration": "minimal outdoor exposure",
+          "precautions": "emergency hypothermia prevention and treatment supplies required"
+        }
+      }
+    }
+  },
+  "airQuality": {
+    "good": {
+      "range": "us-epa-index 1-3 (Good to Moderate)",
+      "status": "optimal",
+      "description": "Air quality is safe for everyone including sensitive groups",
+      "healthImpact": "No respiratory health concerns",
+      "recommendations": [
+        "Safe for all outdoor activities and exercise including high-intensity workouts",
+        "Windows can be opened for fresh air circulation",
+        "No restrictions for sensitive groups (asthma, heart disease, elderly, children)",
+        "Perfect conditions for outdoor sports and recreational activities",
+        "Ideal for outdoor dining and social gatherings",
+        "Great time for outdoor photography and nature activities"
+      ],
+      "activities": {
+        "recommended": ["all outdoor activities", "exercise", "sports", "outdoor work"],
+        "duration": "unlimited",
+        "precautions": "none required"
+      }
+    },
+    "moderate": {
+      "range": "us-epa-index 4-6 (Moderate for Sensitive Groups)",
+      "status": "caution",
+      "description": "Air quality may affect sensitive individuals but is acceptable for most people",
+      "healthImpact": "Possible respiratory irritation for sensitive individuals",
+      "recommendations": [
+        "Limit outdoor activities if you have respiratory conditions (asthma, COPD, heart disease)",
+        "Consider wearing a mask (N95 or equivalent) if you're sensitive to air pollution",
+        "Keep windows closed and use air purifiers indoors, especially in bedrooms",
+        "Monitor local air quality alerts and forecasts throughout the day",
+        "Reduce outdoor exercise intensity and duration for sensitive individuals",
+        "Children and elderly should limit prolonged outdoor activities"
+      ],
+      "activities": {
+        "recommended": ["light outdoor activities", "indoor alternatives preferred"],
+        "duration": "1-2 hours for sensitive groups",
+        "precautions": "monitor respiratory symptoms"
+      }
+    },
+    "dangerous": {
+      "range": "us-epa-index 7-10 (Unhealthy to Hazardous)",
+      "status": "high_risk",
+      "description": "Air quality poses health risks to everyone, especially sensitive groups",
+      "healthImpact": "High risk of respiratory and cardiovascular effects",
+      "recommendations": [
+        "Stay indoors with windows and doors closed - use air conditioning if available",
+        "Wear N95 or higher-grade masks when going outside is absolutely necessary",
+        "Avoid all outdoor exercise and strenuous activities",
+        "Use air purifiers and avoid activities that create indoor pollution (cooking, smoking)",
+        "Seek medical attention if experiencing breathing difficulties, chest pain, or unusual fatigue",
+        "Cancel outdoor events and activities until air quality improves",
+        "Stock up on essential supplies to minimize outdoor trips"
+      ],
+      "activities": {
+        "recommended": ["indoor activities only", "essential errands only"],
+        "duration": "minimal outdoor exposure",
+        "precautions": "respiratory protection required"
+      }
+    }
+  },
+  "windSpeed": {
+    "good": {
+      "range": "0-20 kph (Calm to Light Breeze)",
+      "status": "optimal",
+      "description": "Light winds provide pleasant conditions with no safety concerns",
+      "healthImpact": "No wind-related health or safety risks",
+      "recommendations": [
+        "Perfect conditions for all outdoor activities including water sports",
+        "Safe for all types of outdoor equipment, decorations, and temporary structures",
+        "No restrictions for outdoor events, markets, or gatherings",
+        "Ideal for activities like picnics, outdoor dining, and children's play",
+        "Great for drone flying, kite flying, and other wind-sensitive activities",
+        "Perfect for outdoor photography and filming"
+      ],
+      "activities": {
+        "recommended": ["all outdoor activities", "water sports", "outdoor events"],
+        "duration": "unlimited",
+        "precautions": "none required"
+      }
+    },
+    "moderate": {
+      "range": "20-40 kph (Moderate to Fresh Breeze)",
+      "status": "caution",
+      "description": "Moderate winds require some precautions for safety and comfort",
+      "healthImpact": "Possible debris hazards, increased difficulty with balance",
+      "recommendations": [
+        "Secure lightweight outdoor items (umbrellas, chairs, decorations, signage)",
+        "Be cautious with large objects that could catch wind (tarps, awnings, banners)",
+        "Consider wind direction when planning outdoor activities and seating arrangements",
+        "Monitor weather updates for potential wind increases throughout the day",
+        "Use windbreaks or sheltered areas for outdoor dining and activities",
+        "Exercise caution when opening car doors in parking areas"
+      ],
+      "activities": {
+        "recommended": ["most outdoor activities with precautions", "avoid wind-sensitive activities"],
+        "duration": "normal with wind awareness",
+        "precautions": "secure loose items"
+      }
+    },
+    "dangerous": {
+      "range": "> 40 kph (Strong to Gale Force Winds)",
+      "status": "high_risk",
+      "description": "Strong winds pose significant safety hazards and property damage risks",
+      "healthImpact": "High risk of injury from flying debris and falling objects",
+      "recommendations": [
+        "Bring all outdoor furniture, decorations, and loose items indoors immediately",
+        "Avoid walking under trees, power lines, or near tall structures that could fall",
+        "Stay away from power lines and report any downed lines immediately",
+        "Postpone all outdoor activities until winds subside to safe levels",
+        "Be extremely cautious when driving, especially high-profile vehicles (trucks, RVs)",
+        "Prepare for potential power outages and have emergency supplies ready",
+        "Check on neighbors and secure any community areas or shared spaces"
+      ],
+      "activities": {
+        "recommended": ["indoor activities only", "emergency activities only"],
+        "duration": "no outdoor exposure",
+        "precautions": "emergency preparedness required"
+      }
+    }
+  },
+  "gustSpeed": {
+    "good": {
+      "range": "0-30 kph (Light to Moderate Gusts)",
+      "status": "optimal",
+      "description": "Light gusts provide refreshing conditions without safety concerns",
+      "healthImpact": "No gust-related safety risks",
+      "recommendations": [
+        "No special precautions needed for wind gusts",
+        "Safe for all outdoor activities and events without restrictions",
+        "Normal outdoor setup and equipment can be used safely",
+        "Perfect conditions for outdoor recreation and sports",
+        "Ideal for outdoor dining and social gatherings",
+        "Great for activities that benefit from light air movement"
+      ],
+      "activities": {
+        "recommended": ["all outdoor activities", "outdoor events", "water activities"],
+        "duration": "unlimited",
+        "precautions": "none required"
+      }
+    },
+    "moderate": {
+      "range": "30-60 kph (Strong to Very Strong Gusts)",
+      "status": "caution",
+      "description": "Strong gusts require increased awareness and precautions",
+      "healthImpact": "Possible sudden loss of balance, flying debris risk",
+      "recommendations": [
+        "Secure items that could be blown away suddenly (hats, papers, lightweight furniture)",
+        "Be prepared for sudden changes in wind intensity - stay alert",
+        "Hold onto hats, umbrellas, and loose clothing when outdoors",
+        "Stay alert when walking near trees, signs, or structures that could be affected",
+        "Consider postponing activities involving balance (cycling, skateboarding)",
+        "Use caution when opening doors, especially car doors in parking areas"
+      ],
+      "activities": {
+        "recommended": ["most activities with caution", "avoid balance-sensitive activities"],
+        "duration": "normal with increased awareness",
+        "precautions": "secure loose items, stay alert"
+      }
+    },
+    "dangerous": {
+      "range": "> 60 kph (Severe to Extreme Gusts)",
+      "status": "high_risk",
+      "description": "Severe gusts are extremely dangerous and can cause serious injury",
+      "healthImpact": "High risk of injury from sudden impacts and flying debris",
+      "recommendations": [
+        "Avoid going outdoors unless absolutely necessary for emergency situations",
+        "Stay away from windows and glass doors that could shatter from debris",
+        "Expect power outages and have emergency supplies ready (flashlights, batteries, food)",
+        "Do not drive unless it's a life-threatening emergency",
+        "Report downed power lines, damaged trees, or dangerous debris immediately",
+        "Prepare for potential structural damage and have emergency contacts ready",
+        "Stay indoors and away from large windows until gusts subside"
+      ],
+      "activities": {
+        "recommended": ["indoor activities only", "emergency shelter"],
+        "duration": "no outdoor exposure",
+        "precautions": "emergency shelter and supplies required"
+      }
+    }
+  },
+  "precipitation": {
+    "good": {
+      "range": "0-2 mm (Dry to Light Drizzle)",
+      "status": "optimal",
+      "description": "Minimal precipitation with negligible impact on activities",
+      "healthImpact": "No precipitation-related health or safety concerns",
+      "recommendations": [
+        "Light rain jacket or umbrella may be sufficient for comfort",
+        "Roads and walkways remain safe for normal travel and activities",
+        "Outdoor activities can continue with minimal or no adjustments",
+        "Perfect weather for indoor activities with occasional outdoor excursions",
+        "Ideal for photography - dramatic skies without safety concerns",
+        "Great for gardening and outdoor work"
+      ],
+      "activities": {
+        "recommended": ["all outdoor activities", "travel", "outdoor work"],
+        "duration": "unlimited",
+        "precautions": "light rain gear if desired"
+      }
+    },
+    "moderate": {
+      "range": "2-10 mm (Light to Moderate Rain)",
+      "status": "caution",
+      "description": "Moderate rain requires preparation and affects outdoor activities",
+      "healthImpact": "Slippery conditions increase fall risk",
+      "recommendations": [
+        "Carry waterproof clothing, umbrellas, and rain gear",
+        "Allow extra time for travel due to wet conditions and reduced visibility",
+        "Be cautious of slippery surfaces and reduced traction on walkways and roads",
+        "Consider moving outdoor activities indoors or to covered areas",
+        "Use appropriate footwear with good traction for wet surfaces",
+        "Check drainage around your property to prevent water accumulation"
+      ],
+      "activities": {
+        "recommended": ["indoor activities", "covered outdoor areas", "essential travel"],
+        "duration": "limited outdoor exposure",
+        "precautions": "waterproof gear, extra travel time"
+      }
+    },
+    "dangerous": {
+      "range": "> 10 mm (Heavy Rain to Downpour)",
+      "status": "high_risk",
+      "description": "Heavy precipitation creates hazardous conditions and flood risks",
+      "healthImpact": "High risk of accidents, flooding, and getting stranded",
+      "recommendations": [
+        "Avoid non-essential travel and outdoor activities completely",
+        "Watch for flooding in low-lying areas, near waterways, and in underpasses",
+        "Never drive through flooded roads or walkways - turn around, don't drown",
+        "Prepare for potential power outages and communication disruptions",
+        "Have emergency supplies ready including food, water, flashlights, and batteries",
+        "Monitor local emergency alerts and evacuation notices",
+        "Stay informed about road closures and emergency shelter locations"
+      ],
+      "activities": {
+        "recommended": ["indoor activities only", "emergency preparedness"],
+        "duration": "no outdoor exposure",
+        "precautions": "emergency supplies and flood preparedness"
+      }
+    }
+  },
+  "visibility": {
+    "good": {
+      "range": "≥ 8 km (Clear to Excellent Visibility)",
+      "status": "optimal",
+      "description": "Excellent visibility for all activities and transportation",
+      "healthImpact": "No visibility-related safety concerns",
+      "recommendations": [
+        "Safe for all types of travel and transportation without restrictions",
+        "Perfect conditions for sightseeing, photography, and outdoor recreation",
+        "No restrictions for outdoor activities or sports",
+        "Ideal for driving, cycling, walking, and all forms of transportation",
+        "Great for outdoor events and activities requiring good visibility",
+        "Perfect for navigation and wayfinding"
+      ],
+      "activities": {
+        "recommended": ["all activities", "travel", "outdoor sports", "photography"],
+        "duration": "unlimited",
+        "precautions": "none required"
+      }
+    },
+    "moderate": {
+      "range": "4-8 km (Moderate to Good Visibility)",
+      "status": "caution",
+      "description": "Reduced visibility requires extra caution, especially for travel",
+      "healthImpact": "Increased accident risk due to reduced visibility",
+      "recommendations": [
+        "Use headlights when driving even during daytime hours",
+        "Reduce speed and increase following distance while driving",
+        "Be extra cautious at intersections, crosswalks, and merge points",
+        "Consider postponing non-essential travel if visibility continues to decrease",
+        "Use well-lit routes and stay on familiar paths when walking",
+        "Keep emergency supplies in vehicles in case of unexpected delays"
+      ],
+      "activities": {
+        "recommended": ["essential travel with caution", "familiar routes only"],
+        "duration": "normal with increased caution",
+        "precautions": "use lights, reduce speed, increase following distance"
+      }
+    },
+    "dangerous": {
+      "range": "< 4 km (Poor to Very Poor Visibility)",
+      "status": "high_risk",
+      "description": "Poor visibility creates dangerous conditions for all activities",
+      "healthImpact": "High risk of accidents and getting lost or stranded",
+      "recommendations": [
+        "Avoid driving unless absolutely necessary for emergency situations",
+        "Use fog lights, hazard lights, and follow road markers when driving",
+        "Stay on main roads and avoid unfamiliar or secondary routes",
+        "Walk close to buildings and use well-lit, familiar paths only",
+        "Have emergency contacts and location sharing enabled on devices",
+        "Carry flashlights, emergency supplies, and communication devices",
+        "Consider postponing all non-essential activities until visibility improves"
+      ],
+      "activities": {
+        "recommended": ["indoor activities only", "emergency travel only"],
+        "duration": "minimal outdoor exposure",
+        "precautions": "emergency navigation and communication equipment"
+      }
+    }
+  },
+  "uvIndex": {
+    "good": {
+      "range": "0-2 (Low Risk)",
+      "status": "optimal",
+      "description": "Minimal UV exposure risk for extended outdoor activities",
+      "healthImpact": "No UV-related health concerns for most people",
+      "recommendations": [
+        "No special sun protection required for most people during normal activities",
+        "Safe for extended outdoor activities without UV concerns",
+        "Sunglasses recommended for comfort and eye protection but not essential",
+        "Perfect conditions for outdoor recreation without time restrictions",
+        "Great for outdoor sports, hiking, and all-day outdoor events",
+        "Ideal for children's outdoor play and activities"
+      ],
+      "activities": {
+        "recommended": ["all outdoor activities", "extended sun exposure", "outdoor sports"],
+        "duration": "unlimited",
+        "precautions": "basic eye protection for comfort"
+      }
+    },
+    "moderate": {
+      "range": "3-7 (Moderate to High Risk)",
+      "status": "caution",
+      "description": "UV protection becomes important to prevent skin damage",
+      "healthImpact": "Risk of sunburn and long-term skin damage without protection",
+      "recommendations": [
+        "Apply broad-spectrum sunscreen (SPF 30+) to all exposed skin 30 minutes before going outside",
+        "Wear protective clothing, wide-brimmed hats, and UV-blocking sunglasses",
+        "Seek shade during peak sun hours (10 AM - 4 PM) when UV is strongest",
+        "Reapply sunscreen every 2 hours or after swimming, sweating, or toweling off",
+        "Consider UV-protective clothing for extended outdoor activities",
+        "Monitor skin for changes and protect children with extra care"
+      ],
+      "activities": {
+        "recommended": ["outdoor activities with sun protection", "shaded activities preferred"],
+        "duration": "normal with UV protection",
+        "precautions": "sunscreen, protective clothing, shade seeking"
+      }
+    },
+    "dangerous": {
+      "range": "8+ (Very High to Extreme Risk)",
+      "status": "high_risk",
+      "description": "Extreme UV levels pose serious health risks including severe burns",
+      "healthImpact": "High risk of severe sunburn, skin damage, and heat-related illness",
+      "recommendations": [
+        "Minimize sun exposure, especially during midday hours (10 AM - 4 PM)",
+        "Use SPF 50+ broad-spectrum sunscreen and reapply every hour",
+        "Wear long-sleeved shirts, long pants, wide-brimmed hats, and wrap-around sunglasses",
+        "Stay in shade or indoors during peak UV hours whenever possible",
+        "Protect eyes with UV-blocking sunglasses and consider a UV umbrella",
+        "Monitor for signs of heat exhaustion and sunburn throughout the day",
+        "Keep emergency supplies for treating sunburn and heat-related illness"
+      ],
+      "activities": {
+        "recommended": ["indoor activities during peak hours", "minimal sun exposure"],
+        "duration": "limited outdoor exposure",
+        "precautions": "maximum UV protection and heat illness prevention"
+      }
+    }
+  },
+  "humidity": {
+    "good": {
+      "range": "30-60% (Comfortable)",
+      "status": "optimal",
+      "description": "Optimal humidity levels for comfort, health, and performance",
+      "healthImpact": "No humidity-related health or comfort concerns",
+      "recommendations": [
+        "Comfortable conditions for all activities without humidity concerns",
+        "No special precautions needed for humidity-related issues",
+        "Perfect for indoor and outdoor activities, exercise, and work",
+        "Ideal conditions for respiratory health and overall comfort",
+        "Great for outdoor sports and physical activities",
+        "Perfect for sleeping and indoor comfort"
+      ],
+      "activities": {
+        "recommended": ["all activities", "exercise", "outdoor sports", "work"],
+        "duration": "unlimited",
+        "precautions": "none required"
+      }
+    },
+    "moderate": {
+      "range": "60-80% (Humid)",
+      "status": "caution",
+      "description": "Elevated humidity affects comfort and body's cooling efficiency",
+      "healthImpact": "Reduced cooling efficiency, increased heat stress risk",
+      "recommendations": [
+        "Stay hydrated as sweating becomes less effective for cooling",
+        "Use fans, air conditioning, or dehumidifiers to improve comfort",
+        "Wear lightweight, breathable, moisture-wicking clothing",
+        "Take more frequent breaks during physical activities",
+        "Monitor for signs of heat exhaustion (heavy sweating, weakness, dizziness)",
+        "Consider timing outdoor activities for cooler parts of the day"
+      ],
+      "activities": {
+        "recommended": ["light activities", "indoor air-conditioned spaces preferred"],
+        "duration": "reduced for strenuous activities",
+        "precautions": "increased hydration, cooling strategies"
+      }
+    },
+    "dangerous": {
+      "range": "> 80% (Very Humid to Oppressive)",
+      "status": "high_risk",
+      "description": "Extremely high humidity severely impairs body's cooling ability",
+      "healthImpact": "High risk of heat exhaustion, heat stroke, and dehydration",
+      "recommendations": [
+        "Limit outdoor physical activities to prevent dangerous overheating",
+        "Stay in air-conditioned environments when possible",
+        "Increase fluid intake significantly to prevent dehydration",
+        "Monitor for heat-related illness symptoms (nausea, dizziness, confusion, rapid heartbeat)",
+        "Use dehumidifiers indoors to improve air quality and comfort",
+        "Wear minimal, loose-fitting, light-colored clothing",
+        "Have emergency cooling supplies ready (ice packs, cold towels, electrolyte drinks)"
+      ],
+      "activities": {
+        "recommended": ["indoor air-conditioned activities only", "minimal outdoor exposure"],
+        "duration": "very limited outdoor activities",
+        "precautions": "heat illness prevention and emergency cooling supplies"
+      }
+    }
+  }
+}
