@@ -29,7 +29,7 @@ export const weatherSlice = createSlice({
             state.max_temp = action.payload.max_temp;
             state.min_temp = action.payload.min_temp;
             state.HourlyForest = action.payload.HourlyForest;
-            state.recommendations = action.payload.recommendations;
+            state.recommendation = action.payload.recommendation;
         }
     }
 })

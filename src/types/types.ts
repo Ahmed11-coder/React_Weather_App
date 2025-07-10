@@ -97,13 +97,7 @@ export interface WeatherInfo extends WeatherParameters {
     Current7Days: WeatherChartTable[];
     HourlyForest: HourlyTemp[];
     status: WeatherStatus;
-    recommendations: {
-        text: string,
-        description: string,
-        healthImpact: string,
-        precautions: string,
-        status: string,
-    },
+    recommendation: string,
 }
 
 export interface Point {
