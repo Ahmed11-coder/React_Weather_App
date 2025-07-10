@@ -92,16 +92,13 @@
     word-spacing: 0.1rem;
 }
 
+.recommendations-info {align-self: flex-start;}
+
 .searched--section {
     width: 100%;
 }
 .searched--section-header {
     margin-bottom: 1rem;
-}
-.searched--section-header h2 {
-    color: #bbb;
-    font-weight: 400;
-    font-size: 1rem;
 }
 
 .searched--section-header button {

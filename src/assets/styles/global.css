@@ -131,6 +131,13 @@ html {
     background-color: white;
 }
 
+.section-header {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.15rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
 @media (max-width: 1024px) {
     .desktop-ds {
         display: none;

@@ -67,12 +67,14 @@ export default function WeatherContent() {
           </div>
         </div>
         <div className='right-side flex-bet-center flex-col'>
-          <div className="text-info">
-            <p>With real time data and advanced technology, we provide reliable forecasts for any location around the world.</p>
+          <div className="recommendations-info">
+
+            <h2 className='section-header'>Recommendations : </h2>
+
           </div>
           <div className="searched--section flex-col">
             <div className='searched--section-header flex-bet-center'>
-              <h2>Recently Searched</h2>
+              <h2 className='section-header'>Recently Searched</h2>
               <button type='button' className='flex-center'>See All <ArrowRight strokeWidth={1} className='icon'/></button>
             </div>
             <div className='searched--section-content flex-center'>
