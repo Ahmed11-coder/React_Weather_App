@@ -4,7 +4,7 @@ import { IPINFO_API_URL, REACT_APP_UNSPLASH_API_BASE_URL, WEATHER_API_FORECAST, 
 // Import Utlities
 import { userLocation } from "@store/slices/locationSlice";
 import { HourlyTemp, LocationState, Status, WeatherChartTable, WeatherInfo, WeatherParameter, WeatherParameters, WeatherStatus } from "types/types";
-import { ContinentIndex, countries, WEATHER_STATUS_CASES, WeatherStateImgs } from "./LocalData";
+import { ContinentIndex, countries, WEATHER_STATUS_CASES, weatherRec, WeatherStateImgs } from "./LocalData";
 
 export const getPreviousDays = (dayIndex: number, curDate: Date):string => {
     curDate.setDate(curDate.getDate() - dayIndex);
@@ -70,7 +70,7 @@ export const getDangerousStatus = (parameters: WeatherParameters, dayBefore: any
     const WeahterParams: WeatherParameter[] = [
         {parameter: "Temperature", value: feelslike_temp,minValue: -50,maxValue: 65, percentage: getChangePercentage(feelslike_temp, dayBefore["feelslike_c"])},
         {parameter: "Wind Speed", value: wind_kph, minValue: 0,maxValue: 60,percentage: getChangePercentage(wind_kph, dayBefore["wind_kph"])},
-        {parameter: "Wind Gust", value: gust_kph,minValue: 0,maxValue: 80, percentage: getChangePercentage(gust_kph, dayBefore["gust_kph"])},
+        {parameter: "Gust Speed", value: gust_kph,minValue: 0,maxValue: 80, percentage: getChangePercentage(gust_kph, dayBefore["gust_kph"])},
         {parameter: "Air Quality", value: air_quality,minValue: 1,maxValue: 10, percentage: 0},
         {parameter: "Humidity", value: humidity,minValue: 0,maxValue: 100, percentage: getChangePercentage(humidity, dayBefore["humidity"])},
         {parameter: "Visibility", value: vis_km,minValue: 0,maxValue: 12, percentage: getChangePercentage(vis_km, dayBefore["vis_km"])},
@@ -93,7 +93,7 @@ export const getDangerousStatus = (parameters: WeatherParameters, dayBefore: any
     
     WeahterParams.forEach(categorizeParameter);
         
-    const result = (danStat.length) ? {...danStat[0], text: "Dangerous"} : (modStat.length ? {...modStat[0], text: "Modeate"} : {...goodStat[0], text: "Good"});
+    const result = (danStat.length) ? {...danStat[0], text: "Dangerous"} : (modStat.length ? {...modStat[0], text: "Moderate"} : {...goodStat[0], text: "Good"});
     return result;
 }
 
@@ -157,6 +157,14 @@ export const getWeatherInfo = async (location?:LocationState) : Promise<WeatherI
     
     const status: WeatherStatus = getDangerousStatus(parameters, dayBefore);
     
+    let recommendations = weatherRec[status.parameter.toLowerCase().replace(' ', '')][status.text.toLowerCase()];
+    if (status.parameter === "Temperature" && status.text !== "Good") {
+        recommendations = recommendations[status.value > 10 ? 'hot': 'cold'];
+    }
+    recommendations = recommendations["recommendations"];
+
+    console.log(recommendations)
+
     const weatherInfoResult: WeatherInfo = {
         ...parameters,
         current_temp: temp_c,
@@ -171,6 +179,7 @@ export const getWeatherInfo = async (location?:LocationState) : Promise<WeatherI
         min_temp: nextDays[0]["day"]["mintemp_c"],
         status: status,
         HourlyForest: HourlyForest,
+        recommendation: recommendations[getRandomIndex(recommendations.length)],
     }
     return weatherInfoResult;
 }

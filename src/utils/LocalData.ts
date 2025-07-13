@@ -41,7 +41,7 @@ export const WEATHER_STATUS_CASES: Record<string, Status> = {
     "temperature": {good: {min: 10, max: 25}, moderate: {min: 0, max: 32}},
     "air_quality": {good: {min: 1, max: 3}, moderate: {min: 4, max: 6}},
     "wind_speed": {good: {min: 0, max: 20}, moderate: {min: 20, max: 40}},
-    "wind_gust": {good: {min: 0, max: 30}, moderate: {min: 30, max: 60}},
+    "gust_speed": {good: {min: 0, max: 30}, moderate: {min: 30, max: 60}},
     "precipitation": {good: {min: 0, max: 2}, moderate: {min: 2, max: 10}},
     "visibility": {good: {min: 8, max: 100}, moderate: {min: 4, max: 8}},
     "humidity": {good: {min: 0, max: 60}, moderate: {min: 30, max: 80}},
