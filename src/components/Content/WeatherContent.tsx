@@ -68,9 +68,7 @@ export default function WeatherContent() {
         </div>
         <div className='right-side flex-bet-center flex-col'>
           <div className="recommendations-info">
-
-            <h2 className='section-header'>Recommendations : </h2>
-
+              <p><span className='section-header'>Recommended: </span>{currentWeather.recommendation}</p>
           </div>
           <div className="searched--section flex-col">
             <div className='searched--section-header flex-bet-center'>
