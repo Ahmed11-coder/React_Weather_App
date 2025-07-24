@@ -21,6 +21,47 @@ A sleek, modern weather application built with React and TypeScript that provide
   - Precipitation
   - Pressure
 
+## 🛠️ Built With
+
+- React 18+
+- TypeScript
+- Redux Toolkit
+- React Select Async Paginate
+- Lucide React
+- CSS with vendor prefixes for cross-browser compatibility
+
+## Project Structure
+
+```
+src/
+├── assets/
+│   ├── images/
+│   ├── icons/
+│   └── styles/
+├── components/
+│   ├── Content/
+│   │   └── Components/
+│   │       └── HourlyForecast/
+│   │       └── SearchedItem/
+|   |       └── WeatherChart/
+│   │   
+|   ├── WeatherWise/
+│   │   └── Components/
+│   │       └── Bullets/
+│   │       └── Earth Swiper/
+│   │       └── Earth Status/
+|   |       └── Dangerous Rate/
+│   └── Header/
+│       └── Search/
+├── hooks/
+├── data/
+├── services/
+├── store/
+|   └── slices/
+├── utils/
+└── types/
+```
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -45,8 +86,13 @@ A sleek, modern weather application built with React and TypeScript that provide
 
 3. Create a `.env` file in the root directory and add your API keys:
    ```
-   REACT_APP_WEATHER_API_KEY=your_weather_api_key
-   REACT_APP_GEO_API_KEY=your_geo_api_key
+   REACT_APP_GEO_API_BASE_URL=your_geo_api_base_url
+   REACT_APP_GEO_API=your_geo_api
+   REACT_APP_GEO_API_HOST=your_geo_api_host
+   REACT_APP_WEATHER_API_FORECAST_BASE_URL=your_weather_api_forecast_base_url
+   REACT_APP_WEATHER_API_HISTORY_BASE_URL=your_weather_api_history_base_url
+   REACT_APP_IPINFO_API_BASE_URL=your_ipinfo_api_base_url
+   REACT_APP_UNSPLASH_API_BASE_URL=your_unsplash_api_base_url
    ```
 
 4. Start the development server:
@@ -56,24 +102,23 @@ A sleek, modern weather application built with React and TypeScript that provide
    yarn start
    ```
 
-## 🛠️ Built With
+## Usage
 
-- React 18+
-- TypeScript
-- Redux Toolkit
-- React Icons
-- Axios
-- Styled Components
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+1. Search for a city using the search bar or swipe between 4 continental views
+2. View current weather conditions and classification status (Good/Moderate/Dangerous)
+3. Switch between dark and light mode using the mode toggle
+4. View recent 2 search history
+5. Get real-time weather updates automatically
+6. Monitor health impact parameters (temperature, air quality)
+7. Check physical hazard risks (wind, precipitation)
+8. Track operational safety metrics (visibility)
+9. Review preventable risks (UV, humidity)
 
 ## 🙏 Acknowledgments
 
 - Weather data provided by [WeatherAPI.com](https://www.weatherapi.com/)
 - Icons by [Lucide Icons](https://lucide.dev/)
-- Desktop UI Design by [Linur](https://dribbble.com/shots/23556592-Weather-Forecasting-Tablet-App-Design)
+- Desktop UI Designed by [Linur](https://dribbble.com/shots/23556592-Weather-Forecasting-Tablet-App-Design)
 
 ## 🌦️ Weather Classification System
 
@@ -156,80 +201,19 @@ The app prioritizes weather parameters based on their impact and provides specif
    - Modern blur effects
    - Smooth animations
 
-## Tech Stack
+## Documentation
 
-- React 18+
-- TypeScript
-- Redux Toolkit for state management
-- Lucide React for icons
-- React Select Async Paginate for search functionality
-- CSS with vendor prefixes for cross-browser compatibility
-
-## Tech Stack
-
-- React 18+
-- TypeScript
-- Redux Toolkit for state management
-- Lucide React for icons
-- React Select Async Paginate for search functionality
-- CSS with vendor prefixes for cross-browser compatibility
-
-## Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/Ahmed11-coder/React_Weather_App.git
-cd React_Weather_App
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Set up environment variables:
-Create a `.env` file in the root directory and add your API keys:
-```
-REACT_APP_GEO_API_KEY=your_geo_api_key
-REACT_APP_WEATHER_API_KEY=your_weather_api_key
-```
-
-4. Start the development server:
-```bash
-npm start
-```
-
-## Usage
-
-1. Search for a city using the search bar or swipe between 4 continental views
-2. View current weather conditions and classification status (Good/Moderate/Dangerous)
-3. Switch between dark and light mode using the mode toggle
-4. View recent 2 search history
-5. Get real-time weather updates automatically
-6. Monitor health impact parameters (temperature, air quality)
-7. Check physical hazard risks (wind, precipitation)
-8. Track operational safety metrics (visibility)
-9. Review preventable risks (UV, humidity)
-
-## Project Structure
-
-```
-src/
-├── assets/
-│   └── styles/
-├── components/
-│   ├── Content/
-│   │   ├── WeatherContent/
-│   │   └── WeatherChart/
-│   └── Header/
-│       └── Search/
-├── services/
-├── store/
-├── utils/
-└── types/
-```
+- **Weather API Documentation**: [API Documentation](#)
+- **React**: [React Documentation](https://reactjs.org)
+- **TypeScript**: [TypeScript Documentation](https://www.typescriptlang.org)
+- **Redux Toolkit**: [Redux Toolkit Documentation](https://redux-toolkit.js.org)
+- **Lucide React**: [Lucide React Documentation](https://lucide.dev/)
+- **React Select Async Paginate**: [React Select Async Paginate Documentation](https://github.com/leopardslab/react-select-async-paginate)
+- **CSS with vendor prefixes for cross-browser compatibility**: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference)
 
 ## Contributing
+
+We welcome contributions! Please follow these guidelines:
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
@@ -237,101 +221,6 @@ src/
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## License
+## 📝 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-## Deployment
-
-1. Build the application:
-```bash
-npm run build
-```
-
-2. Deploy to your preferred platform:
-- **Netlify**: [https://app.netlify.com](https://app.netlify.com)
-- **Vercel**: [https://vercel.com](https://vercel.com)
-- **GitHub Pages**: [https://pages.github.com](https://pages.github.com)
-
-3. For production deployment:
-- Ensure environment variables are set
-- Test the application thoroughly
-- Monitor performance and error logs
-
-## Resources
-
-### Documentation
-
-- **Weather API Documentation**: [API Documentation](#)
-- **React**: [React Documentation](https://reactjs.org)
-- **TypeScript**: [TypeScript Documentation](https://www.typescriptlang.org)
-- **Redux Toolkit**: [Redux Toolkit Documentation](https://redux-toolkit.js.org)
-
-### Learning Materials
-
-- **Weather Classification**: Understanding the three-tier system
-- **API Integration**: Working with weather data
-- **State Management**: Using Redux Toolkit effectively
-- **TypeScript**: Best practices and advanced features
-
-## Troubleshooting
-
-### Common Issues
-
-1. **Weather Data Not Loading**
-   - Check API key validity
-   - Verify network connection
-   - Check rate limits
-
-2. **Classification Errors**
-   - Review parameter thresholds
-   - Check data parsing
-   - Validate input values
-
-3. **Performance Issues**
-   - Optimize API calls
-   - Implement proper caching
-   - Use code splitting
-
-## Support
-
-For support, please:
-1. Check the [issues](https://github.com/Ahmed11-coder/React_Weather_App/issues) page
-2. Submit a new issue if needed
-3. Join our [Discord](#) community (coming soon)
-
-## Contributing
-
-We welcome contributions! Please follow these guidelines:
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to your branch
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
