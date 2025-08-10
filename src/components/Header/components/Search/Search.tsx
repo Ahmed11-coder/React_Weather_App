@@ -62,10 +62,11 @@ export default function Search({isOpen} : SearchProp) {
             backdropFilter: 'blur(6px)',
             border: "1px solid black",
         }),
-        option: (styles: any) => ({
+        option: (styles: any, {isFocused}: {isFocused: boolean}) => ({
             ...styles,
-            backgroundColor: "",
+            backgroundColor: isFocused ? "rgba(255, 255, 255, 0.15)" : "",
             color: "white",
+            cursor: "pointer",
         })
     }
 
